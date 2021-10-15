@@ -1,5 +1,4 @@
 (function() {
-  const btn = document.getElementById("btn-debug");
 
   const foldsWrapper = document.getElementById("folds");
   const center = document.getElementById("fold-center");
@@ -205,10 +204,7 @@
     }
   }
 
-  const toggleDebug = () => {
-    document.body.classList.toggle("debug");
-  };
-  btn.addEventListener("click", toggleDebug);
+
 
   const length = (x, y, z = 0) => Math.sqrt(x * x + y * y + z * z);
 

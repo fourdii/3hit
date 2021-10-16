@@ -1,0 +1,26 @@
+{
+  "name": "3hit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gsap": "^3.8.0",
+    "imagesloaded": "^4.1.4",
+    "parcel": "^2.0.0",
+    "splitting": "^1.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourdii/3hit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fourdii/3hit/issues"
+  },
+  "homepage": "https://github.com/fourdii/3hit#readme"
+}

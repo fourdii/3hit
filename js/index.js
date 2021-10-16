@@ -1,5 +1,5 @@
-import Cursor  from './cursor';
-import Grid  from './grid';
+import { Cursor } from './cursor';
+import { Grid } from './grid';
 import { preloadImages } from './utils';
 
 // custom cursor

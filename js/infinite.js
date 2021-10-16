@@ -1,9 +1,9 @@
 import One from './demo-1'
 
-const demos = [One]
-const demo = document.body.getAttribute('data-id')
+// const demos = [One]
+// const demo = document.body.getAttribute('data-id')
 
-new demos[demo]()
+new One()
 
 document.documentElement.classList.remove('no-js')
 document.documentElement.classList.add('js')

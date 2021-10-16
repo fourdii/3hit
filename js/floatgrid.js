@@ -5,13 +5,22 @@ import { preloadImages } from './utils';
 // custom cursor
 const cursor = new Cursor(document.querySelector('.cursor'));
 
+console.log("step0");
+
+
 // Preload  images
 preloadImages('.grid__item-img').then(() => {
     // Remove loader (loading class)
     document.body.classList.remove('loading');
     
+
+console.log("step1");
+
     // Initialize grid
     const grid = new Grid(document.querySelector('.grid'));
+
+    console.log("step2");
+
     
     // change cursor text status when hovering a grid item
     grid.on('mouseEnterItem', itemTitle => cursor.DOM.text.innerHTML = itemTitle);

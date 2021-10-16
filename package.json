@@ -9,7 +9,21 @@
     "normalize-wheel": "^1.0.1",
     "ogl": "0.0.76",
     "parcel": "^2.0.0",
-    "splitting": "^1.0.6"
+    "splitting": "^1.0.6",
+    "@react-three/cannon": "^3.0.1",
+    "@react-three/drei": "^7.5.0",
+    "@react-three/fiber": "^7.0.6",
+    "@react-three/postprocessing": "^2.0.5",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.4",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.2.1",
+    "react-soundcloud-embedded": "^2.0.7",
+    "react-spring-three": "^1.0.4",
+    "three": "^0.132.2",
+    "three-js": "^79.0.0"
   },
   "devDependencies": {},
   "scripts": {

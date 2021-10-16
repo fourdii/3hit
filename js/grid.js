@@ -18,7 +18,7 @@ const title = document.querySelector('.content__title');
 const titleChars = [...title.querySelectorAll('.char')];
 
 
-export class Grid extends EventEmitter {
+export default class Grid extends EventEmitter {
     constructor(el) {
         super();
         this.DOM = {el: el};

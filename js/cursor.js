@@ -5,7 +5,7 @@ import { lerp, getMousePos } from './utils';
 let mouse = {x: 0, y: 0};
 window.addEventListener('mousemove', ev => mouse = getMousePos(ev));
 
-export class Cursor {
+export default class Cursor {
     constructor(el) {
         this.DOM = {el: el};
         this.DOM.svg = this.DOM.el.querySelector('.cursor__svg');

@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export class Preview {
+export default class Preview {
     constructor(el) {
         // DOM elements
         this.DOM = {el: el};

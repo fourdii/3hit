@@ -1,7 +1,10 @@
 /* jshint node: true */
 /* globals THREE */
+import * as THREE from "three";
 
-window.THREE = require("three");
+
+
+// window.THREE = require("three");
 
 const vertexShader = require('webpack-glsl-loader!./shader/vertexShader.vert');
 const fragmentShader = require('webpack-glsl-loader!./shader/fragmentShader.frag');

@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { lerp, getMousePos } from './utils';
+import { lerp, getMousePos } from './utils.js';
 
 // Track the mouse position
 let mouse = {x: 0, y: 0};

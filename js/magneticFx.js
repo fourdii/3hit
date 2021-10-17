@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { lerp, getMousePos, calcWinsize, getTranslateValues } from './utils';
+import { lerp, getMousePos, calcWinsize, getTranslateValues } from './utils.js';
 
 // Calculate the viewport size
 let winsize = calcWinsize();

@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
-import planetData from "../planetData";
+import planetData from "./planetData.js";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useHistory } from "react-router-dom";
 

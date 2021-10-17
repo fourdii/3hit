@@ -1,6 +1,6 @@
-import { Cursor } from './cursor';
-import { Grid } from './grid';
-import { preloadImages } from './utils';
+import { Cursor } from './cursor.js';
+import { Grid } from './grid.js';
+import { preloadImages } from './utils.js';
 
 // custom cursor
 const cursor = new Cursor(document.querySelector('.cursor'));

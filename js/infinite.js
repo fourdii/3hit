@@ -1,4 +1,4 @@
-import One from './demo-1'
+import One from './demo-1.js'
 
 // const demos = [One]
 // const demo = document.body.getAttribute('data-id')

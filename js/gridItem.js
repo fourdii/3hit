@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
-import { map, lerp, getMousePos, calcWinsize, getRandomNumber } from './utils';
-import { MagneticFx }  from './magneticFx';
-import { Preview }  from './preview';
+import { map, lerp, getMousePos, calcWinsize, getRandomNumber } from './utils.js';
+import { MagneticFx }  from './magneticFx.js';
+import { Preview }  from './preview.js';
 
 // Calculate the viewport size
 let winsize = calcWinsize();

@@ -1,5 +1,5 @@
 import React from "react";
-import MainPage from "./MainPage.js";
+import MainPage from "./mainPage.js";
 
 import {
   BrowserRouter as Router,
@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 
-export function App() {
+export default function App() {
   return (
     <div  className={'mainPage'}>
       <Router>       

@@ -62,7 +62,7 @@ a:focus {
 }
 
 /* Page Loader */
-/* .js .loading::before,
+.js .loading::before,
 .js .loading::after {
 	content: '';
 	position: fixed;
@@ -88,7 +88,7 @@ a:focus {
 	background: var(--color-link);
 	animation: loaderAnim 0.7s linear infinite alternate forwards;
 
-} */
+}
 
 @keyframes loaderAnim {
 	to {

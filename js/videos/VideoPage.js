@@ -101,7 +101,7 @@ function Scene() {
   );
 }
 
-export default function VideoPage() {
+export default function videoPage() {
   return (
     <React.Suspense fallback="Loading...">
       <Canvas>

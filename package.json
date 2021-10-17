@@ -23,7 +23,8 @@
     "react-spring-three": "^1.0.4",
     "splitting": "^1.0.6",
     "three": "^0.132.2",
-    "three-js": "^79.0.0"
+    "three-js": "^79.0.0",
+    "glslify": "^7.0.0"
   },
   "devDependencies": {},
   "scripts": {

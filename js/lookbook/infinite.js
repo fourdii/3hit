@@ -1,9 +1,9 @@
-import One from './demo-1.js'
+import App from './demo-1.js'
 
 // const demos = [One]
 // const demo = document.body.getAttribute('data-id')
 
-new One()
+new App()
 
 document.documentElement.classList.remove('no-js')
 document.documentElement.classList.add('js')

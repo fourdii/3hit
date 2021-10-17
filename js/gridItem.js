@@ -11,7 +11,7 @@ window.addEventListener('resize', () => winsize = calcWinsize());
 let mousepos = {x: winsize.width/2, y: winsize.height/2};
 window.addEventListener('mousemove', ev => mousepos = getMousePos(ev));
 
-export default class GridItem {
+export  class GridItem {
     constructor(el) {
         this.DOM = {el: el};
         // the inner image

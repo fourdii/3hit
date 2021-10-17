@@ -9,7 +9,7 @@ window.addEventListener('resize', () => winsize = calcWinsize());
 let mousepos = {x: 0, y: 0};
 window.addEventListener('mousemove', ev => mousepos = getMousePos(ev));
 
-export default class MagneticFx {
+export  class MagneticFx {
     constructor(el) {
         // DOM elements
         this.DOM = {el: el};

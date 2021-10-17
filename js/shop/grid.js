@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { EventEmitter } from 'events';
-import { GridItem } from './gridItem';
-import { getRandomNumber } from './utils';
+import { GridItem } from '../gridItem';
+import { getRandomNumber } from '../utils';
 
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';

@@ -25,35 +25,6 @@
     }
   };
 
-  update();
-
-  function update () {
-    this.scroll.target += this.speed
-
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease)
-
-    if (this.scroll.current > this.scroll.last) {
-      this.direction = 'down'
-      this.speed = 2
-    } else if (this.scroll.current < this.scroll.last) {
-      this.direction = 'up'
-      this.speed = -2
-    }
-
-    if (this.medias) {
-      this.medias.forEach(media => media.update(this.scroll, this.direction))
-    }
-
-    this.renderer.render({
-      scene: this.scene,
-      camera: this.camera
-    })
-
-    this.scroll.last = this.scroll.current
-
-    window.requestAnimationFrame(this.update.bind(this))
-  }
-
   function lerp(current, target, speed = 0.1, limit = 0.001) {
     let change = (target - current) * speed;
     if (Math.abs(change) < limit) {

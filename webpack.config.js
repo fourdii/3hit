@@ -1,0 +1,70 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+
+
+module.exports = {
+  entry: './src/index/index.js',
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "./dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(glb|gltf)$/,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'img/[name].[ext]',
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.html$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'             
+            },
+          },
+        ],
+        exclude: path.resolve(__dirname, 'src/index/index.html')
+      },
+      
+    ],
+  },
+  plugins: [  
+    new HtmlWebpackPlugin({
+      filename: 'index.html'      
+    }),
+    new CleanWebpackPlugin(),
+  ],
+ 
+};

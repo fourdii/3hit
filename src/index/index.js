@@ -1,6 +1,6 @@
-import "./imagesloaded.pkgd.min.js";
 import "./preview.html";
-
+import "../css/common.css";
+import "../css/preview.css";
 
 
 

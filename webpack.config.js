@@ -22,6 +22,19 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img/',
+              publicPath: 'img/'             
+            },
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
@@ -36,19 +49,7 @@ module.exports = {
       {
         test: /\.html$/i,
         loader: "html-loader",
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: 'img/[name].[ext]',
-              limit: 10000,
-            },
-          },
-        ],
-      },
+      },     
       {
         test: /\.html$/i,
         use: [
@@ -61,6 +62,7 @@ module.exports = {
         ],
         exclude: path.resolve(__dirname, 'src/index/preview.html')
       },
+    
       
     ],
   },

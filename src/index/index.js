@@ -1,3 +1,7 @@
+import "./preview.html";
+
+
+
 (function() {
 
   const foldsWrapper = document.getElementById("folds");
@@ -282,6 +286,7 @@
   
   // And then..
   preloadImages().then(() => {
+
     // Remove the loader
     document.body.classList.remove('loading');
     // INITIALIZE

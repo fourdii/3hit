@@ -34,6 +34,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+      {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
@@ -55,14 +59,15 @@ module.exports = {
             },
           },
         ],
-        exclude: path.resolve(__dirname, 'src/index/index.html')
+        exclude: path.resolve(__dirname, 'src/index/preview.html')
       },
       
     ],
   },
   plugins: [  
-    new HtmlWebpackPlugin({
-      filename: 'index.html'      
+    new HtmlWebpackPlugin({     
+      filename: 'index.html',
+      template: 'src/index/preview.html'      
     }),
     new CleanWebpackPlugin(),
   ],

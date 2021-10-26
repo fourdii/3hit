@@ -1,12 +1,6 @@
 /* jshint node: true */
 /* globals THREE */
-import * as THREE from "three";
-import "./music.html";
-
-
-
-
-// window.THREE = require("three");
+window.THREE = require("three");
 
 const vertexShader = require('webpack-glsl-loader!./shader/vertexShader.vert');
 const fragmentShader = require('webpack-glsl-loader!./shader/fragmentShader.frag');
@@ -117,7 +111,7 @@ const initAudio = () => {
 
     const audioLoader = new THREE.AudioLoader();
     // https://www.newgrounds.com/audio/listen/872056
-    audioLoader.load('js/music/asset/salem.mp3', (buffer) => {
+    audioLoader.load('asset/salem.mp3', (buffer) => {
         document.body.classList.remove(classNameForLoading);
 
         audio.setBuffer(buffer);

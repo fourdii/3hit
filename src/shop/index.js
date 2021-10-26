@@ -1,7 +1,7 @@
 import { Cursor } from './cursor.js';
 import { Grid } from './grid.js';
 import { preloadImages } from './utils.js';
-import "./shop.html";
+import "../css/shop_base.css";
 
 
 // custom cursor

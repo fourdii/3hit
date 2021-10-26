@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>3hit.xyz</title>  
+    <meta name="description" content="Demo of the tutorial on how to create a Three.js powered audio visualizer that takes input from the webcam." />
+    <meta name="keywords" content="three.js, audio visualizer, webcam, web development, javascript, webgl" />
+    <meta name="author" content="Codrops" />
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/music_base.css" />
     <script>
     document.documentElement.className = "js";
     var supportsCssVars = function() {
@@ -15,26 +16,17 @@
     };
     supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
     </script>
+      <source src="./asset/salem.mp3" type="audio/mpeg">
+
 </head>
 
 <body class="demo-1 cda-noimg cda-naked cda-alignright">
-    <main>    
-        <div class="frame">
-            <div class="frame__demos">
-                <a href="index.html" class="frame__demo">Database</a>
-                <a href="video.html" class="frame__demo">Video</a>
-                <a href="music.html" class="frame__demo">Music</a>
-                <a href="lookbook.html" class="frame__demo">Lookbook</a>
-                <a href="biologist.html" class="frame__demo">Bio_ogist</a>
-                <a href="shop.html" class="frame__demo">Shop</a>
-            </div>
-          </div>  
+    <main>      
         <div id="content" class="content">
             <video id="video" class="hidden"></video>
             <div id="message" class="hidden">Please allow camera access.</div>
         </div>
     </main>
-    <script type="module" src="./js/music/music.js"></script>
 </body>
 
 </html>

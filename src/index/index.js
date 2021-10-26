@@ -1,9 +1,3 @@
-import "../video/video.html";
-import "../lookbook/lookbook.html";
-import "../music/music.html";
-import "../biologist/biologist.html";
-import "../shop/shop.html";
-
 import "../css/common.css";
 import "../css/preview.css";
 

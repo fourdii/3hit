@@ -12,11 +12,11 @@ export default function MainPage() {
   const history = useHistory();
 
   function Sun() {
-    const texture = useLoader(THREE.TextureLoader, "./src/textures/sun.jpg");
+    // const texture = useLoader(THREE.TextureLoader, "./src/texture/sun.jpg");
     return (
       <mesh>
         <sphereGeometry args={[2.5, 32, 32]} />
-        <meshStandardMaterial map={texture} />
+        {/* <meshStandardMaterial map={texture} /> */}
       </mesh>
     );
   }
@@ -30,7 +30,7 @@ export default function MainPage() {
       speed,
       offset,
       rotationSpeed,
-      textureMap,
+      // textureMap,
       meshMap,
       name,
       gravity,
@@ -45,7 +45,7 @@ export default function MainPage() {
 
 
     const planetRef = React.useRef();
-    const texture = useLoader(THREE.TextureLoader, textureMap);
+    // const texture = useLoader(THREE.TextureLoader, textureMap);
     const gltf = useLoader(GLTFLoader, meshMap);
 
 
@@ -56,7 +56,7 @@ export default function MainPage() {
           object.material.color.set( colorMap );
           object.material.transparent = true;
           object.material.opacity = 0.9;
-          object.material.bumpMap = texture;
+          // object.material.bumpMap = texture;
       }
   
   } );

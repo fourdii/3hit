@@ -206,6 +206,7 @@ const getImageData = (image, useCache) => {
 
     canvas.width = w;
     canvas.height = h;
+    
 
     ctx.translate(w, 0);
     ctx.scale(-1, 1);

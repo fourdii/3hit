@@ -4,27 +4,34 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demo of the tutorial on how to create a Three.js powered audio visualizer that takes input from the webcam." />
-    <meta name="keywords" content="three.js, audio visualizer, webcam, web development, javascript, webgl" />
-    <meta name="author" content="Codrops" />
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet">
-    <script>
+    <title>3hit.xyz</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="../css/music_base.css" />
+    <source src="./asset/salem.mp3" type="audio/mpeg">
+
+    <!-- <script>
     document.documentElement.className = "js";
     var supportsCssVars = function() {
         var e, t = document.createElement("style");
         return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e
     };
     supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
-    </script>
-      <source src="./asset/salem.mp3" type="audio/mpeg">
-
+    </script> -->
 </head>
 
-<body class="demo-1 cda-noimg cda-naked cda-alignright">
-    <main>      
-        <div id="content" class="content">
-            <video id="video" class="hidden"></video>
-            <div id="message" class="hidden">Please allow camera access.</div>
+<!-- <body class="demo-2 cda-noimg cda-naked cda-alignright"> -->
+    <body style="overflow: hidden; width: 100%; height: 100%; margin: 0; padding: 0; background-color: #000;">
+
+    <main>               
+        <div id="content" style="overflow: hidden; width: 100%; height: 100%;">
+            <video id="video" 
+            style="
+            position: relative;
+            top: -50px;
+            left: 50px;
+            width: 50px;
+            height: 50px;
+            "></video>
         </div>
     </main>
 </body>

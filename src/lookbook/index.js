@@ -1,11 +1,8 @@
 import App from './demo-1.js';
-import "../css/lookbook_base.scss";
+import "../css/lookbook_base.css";
+import "../css/lookbook.css";
 
 
-
-
-// const demos = [One]
-// const demo = document.body.getAttribute('data-id')
 
 new App()
 

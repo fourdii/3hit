@@ -12,10 +12,10 @@ const splitting = Splitting();
 
 
 // title behind the grid
-const title = document.querySelector('.content__title');
+//const title = document.querySelector('.content__title');
 // Splitting will run on the inner spans
 // get the chars
-const titleChars = [...title.querySelectorAll('.char')];
+//const titleChars = [...title.querySelectorAll('.char')];
 
 
 export  class Grid extends EventEmitter {
@@ -101,25 +101,25 @@ export  class Grid extends EventEmitter {
             y: '-='+getRandomNumber(1000,1600),
             stagger: {amount: 0.2, grid: 'auto', from: 'top'}
         }, 'start')
-        .to(titleChars, {
-            duration: 1.5,
-            ease: 'expo.inOut',
-            opacity: 0,
-            y: '-=100%',
-            stagger: 0.03
-        }, 'start+=0.1')
+        // .to(titleChars, {
+        //     duration: 1.5,
+        //     ease: 'expo.inOut',
+        //     opacity: 0,
+        //     y: '-=100%',
+        //     stagger: 0.03
+        // }, 'start+=0.1')
         .add(() => {
             item.preview.DOM.el.classList.add('preview__item--open');
         }, 'start+=0.1')
 
         // Content/preview animation
-        .to(item.preview.DOM.titleChars, {
-            duration: 1.5,
-            ease: 'expo.inOut',
-            opacity: 1,
-            y: '0%',
-            stagger: 0.05
-        }, 'start+=0.6')
+        // .to(item.preview.DOM.titleChars, {
+        //     duration: 1.5,
+        //     ease: 'expo.inOut',
+        //     opacity: 1,
+        //     y: '0%',
+        //     stagger: 0.05
+        // }, 'start+=0.6')
         .to([item.preview.DOM.imgWrap, item.preview.DOM.image], {
             duration: 1.5,
             ease: 'expo.inOut',
@@ -163,13 +163,13 @@ export  class Grid extends EventEmitter {
         })
         .addLabel('start', 0)
         // Content/preview animation
-        .to(item.preview.DOM.titleChars, {
-            duration: 1.5,
-            ease: 'expo.inOut',
-            opacity: 0,
-            y: '100%',
-            stagger: -0.04
-        }, 'start')
+        // .to(item.preview.DOM.titleChars, {
+        //     duration: 1.5,
+        //     ease: 'expo.inOut',
+        //     opacity: 0,
+        //     y: '100%',
+        //     stagger: -0.04
+        // }, 'start')
         .to(item.preview.DOM.imgWrap, {
             duration: 1.5,
             ease: 'expo.inOut',
@@ -194,13 +194,13 @@ export  class Grid extends EventEmitter {
             opacity: 0
         }, 'start')
 
-        .to(titleChars, {
-            duration: 1,
-            ease: 'expo.inOut',
-            opacity: 1,
-            y: '0%',
-            stagger: -0.03
-        }, 'start+=0.4')
+        // .to(titleChars, {
+        //     duration: 1,
+        //     ease: 'expo.inOut',
+        //     opacity: 1,
+        //     y: '0%',
+        //     stagger: -0.03
+        // }, 'start+=0.4')
         .add(() => {
             // start the rAF on every item
             for(const item of this.gridItems) {

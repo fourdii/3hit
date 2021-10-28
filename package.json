@@ -16,6 +16,7 @@
     "gsap": "^3.8.0",
     "http-server": "^13.0.2",
     "imagesloaded": "^4.1.4",
+    "leva": "^0.9.14",
     "normalize-wheel": "^1.0.1",
     "ogl": "0.0.76",
     "parcel": "^2.0.0",

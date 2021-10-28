@@ -6,15 +6,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 module.exports = {
-  // entry: './src/index/index.js',
-
-
   entry: {
     'Database': './src/index/index.js',
     'Video': './src/video/index.js',
     'Music': './src/music/index.js',
     'Shop': './src/shop/index.js',
     'Biologist': './src/biologist/index.js',
+    'Biologist2': './src/biologist2/index.js',
     'Lookbook': './src/lookbook/index.js',
   },
 
@@ -120,6 +118,11 @@ module.exports = {
       filename: 'biologist.html',
       template: 'src/biologist/biologist.html',
       chunks: ['Biologist']                           
+    }),
+    new HtmlWebpackPlugin({     
+      filename: 'biologist2.html',
+      template: 'src/biologist2/biologist2.html',
+      chunks: ['Biologist2']                           
     }),
     new HtmlWebpackPlugin({     
       filename: 'lookbook.html',

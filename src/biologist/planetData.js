@@ -3,6 +3,8 @@ import "../model/wood.glb";
 import "../model/aqua.glb";
 import "../model/fire.glb";
 import "../model/dirt.glb";
+import "../model/shoe.glb";
+
 
 
 const random = (a, b) => a + Math.random() * b;

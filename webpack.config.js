@@ -15,6 +15,7 @@ module.exports = {
     'Biologist2': './src/biologist2/index.js',
     'Biologist3': './src/biologist3/index.js',
     'Biologist4': './src/biologist4/index.js',
+    'Biologist5': './src/biologist5/index.js',
     'Lookbook': './src/lookbook/index.js',
   },
 
@@ -135,6 +136,11 @@ module.exports = {
       filename: 'biologist4.html',
       template: 'src/biologist4/biologist4.html',
       chunks: ['Biologist4']                           
+    }),
+    new HtmlWebpackPlugin({     
+      filename: 'biologist5.html',
+      template: 'src/biologist5/biologist5.html',
+      chunks: ['Biologist5']                           
     }),
     new HtmlWebpackPlugin({     
       filename: 'lookbook.html',

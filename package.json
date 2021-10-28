@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
+    "@heroicons/react": "^1.0.5",
     "@react-three/cannon": "^3.0.1",
     "@react-three/drei": "^7.16.7",
     "@react-three/fiber": "^7.0.17",

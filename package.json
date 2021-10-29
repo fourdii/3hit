@@ -9,6 +9,7 @@
     "@react-three/cannon": "^3.0.1",
     "@react-three/drei": "^7.16.7",
     "@react-three/fiber": "^7.0.17",
+    "@react-three/flex": "^0.7.0",
     "@react-three/postprocessing": "^2.0.5",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",

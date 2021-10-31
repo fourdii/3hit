@@ -27,6 +27,7 @@ export default function Wood({ random, ...props }) {
         receiveShadow
         geometry={nodes.RetopoFlow002.geometry}
         material={nodes.RetopoFlow002.material}
+        scale={0.5}
       />
     </group>
   );

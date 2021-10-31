@@ -4,14 +4,15 @@ import { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Instances, Instance, OrbitControls, Environment, useGLTF } from '@react-three/drei'
 import { useControls } from 'leva'
+import  Wood  from './wood'
 
 const color = new THREE.Color()
 const randomVector = (r) => [r / 2 - Math.random() * r, r / 2 - Math.random() * r, r / 2 - Math.random() * r]
 const randomEuler = () => [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI]
-const randomData = Array.from({ length: 1000 }, (r = 10) => ({ random: Math.random(), position: randomVector(r), rotation: randomEuler() }))
+const randomData = Array.from({ length: 100 }, (r = 10) => ({ random: Math.random(), position: randomVector(r), rotation: randomEuler() }))
 
 export default function App() {
-  const { range } = useControls({ range: { value: 100, min: 0, max: 1000, step: 10 } })
+  const { range } = useControls({ range: { value: 5, min: 0, max: 10, step: 1 } })
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 50 }} performance={{ min: 0.1 }}>
       <ambientLight intensity={0.5} />
@@ -26,14 +27,14 @@ export default function App() {
 }
 
 function Models({ range }) {
-  const { nodes, materials } = useGLTF('../model/shoe.glb')
-  console.log(nodes);
+  // const { nodes, materials } = useGLTF('../model/shoe.glb')
   return (
-    <Instances range={range} material={materials.phong1SG} geometry={nodes.Shoe.geometry}>
-      {randomData.map((props, i) => (
-        <Model key={i} {...props} />
-      ))}
-    </Instances>
+    // <Instances range={range} material={materials.phong1SG} geometry={nodes.Shoe.geometry}>
+      randomData.map((props, i) => (
+        <Wood key={i} {...props} />
+        // <Model key={i} {...props} />
+      ))
+    // </Instances>
   )
 }
 

@@ -18,6 +18,8 @@ module.exports = {
     'Biologist5': './src/biologist5/index.js',
     'Biologist6': './src/biologist6/index.js',
     'Biologist7': './src/biologist7/index.js',
+    'Biologist8': './src/biologist8/index.js',
+    'Biologist9': './src/biologist9/index.js',
     'Lookbook': './src/lookbook/index.js',
   },
 
@@ -153,6 +155,16 @@ module.exports = {
       filename: 'biologist7.html',
       template: 'src/biologist7/biologist7.html',
       chunks: ['Biologist7']                           
+    }),
+    new HtmlWebpackPlugin({     
+      filename: 'biologist8.html',
+      template: 'src/biologist8/biologist8.html',
+      chunks: ['Biologist8']                           
+    }),
+    new HtmlWebpackPlugin({     
+      filename: 'biologist9.html',
+      template: 'src/biologist9/biologist9.html',
+      chunks: ['Biologist9']                           
     }),
     new HtmlWebpackPlugin({     
       filename: 'lookbook.html',

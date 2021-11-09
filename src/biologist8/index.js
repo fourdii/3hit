@@ -1,21 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Logo } from '@pmndrs/branding'
-import './styles.css'
-import App from './app'
+import App from './demo-1.js';
+import "../css/lookbook_base.css";
+import "../css/lookbook.css";
 
-function Overlay() {
-  return (
-    <div style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>      
-    </div>
-  )
-}
 
-ReactDOM.render(
-  <>
-    <App />
-    <Overlay />
-    {/* <Logo style={{ position: 'absolute', bottom: 40, left: 40, width: 30 }} /> */}
-  </>,
-  document.getElementById('root')
-)
+
+new App()
+
+document.documentElement.classList.remove('no-js')
+document.documentElement.classList.add('js')
+
+const images = document.querySelectorAll('img:not([src*="https://tympanus.net/codrops/wp-content/banners/"])')
+let imagesIndex = 0
+
+Array.from(images).forEach(element => {
+  const image = new Image()
+
+  image.src = element.src
+  image.onload = _ => {
+    imagesIndex += 1
+
+    if (imagesIndex === images.length) {
+      document.documentElement.classList.remove('loading')
+      document.documentElement.classList.add('loaded')
+    }
+  }
+})

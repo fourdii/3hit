@@ -74,12 +74,10 @@ export default function MainPage() {
     
     return (
       <>
-        <mesh
-         
+        <mesh         
           ref={planetRef}
           onClick={() => {
-            // enter different pages
-            history.push("/music");
+            location.href = '/biologistAqua.html';      
           }}
         >
           <primitive object={gltf.scene} position={[0, 0, 0]} />

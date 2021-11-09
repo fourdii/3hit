@@ -175,13 +175,13 @@ a:focus {
 .grid__item {
 	position: relative;
 	will-change: transform;
-	grid-area: var(--grid-row) / var(--grid-column) / span 12 / span 5;
+	grid-area: var(--grid-row) / var(--grid-column) / span 9 / span 5;
 }
 
 .grid__item-img {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: auto;
 	background-size: cover;
 	background-position: 50% 50%;
 	border-radius: 10px;

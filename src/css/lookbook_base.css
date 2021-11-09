@@ -31,7 +31,7 @@ body {
 }
 body:after {
   animation: grain 6s steps(10) infinite;
-  background-image: url("../img/grain.png");
+  background-image: url("../img/lookbook/grain.png");
   background-repeat: repeat;
   content: "";
   height: 300%;

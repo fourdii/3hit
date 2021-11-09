@@ -117,10 +117,11 @@ const initAudio = () => {
         audio.setBuffer(buffer);
         audio.setLoop(true);
         audio.setVolume(0.5);
-        audio.play();
+        //audio.play();
     });
 
     analyser = new THREE.AudioAnalyser(audio, fftSize);
+    
 
     document.body.addEventListener('click', function () {
         if (audio) {

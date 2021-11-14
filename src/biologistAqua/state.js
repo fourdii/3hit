@@ -7,10 +7,10 @@ const state = {
     {
       tag: '00',
       text: ``,
-      images: ["/shop/(FE-5B)_1.png", "/shop/(FE-5B)_1.png", "/shop/(FE-5B)_1.png"],
+      images: ["/database/bi1.png"],
     },
-    { tag: '01', text: ``, images: ["/shop/(F-3B)_1.png", "/shop/(F-3B)_1.png", "/shop/(F-3B)_1.png"]  },
-    { tag: '02', text: ``, images: ["/shop/(J-2B)_1.png", "/shop/(J-2B)_1.png", "/shop/(J-2B)_1.png"]  },
+    { tag: '01', text: ``, images: ["/biologist/Fire_Matting.jpg"]  },
+    { tag: '02', text: ``, images: ["/biologist/fire.jpg"]  },
   ],
   depthbox: [
     {
@@ -18,7 +18,7 @@ const state = {
       color: '#cccccc',
       textColor: '#ffffff',
       text: '',
-      image: "/shop/(F-3B)_1.png",
+      image: "/taichi.png",
     },
     {
       depth: -5,

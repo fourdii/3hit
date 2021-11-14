@@ -28,15 +28,15 @@ export default function Model(props) {
           <meshBasicMaterial wireframe />
         </mesh>
       </group>
-      <group position={[1.25, -0.5, 0]}>
+      {/* <group position={[1.25, -0.5, 0]}>
         <Text position={[0, 0, 0]} fontSize={0.07} lineHeight={1} letterSpacing={-0.05}>
           03
           <meshBasicMaterial color="#cccccc" toneMapped={false} />
         </Text>
-        {/* <Text bold position={[-0.01, -0.1, 0]} fontSize={0.1} lineHeight={1} letterSpacing={-0.05} color="black">
-          {`Poimandres,\nThe vision of Hermes`}
-        </Text> */}
-      </group>
+        <Text bold position={[-0.01, -0.1, 0]} fontSize={0.1} lineHeight={1} letterSpacing={-0.05} color="black">
+          {`BUY HERE`}
+        </Text>
+      </group> */}
       <Shadow ref={shadow} opacity={0.3} rotation-x={-Math.PI / 2} position={[0, -1.51, 0]} />
     </group>
   )

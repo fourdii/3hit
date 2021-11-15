@@ -6,6 +6,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
+    "@pixi/filter-drop-shadow": "^4.1.5",
     "@pmndrs/branding": "0.0.8",
     "@react-three/cannon": "^3.0.1",
     "@react-three/drei": "^7.16.7",
@@ -25,6 +26,7 @@
     "normalize-wheel": "^1.0.1",
     "ogl": "0.0.76",
     "parcel": "^2.0.0",
+    "pixi.js": "^5.0.0-rc",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
     "raw-loader": "^4.0.2",

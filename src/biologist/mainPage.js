@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+import { Environment, OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import planetData from "./planetData.js";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -12,11 +12,11 @@ export default function MainPage() {
   const history = useHistory();
 
   function Sun() {
-    // const texture = useLoader(THREE.TextureLoader, "./src/texture/sun.jpg");
+    const texture = useLoader(THREE.TextureLoader, "/biologist/sun_tex.jpg");
     return (
       <mesh>
         <sphereGeometry args={[2.5, 32, 32]} />
-        {/* <meshStandardMaterial map={texture} /> */}
+        <meshStandardMaterial map={texture} />
       </mesh>
     );
   }
@@ -30,7 +30,7 @@ export default function MainPage() {
       speed,
       offset,
       rotationSpeed,
-      // textureMap,
+      textureMap,
       meshMap,
       name,
       gravity,
@@ -45,7 +45,7 @@ export default function MainPage() {
 
 
     const planetRef = React.useRef();
-    // const texture = useLoader(THREE.TextureLoader, textureMap);
+    const texture = useLoader(THREE.TextureLoader, textureMap);
     const gltf = useLoader(GLTFLoader, meshMap);
 
 
@@ -56,7 +56,7 @@ export default function MainPage() {
           object.material.color.set( colorMap );
           object.material.transparent = true;
           object.material.opacity = 0.9;
-          // object.material.bumpMap = texture;
+          object.material.bumpMap = texture;
       }
   
   } );
@@ -123,7 +123,8 @@ export default function MainPage() {
           {planetData.map((planet) => (
             <Planet planet={planet} key={planet.id} />
           ))}
-          <Lights />
+          {/* <Lights /> */}
+          <Environment preset="warehouse" />
           <OrbitControls />
         </Suspense>
       </Canvas>

@@ -20,13 +20,13 @@ const shuffle = (a) => {
   return temp;
 };
 
-// const textures = [
-//   "../texture/gold.jpg",
-//   "../texture/wood.jpg",
-//   "../texture/aqua.jpg",
-//   "../texture/fire.jpg",
-//   "../texture/dirt.jpg",
-// ];
+const textures = [
+  "/biologist/gold_tex.jpg",
+  "/biologist/wood_tex.jpg",
+  "/biologist/aqua_tex.jpg",
+  "/biologist/fire_tex.jpg",
+  "/biologist/dirt_tex.jpg",
+];
 const meshes = [
   "model/gold.glb",
   "model/wood.glb",
@@ -48,7 +48,7 @@ for (let index = 0; index < totalPlanets; index++) {
     speed: random(0.05, 0.06),
     offset: random(0, Math.PI * 2),
     rotationSpeed: random(0.008, 0.004),
-    // textureMap: textures[index],
+    textureMap: textures[index],
     meshMap: meshes[index],
     name: (Math.random() + 1).toString(36).substring(7).toUpperCase(),
     gravity: random(2, 5).toFixed(2),

@@ -167,7 +167,7 @@ function Content({ onReflow }) {
             ))} */}
             <Html
               style={{
-                width: "100vw",
+                width: "70vw",
                 height: "700px"
               }}
             >

@@ -32,15 +32,14 @@ function Model(props) {
           />
           <mesh geometry={nodes["Cube008_2"].geometry}>
             {/* Drei's HTML component can now "hide behind" canvas geometry */}
-            <Html
-              className="content"
+            <Html    
               rotation-x={-Math.PI / 2}
               position={[0, 0.05, -0.09]}
               transform
               occlude
             >
-              <div className="wrapper">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/OhU22nSsRmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div style={{backgroundColor: '#000'}}>
+              <iframe  width="335px" height="210px" src="https://www.youtube.com/embed/OhU22nSsRmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {/* <HeroPage /> */}
               </div>
             </Html>

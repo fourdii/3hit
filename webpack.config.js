@@ -13,16 +13,7 @@ module.exports = {
     Music: "./src/music/index.js",
     Shop: "./src/shop/index.js",
     Biologist: "./src/biologist/index.js",
-    BiologistAqua: "./src/biologistAqua/index.js",
-    // 'Biologist2': './src/biologist2/index.js',
-    // 'Biologist3': './src/biologist3/index.js',
-    // 'Biologist4': './src/biologist4/index.js',
-    // 'Biologist5': './src/biologist5/index.js',
-    // 'Biologist6': './src/biologist6/index.js',
-    // 'Biologist7': './src/biologist7/index.js',
-    // 'Biologist9': './src/biologist9/index.js',
-    Biologist10: "./src/biologist10/js/main.js",
-
+    BiologistFire: "./src/biologistFire/index.js",   
     Lookbook: "./src/lookbook/index.js",
   },
 
@@ -129,50 +120,10 @@ module.exports = {
       chunks: ["Biologist"],
     }),
     new HtmlWebpackPlugin({
-      filename: "biologistAqua.html",
-      template: "src/biologistAqua/biologistAqua.html",
-      chunks: ["BiologistAqua"],
-    }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist2.html',
-    //   template: 'src/biologist2/biologist2.html',
-    //   chunks: ['Biologist2']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist3.html',
-    //   template: 'src/biologist3/biologist3.html',
-    //   chunks: ['Biologist3']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist4.html',
-    //   template: 'src/biologist4/biologist4.html',
-    //   chunks: ['Biologist4']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist5.html',
-    //   template: 'src/biologist5/biologist5.html',
-    //   chunks: ['Biologist5']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist6.html',
-    //   template: 'src/biologist6/biologist6.html',
-    //   chunks: ['Biologist6']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist7.html',
-    //   template: 'src/biologist7/biologist7.html',
-    //   chunks: ['Biologist7']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'biologist9.html',
-    //   template: 'src/biologist9/biologist9.html',
-    //   chunks: ['Biologist9']
-    // }),
-    new HtmlWebpackPlugin({
-      filename: "biologist10.html",
-      template: "src/biologist10/biologist10.html",
-      chunks: ["Biologist10"],
-    }),
+      filename: "biologistFire.html",
+      template: "src/biologistFire/biologistFire.html",
+      chunks: ["BiologistFire"],
+    }),   
     new HtmlWebpackPlugin({
       filename: "lookbook.html",
       template: "src/lookbook/lookbook.html",

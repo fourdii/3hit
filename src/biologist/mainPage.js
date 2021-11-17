@@ -77,7 +77,7 @@ export default function MainPage() {
         <mesh         
           ref={planetRef}
           onClick={() => {
-            location.href = '/biologistAqua.html';      
+            location.href = '/biologistFire.html';      
           }}
         >
           <primitive object={gltf.scene} position={[0, 0, 0]} />

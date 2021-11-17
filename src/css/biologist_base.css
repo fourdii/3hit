@@ -12,7 +12,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../img/biologist/bg2.jpg");  
+    /* background-color: black; */
+    background-image: url("../img/biologist/bg2.jpg");   
   }
   
   .annotation {

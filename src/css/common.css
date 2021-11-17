@@ -154,12 +154,12 @@ a:focus {
 	display: none;
 }
 
-.frame {
+/* .frame {
 	padding: 3rem 5vw;
 	text-align: center;
 	position: relative;
 	z-index: 1000;
-}
+} */
 
 .frame__title {
 	font-size: 1rem;
@@ -200,7 +200,7 @@ a:focus {
 		display: none;
 	}
 
-	.frame {
+	/* .frame {
 		position: fixed;
 		text-align: left;
 		z-index: 100;
@@ -218,7 +218,7 @@ a:focus {
 		grid-template-areas: 'title links'
 			'... ...'
 			'... demos';
-	}
+	} */
 
 	.frame__title-wrap {
 		grid-area: title;

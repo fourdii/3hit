@@ -38,9 +38,9 @@ a:focus {
 	color: var(--color-link-hover);
 }
 
-a:focus {
+/* a:focus {
 	outline: 2px solid var(--color-focus);
-}
+} */
 
 main {
 	position: relative;

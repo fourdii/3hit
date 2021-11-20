@@ -15,9 +15,9 @@ label {
 	cursor: pointer;
 }
 
-label:focus {
+/* label:focus {
 	border: 2px solid orange;
-}
+} */
 
 #main-nav-toggle {
 	position: absolute;

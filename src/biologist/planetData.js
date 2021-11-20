@@ -34,6 +34,14 @@ const meshes = [
   "model/fire.glb",
   "model/dirt.glb",
 ];
+const htmls = [
+  "/biologistGold.html",
+  "/biologistWood.html",
+  "/biologistAqua.html",
+  "/biologistFire.html",
+  "/biologistDirt.html",
+];
+
 const colors = [0xff, 0xff00, 0xffff, 0xff0000, 0xffff00];
 
 const planetData = [];
@@ -55,6 +63,7 @@ for (let index = 0; index < totalPlanets; index++) {
     orbitalPeriod: randomInt(50, 500),
     surfaceArea: random(100, 1000).toFixed(2),
     colorMap: colors[index],
+    htmlMap: htmls[index],
   });
 }
 

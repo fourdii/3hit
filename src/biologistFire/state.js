@@ -7,7 +7,7 @@ const state = {
     {
       tag: '00',
       text: ``,
-      images: ["/biologist/fire.png"],
+      images: ["/biologist/fire_tex.jpg"],
     },
     { tag: '01', text: ``, images: ["/biologist/fire_nobg.png"]  },
     { tag: '02', text: ``, images: ["/biologist/fire_pattern.png"]  },

@@ -8,7 +8,7 @@ import state from '../state'
 export default function Model(props) {
   const group = useRef()
   const shadow = useRef()
-  const { nodes } = useGLTF('/model/fire.glb', true)
+  const { nodes } = useGLTF('/model/gold.glb', true)
   useFrame(({ clock }) => {
     const t = (1 + Math.sin(clock.getElapsedTime() * 1.5)) / 2
     group.current.position.y = t / 3
@@ -21,22 +21,22 @@ export default function Model(props) {
   return (
     <group {...props} dispose={null}>
       <group ref={group}>
-        <mesh geometry={nodes.球體.geometry} castShadow receiveShadow>
+        <mesh geometry={nodes.Cube.geometry} castShadow receiveShadow>
           <MeshDistortMaterial color="#ffffff" flatShading roughness={1} metalness={0.5} factor={15} speed={5} />
         </mesh>
-        <mesh geometry={nodes.球體.geometry}>
+        <mesh geometry={nodes.Cube.geometry}>
           <meshBasicMaterial wireframe />
         </mesh>
       </group>
-      <group position={[1.25, -0.5, 0]}>
+      {/* <group position={[1.25, -0.5, 0]}>
         <Text position={[0, 0, 0]} fontSize={0.07} lineHeight={1} letterSpacing={-0.05}>
           03
           <meshBasicMaterial color="#cccccc" toneMapped={false} />
         </Text>
         <Text bold position={[-0.01, -0.1, 0]} fontSize={0.1} lineHeight={1} letterSpacing={-0.05} color="black">
-          {`Poimandres,\nThe vision of Hermes`}
+          {`BUY HERE`}
         </Text>
-      </group>
+      </group> */}
       <Shadow ref={shadow} opacity={0.3} rotation-x={-Math.PI / 2} position={[0, -1.51, 0]} />
     </group>
   )

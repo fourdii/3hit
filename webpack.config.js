@@ -14,6 +14,10 @@ module.exports = {
     Shop: "./src/shop/index.js",
     Biologist: "./src/biologist/index.js",
     BiologistFire: "./src/biologistFire/index.js",   
+    BiologistGold: "./src/biologistGold/index.js",   
+    BiologistWood: "./src/biologistWood/index.js",   
+    BiologistAqua: "./src/biologistAqua/index.js",   
+    BiologistDirt: "./src/biologistDirt/index.js",   
     Lookbook: "./src/lookbook/index.js",
   },
 
@@ -124,6 +128,26 @@ module.exports = {
       template: "src/biologistFire/biologistFire.html",
       chunks: ["BiologistFire"],
     }),   
+    new HtmlWebpackPlugin({
+      filename: "biologistGold.html",
+      template: "src/biologistGold/biologistGold.html",
+      chunks: ["BiologistGold"],
+    }), 
+    new HtmlWebpackPlugin({
+      filename: "biologistWood.html",
+      template: "src/biologistWood/biologistWood.html",
+      chunks: ["BiologistWood"],
+    }), 
+    new HtmlWebpackPlugin({
+      filename: "biologistAqua.html",
+      template: "src/biologistAqua/biologistAqua.html",
+      chunks: ["BiologistAqua"],
+    }), 
+    new HtmlWebpackPlugin({
+      filename: "biologistDirt.html",
+      template: "src/biologistDirt/biologistDirt.html",
+      chunks: ["BiologistDirt"],
+    }), 
     new HtmlWebpackPlugin({
       filename: "lookbook.html",
       template: "src/lookbook/lookbook.html",

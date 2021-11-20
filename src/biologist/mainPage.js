@@ -37,6 +37,7 @@ export default function MainPage() {
       orbitalPeriod,
       surfaceArea,
       colorMap,
+      htmlMap,
     },
     
   }) {
@@ -77,7 +78,7 @@ export default function MainPage() {
         <mesh         
           ref={planetRef}
           onClick={() => {
-            location.href = '/biologistFire.html';      
+            location.href = htmlMap;      
           }}
         >
           <primitive object={gltf.scene} position={[0, 0, 0]} />

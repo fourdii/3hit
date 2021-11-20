@@ -7,7 +7,7 @@ import Effects from './components/Effects'
 import Text from './components/Text'
 import Geo from './components/Geo'
 import state from './state'
-import Model from '../biologist6/app'
+import Model from '../biologist6/fire.js'
 
 
 function HeightReporter({ onReflow }) {

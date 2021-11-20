@@ -2,11 +2,13 @@ import * as THREE from 'three'
 import React, { Suspense, useEffect, useRef, useState, useCallback, useLayoutEffect } from 'react'
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { Flex, Box, useFlexSize } from '@react-three/flex'
-import { Loader, Line, useAspect } from '@react-three/drei'
+import { Html, Loader, Line, useAspect } from '@react-three/drei'
 import Effects from './components/Effects'
 import Text from './components/Text'
 import Geo from './components/Geo'
 import state from './state'
+import Model from '../biologist6/wood.js'
+
 
 function HeightReporter({ onReflow }) {
   const size = useFlexSize()
@@ -38,18 +40,18 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
           <Box key={index} {...boxProps}>
             {(width, height) => (
               <mesh>
-                <planeBufferGeometry args={[width, height]} />
-                <meshBasicMaterial map={texture} toneMapped={false} />
+                <planeBufferGeometry args={[20, 20]} />
+                <meshBasicMaterial map={texture} toneMapped={false} transparent={true}/>
               </mesh>
             )}
           </Box>
         ))}
       </Box>
       <Box marginLeft={1.5} marginRight={1.5} marginTop={2}>
-        <Text position={[left ? 1 : -1, 0.5, 1]} fontSize={textScaleFactor} lineHeight={1} letterSpacing={-0.05} maxWidth={(viewport.width / 4) * 3}>
+        {/* <Text position={[left ? 1 : -1, 0.5, 1]} fontSize={textScaleFactor} lineHeight={1} letterSpacing={-0.05} maxWidth={(viewport.width / 4) * 3}>
           {tag}
-          <meshBasicMaterial color="#cccccc" toneMapped={false} />
-        </Text>
+          <meshBasicMaterial color="#cccccc" toneMapped={false} transparent={true}/>
+        </Text> */}
       </Box>
       <Box marginLeft={left ? 1.5 : 1} marginRight={left ? 1 : 1.5} marginBottom={1}>
         <Text
@@ -72,6 +74,12 @@ function Layercard({ depth, boxWidth, boxHeight, text, textColor, color, map, te
   const ref = useRef()
   const { viewport, size } = useThree()
   const pageLerp = useRef(state.top / size.height)
+
+  // let video = document.createElement('video');
+  // video.src = "aqua.mov";
+  // video.autoplay = "autoplay";
+  // var texture = new THREE.VideoTexture(video);
+
   useFrame(() => {
     const page = (pageLerp.current = THREE.MathUtils.lerp(pageLerp.current, state.top / size.height, 0.15))
     if (depth >= 0) ref.current.opacity = page < state.threshold * 1.7 ? 1 : 1 - (page - state.threshold * 1.7)
@@ -80,9 +88,16 @@ function Layercard({ depth, boxWidth, boxHeight, text, textColor, color, map, te
     <>
       <mesh position={[boxWidth / 2, -boxHeight / 2, depth]}>
         <planeBufferGeometry args={[boxWidth, boxHeight]} />
-        <meshBasicMaterial ref={ref} color={color} map={map} toneMapped={false} transparent opacity={1} />
-      </mesh>
-      <Text
+        <meshBasicMaterial
+          ref={ref}
+          color={color}
+          map={map}
+          toneMapped={false}
+          transparent
+          opacity={1}
+        />
+      </mesh>      
+      {/* <Text
         bold
         position={[boxWidth / 2, -boxHeight / 2, depth + 1.5]}
         maxWidth={(viewport.width / 4) * 1}
@@ -93,9 +108,9 @@ function Layercard({ depth, boxWidth, boxHeight, text, textColor, color, map, te
         letterSpacing={-0.05}
         color={textColor}>
         {text}
-      </Text>
+      </Text> */}
     </>
-  )
+  );
 }
 
 function Content({ onReflow }) {
@@ -116,25 +131,54 @@ function Content({ onReflow }) {
   const scale = Math.min(1, viewport.width / 16)
   return (
     <group ref={group}>
-      <Flex dir="column" position={[-viewport.width / 2, viewport.height / 2, 0]} size={[viewport.width, viewport.height, 0]} onReflow={handleReflow}>
+      <Flex
+        dir="column"
+        position={[-viewport.width / 2, viewport.height / 2, 0]}
+        size={[viewport.width, viewport.height, 0]}
+        onReflow={handleReflow}
+      >
         {state.content.map((props, index) => (
           <Page
             key={index}
             left={!(index % 2)}
             textScaleFactor={scale}
             onReflow={(w, h) => {
-              sizesRef.current[index] = h
-              state.threshold = Math.max(4, (4 / (15.8 * 3)) * sizesRef.current.reduce((acc, e) => acc + e, 0))
+              sizesRef.current[index] = h;
+              state.threshold = Math.max(
+                4,
+                (4 / (15.8 * 3)) *
+                  sizesRef.current.reduce((acc, e) => acc + e, 0)
+              );
             }}
             {...props}
           />
         ))}
-        <Box dir="row" width="100%" height="100%" align="center" justify="center">
-          <Box centerAnchor>
-            {state.lines.map((props, index) => (
+        
+        <Box
+          dir="row"
+          width="100%"
+          height="100%"
+          align="center"
+          justify="center"
+        >
+          {/* <Box > */}
+            {/* {state.lines.map((props, index) => (
               <Line key={index} {...props} />
-            ))}
-            <Text
+            ))} */}
+            <Html
+              style={{
+                width: "70vw",
+                height: "700px"
+              }}
+            >
+              <Model    
+              scale={10}
+              position-z={0.5}
+              anchorX="center"
+              anchorY="middle"
+             />
+            </Html>
+            {/* <Text
               bold
               position-z={0.5}
               anchorX="center"
@@ -143,20 +187,35 @@ function Content({ onReflow }) {
               lineHeight={1}
               letterSpacing={-0.05}
               color="black"
-              maxWidth={(viewport.width / 4) * 3}>
+              maxWidth={(viewport.width / 4) * 3}
+            >
               {state.depthbox[0].text}
-            </Text>
-          </Box>
+            </Text> */}
+          {/* </Box> */}
         </Box>
-        <Box dir="row" width="100%" height="100%" align="center" justify="center">
+
+        <Box
+          dir="row"
+          width="100%"
+          height="100%"
+          align="center"
+          justify="center"
+        >
           <Box>
-            <Layercard {...state.depthbox[0]} text={state.depthbox[1].text} boxWidth={bW} boxHeight={bH} map={texture} textScaleFactor={scale} />
+            <Layercard
+              {...state.depthbox[0]}
+              text={state.depthbox[1].text}
+              boxWidth={bW}
+              boxHeight={bH}
+              map={texture}
+              textScaleFactor={scale}
+            />
             <Geo position={[bW / 2, -bH / 2, state.depthbox[1].depth]} />
           </Box>
         </Box>
       </Flex>
     </group>
-  )
+  );
 }
 
 export default function App() {
@@ -193,6 +252,7 @@ export default function App() {
         className="scrollArea"
         ref={scrollArea}
         onScroll={onScroll}
+        onClick={()=>location.href="https://www.4dimensionapparel.com/products/j-2p"}
         onPointerMove={(e) => (state.mouse = [(e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1])}>
         <div style={{ height: `${pages * 100}vh` }} />
       </div>

@@ -205,6 +205,8 @@ const initAudio = () => {
 
   audio.src = "asset/salem.mp3";
   audio.load();
+  audio.play();
+
 
   console.log(audio);
 

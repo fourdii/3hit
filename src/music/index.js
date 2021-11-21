@@ -203,7 +203,7 @@ const initAudio = () => {
  
  function createAudioContext() {
 
-  audio.src = "asset/salem.mp3";
+  audio.src = "asset/lucia.mp3";
   audio.load();
   audio.play();
 

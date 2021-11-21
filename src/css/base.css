@@ -13,7 +13,7 @@ html, body {
 	height: 100%;
 }
 
-body {
+/* body {
 	--color-text: #231a16;
 	--color-text-secondary: #cf5500;
 	--color-bg: black;
@@ -25,7 +25,7 @@ body {
 	font-family: jaf-bernina-sans, Futura, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
+} */
 
 a {
 	text-decoration: none;

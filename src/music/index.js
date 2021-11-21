@@ -1,5 +1,13 @@
 /* jshint node: true */
 /* globals THREE */
+
+import "../css/base.css";
+import "../css/menu.css";
+import "../css/step.css";
+import "../js/main.js";
+
+
+
 window.THREE = require("three");
 
 const vertexShader = require("webpack-glsl-loader!./shader/vertexShader.vert");

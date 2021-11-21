@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom'
 import './styles.css'
 import App from './app'
 
+import "../css/base.css";
+import "../css/menu.css";
+import "../css/step.css";
+import "../js/main.js";
+
+
+
 function Overlay() {
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>      

@@ -3,6 +3,14 @@ import { Grid } from './grid.js';
 import { preloadImages } from './utils.js';
 import "../css/shop_base.css";
 
+import "../css/base.css";
+import "../css/menu.css";
+import "../css/step.css";
+import "../js/main.js";
+
+
+
+
 
 // custom cursor
 const cursor = new Cursor(document.querySelector('.cursor'));

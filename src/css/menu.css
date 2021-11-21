@@ -66,9 +66,9 @@ ul.main-nav__fallback a {
 
 .main-nav__close {
 	position: fixed;
-	left: 50%;
+	left: 3.5%;
 	transform: translateX(-50%);
-	top: 2rem;
+	top: 4rem;
 	z-index: 101;
 	cursor: pointer;
 	fill: #df8f56;

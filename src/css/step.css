@@ -34,11 +34,14 @@ label {
 	display: none;
 }
 
+
+
 nav.main-nav {
 	transition: .5s linear opacity;
 	align-items: center;
-	background: #FFF;
-	font-family: "Abril Fatface", serif;
+	background: darkgray;
+	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
 	justify-content: center;
 	display: flex;
 	height: 100%;
@@ -75,7 +78,7 @@ ul.main-nav__fallback a {
 		z-index: 100;
 	}
 }
-
+/* 
 .main-nav__close {
 	height: 32px;
 	opacity: .5;
@@ -84,6 +87,16 @@ ul.main-nav__fallback a {
 	top: 20px;
 	z-index: 101;
 	width: 32px;
+} */
+
+.main-nav__close {
+	position: fixed;
+	left: 3.5%;
+	transform: translateX(-50%);
+	top: 2rem;
+	z-index: 101;
+	cursor: pointer;
+	fill: #df8f56;
 }
 
 .main-nav__close:hover {

@@ -425,6 +425,10 @@ class Navigation {
    * @return null
    */
   init() {
+
+
+console.log('start init!!!!!!!!!!!!!');
+
     this.initialised = true;
 
     // Find all of the anchors within the nav element and create generic object
@@ -451,6 +455,9 @@ class Navigation {
     window.addEventListener('resize', this.onResize);
     window.addEventListener('navOpen', this.onOpen);
     window.addEventListener('navClose', this.onClose);
+
+    console.log('finish init!!!!!!!!!!!!!');
+
   }
   
   /**

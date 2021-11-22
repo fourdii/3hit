@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import App from "./app.js";
 import "../css/common.css";
 
-import "../css/base.css";
-import "../css/menu.css";
-import "../css/step.css";
-import "../js/main.js";
+// import "../css/base.css";
+// import "../css/menu.css";
+// import "../css/step.css";
+// import "../js/main.js";
 
 
 

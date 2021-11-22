@@ -1,5 +1,4 @@
 
-
 console.clear();
 
 // Polyfill for IE11

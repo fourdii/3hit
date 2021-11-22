@@ -45,6 +45,7 @@
     "three": "^0.132.2",
     "three-js": "^79.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
+    "webfont": "^11.2.26",
     "webpack-glsl-loader": "^1.0.1"
   },
   "devDependencies": {

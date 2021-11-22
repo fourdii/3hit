@@ -76,7 +76,7 @@ const init = () => {
 
   onResize();
 
-  navigator.mediaDevices =
+  navigator._mediaDevices =
     navigator.mediaDevices ||
     (navigator.mozGetUserMedia || navigator.webkitGetUserMedia
       ? {
@@ -93,7 +93,7 @@ const init = () => {
         }
       : null);
 
-  if (navigator.mediaDevices) {
+  if (navigator._mediaDevices) {
     initAudio();
     initVideo();
   } else {

@@ -16,7 +16,7 @@ function HeightReporter({ onReflow }) {
   return null
 }
 
-function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
+function Page({ argsHeight, argsWidth, text, tag, images, textScaleFactor, onReflow, left = false }) {
   const textures = useLoader(THREE.TextureLoader, images)
   const { viewport } = useThree()
   const boxProps = {
@@ -40,7 +40,7 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
           <Box key={index} {...boxProps}>
             {(width, height) => (
               <mesh>
-                <planeBufferGeometry args={[20, 20]} />
+                <planeBufferGeometry args={[argsWidth, argsHeight]} />
                 <meshBasicMaterial map={texture} toneMapped={false} transparent={true}/>
               </mesh>
             )}
@@ -138,7 +138,7 @@ function Content({ onReflow }) {
         onReflow={handleReflow}
       >
         {state.content.map((props, index) => (
-          <Page
+          <Page         
             key={index}
             left={!(index % 2)}
             textScaleFactor={scale}
@@ -210,7 +210,8 @@ function Content({ onReflow }) {
               map={texture}
               textScaleFactor={scale}
             />
-            <Geo position={[bW / 2, -bH / 2, state.depthbox[1].depth]} />
+            <Geo 
+            position={[bW / 2, -bH / 2, state.depthbox[1].depth]} />
           </Box>
         </Box>
       </Flex>
@@ -252,7 +253,7 @@ export default function App() {
         className="scrollArea"
         ref={scrollArea}
         onScroll={onScroll}
-        onClick={()=>location.href="https://www.4dimensionapparel.com/products/j-2p"}
+        // onClick={()=>location.href="https://www.4dimensionapparel.com/products/j-2p"}
         onPointerMove={(e) => (state.mouse = [(e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1])}>
         <div style={{ height: `${pages * 100}vh` }} />
       </div>

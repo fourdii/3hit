@@ -180,8 +180,9 @@ a:focus {
 
 .grid__item-img {
 	position: relative;
-	width: 100%;
-	height: auto;
+	width: 150px;
+	height: 150px;
+	
 	background-size: cover;
 	background-position: 50% 50%;
 	border-radius: 10px;
@@ -314,15 +315,15 @@ a:focus {
 
 .preview__item {
 	position: relative;
-	margin: 0 auto;
-	padding: 0 5vw;
-	display: grid;
+	margin: 0;
+	padding: 0;
+	/* display: grid;
 	grid-template-rows: auto auto auto;
 	grid-template-columns: 50% 50%;
 	grid-template-areas: 
 	'preview-back preview-back' 
 	'preview-img preview-title' 
-	'preview-content preview-content';
+	'preview-content preview-content'; */
 }
 
 .js .preview__item {
@@ -431,15 +432,31 @@ a:focus {
 	display: none;
 }
 
-@media screen and (min-width: 53em) {
-	html, 
-	body, 
+@media screen and (min-width: 33em) {
+
+	html,
+	body,
 	main {
 		overflow: hidden;
 	}
+
+
+	.grid__item-img {
+		position: relative;
+		width: 200px;
+		height: 200px;
+		/* width: 100%;
+		height: auto; */
+		background-size: cover;
+		background-position: 50% 50%;
+		border-radius: 10px;
+		will-change: transform;
+	}
+
 	.message {
 		display: none;
 	}
+
 	.frame {
 		position: fixed;
 		z-index: 100;
@@ -489,14 +506,14 @@ a:focus {
 	}
 	.preview__item {
 		height: 100%;
-		width: 80vw;
-		grid-template-columns: 47% 53%;
+		width: 100vw;
+		/* grid-template-columns: 47% 53%;
 		grid-template-rows: minmax(max(5rem, 18vh), 1fr) auto auto 1fr;
 		grid-template-areas: 
 		'... ...'
 		'preview-back ...' 
 		'preview-title preview-title' 
-		'preview-img preview-content';
+		'preview-img preview-content'; */
 	}
 	.preview__item-title {
 		justify-self: center;

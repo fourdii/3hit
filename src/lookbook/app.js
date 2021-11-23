@@ -18,7 +18,7 @@ function Image(props) {
   })
   return (
     <group ref={group}>
-      <ImageImpl ref={ref} {...props} />
+      <ImageImpl  ref={ref} {...props} />
     </group>
   )
 }
@@ -29,9 +29,9 @@ function Page({ m = 0.4, urls, ...props }) {
 
   return (
     <group {...props}>
-      <Image position={[-width * w, 0, -1]} scale={[width * w - m * 2, 5, 1]} url={urls[0]} />
-      <Image position={[0, 0, 0]} scale={[width * w - m * 2, 5, 1]} url={urls[1]} />
-      <Image position={[width * w, 0, 1]} scale={[width * w - m * 2, 5, 1]} url={urls[2]} />
+      <Image  position={[-width * w, 0, -1]} scale={[width * w - m * 2, 5, 1]} url={urls[0]} />
+      <Image  position={[0, 0, 0]} scale={[width * w - m * 2, 5, 1]} url={urls[1]} />
+      <Image  position={[width * w, 0, 1]} scale={[width * w - m * 2, 5, 1]} url={urls[2]} />
     </group>
   )
 }

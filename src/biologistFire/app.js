@@ -129,6 +129,30 @@ function Content({ onReflow }) {
   const handleReflow = useCallback((w, h) => onReflow((state.pages = h / viewport.height + 5.5)), [onReflow, viewport.height])
   const sizesRef = useRef([])
   const scale = Math.min(1, viewport.width / 16)
+
+
+  // const mesh = useRef()
+  // var raycaster = new THREE.Raycaster();
+  // var mouse = new THREE.Vector2();
+  // // var targetMesh
+  // function onMouseClick( event ) {
+  //   console.log('Mesh clicked!')
+  //     raycaster.setFromCamera( mouse, camera );
+  //     var isIntersected = raycaster.intersectObject( mesh );
+  //     if (isIntersected) {
+  //         console.log('Mesh clicked!')
+  //     }
+  // }
+  // function onMouseMove( event ) {
+  //     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  //     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  // }
+
+  // window.addEventListener( 'mousedown', onMouseClick, false );
+  // window.addEventListener( 'mousemove', onMouseMove, false );
+  
+
   return (
     <group ref={group}>
       <Flex
@@ -161,23 +185,25 @@ function Content({ onReflow }) {
           align="center"
           justify="center"
         >
+         
           {/* <Box > */}
             {/* {state.lines.map((props, index) => (
               <Line key={index} {...props} />
             ))} */}
             <Html
               style={{
-                width: "70vw",
-                height: "700px"
+                width: "100vw",
+                height: "500px",                                
               }}
             >
-              <Model    
-              scale={10}
-              position-z={0.5}
+              <Model  
+              position-z={0.5}  
+              scale={15}
               anchorX="center"
               anchorY="middle"
              />
             </Html>
+            </Box>
             {/* <Text
               bold
               position-z={0.5}
@@ -192,8 +218,6 @@ function Content({ onReflow }) {
               {state.depthbox[0].text}
             </Text> */}
           {/* </Box> */}
-        </Box>
-
         <Box
           dir="row"
           width="100%"
@@ -211,6 +235,7 @@ function Content({ onReflow }) {
               textScaleFactor={scale}
             />
             <Geo 
+            scale={0.5}
             position={[bW / 2, -bH / 2, state.depthbox[1].depth]} />
           </Box>
         </Box>

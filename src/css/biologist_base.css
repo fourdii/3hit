@@ -12,14 +12,13 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: grey; 
-    /* background-image: url("../img/biologist/bg2.jpg");    */
+    /* background-color: grey;  */
   }
   
   .annotation {
     transform: translate3d(-50%, -150%, 0);
     text-align: left;
-    background: #7676aa;
+    /* background: #7676aa; */
     color: rgb(7, 6, 20);
     padding: 16px;
     border-radius: 5px;
@@ -28,7 +27,7 @@
   
   .mainPage {
     display: flex;
-    background-color: white;
+    /* background-color: white; */
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
@@ -36,7 +35,7 @@
     overflow: scroll;
     width: 100vw;
     height: 100vh;
-    /* background-image: url("../img/biologist/bg2.jpg");   */
+    background-image: url("../img/bg.jpg");    
   } 
   
   .dot {
@@ -92,7 +91,7 @@
     align-items: center;
   } */
 
-  .content {
+  /* .content {
     display: flex;
     width: 100%;
     margin: auto 0 0 0;
@@ -101,7 +100,7 @@
     position: relative;
     align-items: center;
     justify-content: space-between;
-  }
+  } */
   
   @media screen and (min-width: 53em) {
     .message {
@@ -160,7 +159,7 @@
       pointer-events: auto;
     }
   
-    .content {
+    .contentBio {
       height: 100vh;
       justify-content: center;
     }

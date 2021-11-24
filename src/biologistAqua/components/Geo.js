@@ -22,7 +22,7 @@ export default function Model(props) {
     <group {...props} dispose={null}>
       <group ref={group}>
         <mesh geometry={nodes.球體.geometry} castShadow receiveShadow>
-          <MeshDistortMaterial color="#ffffff" flatShading roughness={1} metalness={0.5} factor={15} speed={5} />
+          <MeshDistortMaterial color="#2B65EC" flatShading roughness={1} metalness={0.5} factor={15} speed={5} />
         </mesh>
         <mesh geometry={nodes.球體.geometry}>
           <meshBasicMaterial wireframe />

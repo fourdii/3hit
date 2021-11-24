@@ -16,7 +16,7 @@ function HeightReporter({ onReflow }) {
   return null
 }
 
-function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
+function Page({ argsHeight, argsWidth, text, tag, images, textScaleFactor, onReflow, left = false }) {
   const textures = useLoader(THREE.TextureLoader, images)
   const { viewport } = useThree()
   const boxProps = {
@@ -40,7 +40,7 @@ function Page({ text, tag, images, textScaleFactor, onReflow, left = false }) {
           <Box key={index} {...boxProps}>
             {(width, height) => (
               <mesh>
-                <planeBufferGeometry args={[20, 20]} />
+                <planeBufferGeometry args={[argsWidth, argsHeight]} />
                 <meshBasicMaterial map={texture} toneMapped={false} transparent={true}/>
               </mesh>
             )}
@@ -129,6 +129,30 @@ function Content({ onReflow }) {
   const handleReflow = useCallback((w, h) => onReflow((state.pages = h / viewport.height + 5.5)), [onReflow, viewport.height])
   const sizesRef = useRef([])
   const scale = Math.min(1, viewport.width / 16)
+
+
+  // const mesh = useRef()
+  // var raycaster = new THREE.Raycaster();
+  // var mouse = new THREE.Vector2();
+  // // var targetMesh
+  // function onMouseClick( event ) {
+  //   console.log('Mesh clicked!')
+  //     raycaster.setFromCamera( mouse, camera );
+  //     var isIntersected = raycaster.intersectObject( mesh );
+  //     if (isIntersected) {
+  //         console.log('Mesh clicked!')
+  //     }
+  // }
+  // function onMouseMove( event ) {
+  //     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  //     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  // }
+
+  // window.addEventListener( 'mousedown', onMouseClick, false );
+  // window.addEventListener( 'mousemove', onMouseMove, false );
+  
+
   return (
     <group ref={group}>
       <Flex
@@ -138,7 +162,7 @@ function Content({ onReflow }) {
         onReflow={handleReflow}
       >
         {state.content.map((props, index) => (
-          <Page
+          <Page         
             key={index}
             left={!(index % 2)}
             textScaleFactor={scale}
@@ -161,23 +185,21 @@ function Content({ onReflow }) {
           align="center"
           justify="center"
         >
+         
           {/* <Box > */}
             {/* {state.lines.map((props, index) => (
               <Line key={index} {...props} />
             ))} */}
             <Html
-              style={{
-                width: "70vw",
-                height: "700px"
-              }}
+              className="htmlStyle"
             >
-              <Model    
-              scale={10}
-              position-z={0.5}
+              <Model  
+              scale={15}
               anchorX="center"
               anchorY="middle"
              />
             </Html>
+            </Box>
             {/* <Text
               bold
               position-z={0.5}
@@ -192,8 +214,6 @@ function Content({ onReflow }) {
               {state.depthbox[0].text}
             </Text> */}
           {/* </Box> */}
-        </Box>
-
         <Box
           dir="row"
           width="100%"
@@ -211,6 +231,7 @@ function Content({ onReflow }) {
               textScaleFactor={scale}
             />
             <Geo 
+            scale={0.5}
             position={[bW / 2, -bH / 2, state.depthbox[1].depth]} />
           </Box>
         </Box>
@@ -225,7 +246,7 @@ export default function App() {
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
   const [pages, setPages] = useState(0)
   return (
-    <>
+    <>   
       <Canvas
         shadows
         raycaster={{ enabled: false }}

@@ -42,7 +42,7 @@ const htmls = [
   "/biologistDirt.html",
 ];
 
-const colors = [0xff, 0xff00, 0xffff, 0xff0000, 0xffff00];
+const colors = ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"];
 
 const planetData = [];
 const totalPlanets = 5;

@@ -8,9 +8,13 @@ const state = {
       tag: '00',
       text: ``,
       images: ["/biologist/aqua_tex.jpg"],
+      argsHeight: 15,
+      argsWidth: 30
     },
-    { tag: '01', text: ``, images: ["/biologist/aqua_nobg.png"]  },
-    { tag: '02', text: ``, images: ["/biologist/aqua_pattern.png"]  },
+    { tag: '01', text: ``, images: ["/biologist/aqua_nobg.png"], argsHeight: 25,
+    argsWidth: 25  },
+    { tag: '02', text: ``, images: ["/biologist/aqua_pattern.png"],  argsHeight: 42.35,
+    argsWidth: 20   },
   ],
   depthbox: [
     {

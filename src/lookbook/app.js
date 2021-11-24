@@ -63,18 +63,18 @@ export default function App() {
           <Scroll>
             <Pages />
           </Scroll>
-          <Scroll html>
-            {/* <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '-75vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '25vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '125vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '225vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '325vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '425vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '525vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '625vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '725vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '825vw' }}/>
-            <img src='../img/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '925vw' }}/> */}
+          <Scroll html>｀
+            <img src='/biologist/fire_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '-75vw' }}/>
+            <img src='/biologist/gold_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '25vw' }}/>
+            <img src='/biologist/aqua_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '125vw' }}/>
+            <img src='/biologist/wood_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '225vw' }}/>
+            <img src='/biologist/dirt_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '325vw' }}/>
+            <img src='/taichi.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '425vw' }}/>
+            <img src='/biologist/fire_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '525vw' }}/>
+            <img src='/biologist/gold_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '625vw' }}/>
+            <img src='/biologist/aqua_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '725vw' }}/>
+            <img src='/biologist/wood_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '825vw' }}/>
+            <img src='/biologist/dirt_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '925vw' }}/>
 
             {/* <h1 style={{ position: 'absolute', top: '20vh', left: '-75vw' }}>look1</h1>
             <h1 style={{ position: 'absolute', top: '20vh', left: '25vw' }}>look2</h1>

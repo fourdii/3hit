@@ -342,6 +342,12 @@ a:focus {
 }
 
 .preview__item-back {
+
+	position: absolute; 
+	top: 70px; 
+	left: 30px; 
+	z-index:1;
+	
 	grid-area: preview-back;
 	justify-self: start;
 	font-size: 0.857rem;

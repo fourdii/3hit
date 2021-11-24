@@ -5,7 +5,7 @@ export class Preview {
         // DOM elements
         this.DOM = {el: el};
         // // back to grid button
-        // this.DOM.backCtrl = this.DOM.el.querySelector('.preview__item-back');
+         this.DOM.backCtrl = this.DOM.el.querySelector('.preview__item-back');
         // // image elements (outer and inner)
         this.DOM.imgWrap = this.DOM.el.querySelector('.preview__item-imgwrap');
         // this.DOM.image = this.DOM.imgWrap.querySelector('.preview__item-img');
@@ -31,7 +31,7 @@ export class Preview {
         // gsap.set(this.DOM.image, {y: '-100%'});
 
         // // hide back ctrl
-        //  gsap.set(this.DOM.backCtrl, {opacity: 0});
+         gsap.set(this.DOM.backCtrl, {opacity: 0});
 
         // // hide content
         // gsap.set(this.DOM.content, {opacity: 0});

@@ -191,13 +191,9 @@ function Content({ onReflow }) {
               <Line key={index} {...props} />
             ))} */}
             <Html
-              style={{
-                width: "100vw",
-                height: "500px",                                
-              }}
+              className="htmlStyle"
             >
               <Model  
-              position-z={0.5}  
               scale={15}
               anchorX="center"
               anchorY="middle"
@@ -250,7 +246,7 @@ export default function App() {
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
   const [pages, setPages] = useState(0)
   return (
-    <>
+    <>   
       <Canvas
         shadows
         raycaster={{ enabled: false }}

@@ -58,3 +58,17 @@ body {
   color: #f0f0f0;
   font-size: 0.6em;
 }
+
+
+.htmlStyle{
+  width: 100vw;
+  height: 500px;
+}
+
+@media screen and (min-width: 53em) {
+
+.htmlStyle{
+  width: 700px;
+  height: 500px;
+}
+}

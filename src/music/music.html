@@ -31,7 +31,7 @@
 <!-- <body class="demo-2 cda-noimg cda-naked cda-alignright"> -->
 
 <body style="overflow: hidden; width: 100%; height: 100%; margin: 0; padding: 0; background-color: #000;">
-    <main>
+    <main style="position: relative;">
        
         <div style="position: absolute; top: 30px; left: 30px; z-index:1;">    
             <!-- <div class="frame__nav"> -->
@@ -69,8 +69,17 @@
             <!-- </div>	                    -->
         </div> 
 
+        <div style="position: absolute; top: 30px; right: 30px; z-index:0.5;">    
+                    <img src='../img/lucia.jpg'  width="150px" height="auto">              
+        </div> 
+
   
-        <audio preload="auto" style="position: absolute; bottom: 30px; right: 30px;"  controls id="audioPlayer" playsinline>
+        <audio preload="auto" style="
+                position: absolute;
+                top:90%;
+                left: 50%;
+                transform: translate(-50%, -50%);" 
+                controls id="audioPlayer" playsinline>
             Your browser does not support the <code>audio</code> element.
         </audio>
 

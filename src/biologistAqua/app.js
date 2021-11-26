@@ -184,36 +184,20 @@ function Content({ onReflow }) {
           height="100%"
           align="center"
           justify="center"
-        >
-         
-          {/* <Box > */}
-            {/* {state.lines.map((props, index) => (
-              <Line key={index} {...props} />
-            ))} */}
+        >         
             <Html
+            anchorX="center"
+            anchorY="middle"
+              position-z={0.5}
               className="htmlStyle"
             >
               <Model  
-              scale={15}
-              anchorX="center"
-              anchorY="middle"
+              //scale={15}
+              // anchorX="center"
+              // anchorY="middle"
              />
             </Html>
-            </Box>
-            {/* <Text
-              bold
-              position-z={0.5}
-              anchorX="center"
-              anchorY="middle"
-              fontSize={1.5 * scale}
-              lineHeight={1}
-              letterSpacing={-0.05}
-              color="black"
-              maxWidth={(viewport.width / 4) * 3}
-            >
-              {state.depthbox[0].text}
-            </Text> */}
-          {/* </Box> */}
+        </Box>         
         <Box
           dir="row"
           width="100%"

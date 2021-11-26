@@ -351,6 +351,7 @@ a:focus {
 	grid-area: preview-back;
 	justify-self: start;
 	font-size: 0.857rem;
+	color: #000;
 	text-transform: uppercase;
 	font-weight: 500;
 	padding-left: 90px;

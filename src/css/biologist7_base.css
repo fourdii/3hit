@@ -65,10 +65,22 @@ body {
   height: 500px;
 }
 
+.clippyImg{
+  width: 75px; 
+  height: 75px;
+}
+
 @media screen and (min-width: 53em) {
 
 .htmlStyle{
   width: 700px;
   height: 500px;
 }
+
+
+.clippyImg{
+  width: 150px; 
+  height: 150px;
+}
+
 }

@@ -7,9 +7,9 @@ const state = {
     {
       tag: '00',
       text: ``,
-      images: ["/biologist/dirt_tex.jpg"],
-      argsHeight: 15,
-      argsWidth: 30
+      images: ["/biologist/dirt_char_nobg.png","/biologist/dirt_char_nobg.png","/biologist/dirt_char_nobg.png","/biologist/dirt_char_nobg.png","/biologist/dirt_char_nobg.png","/biologist/dirt_char_nobg.png"],
+      argsHeight: 5,
+      argsWidth: 5
     },
     { tag: '01', text: ``, images: ["/biologist/dirt_nobg.png"], argsHeight: 25,
     argsWidth: 25  },

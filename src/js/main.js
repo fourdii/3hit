@@ -814,10 +814,19 @@ console.log('start init!!!!!!!!!!!!!');
    * @return null
    */
   onOpen() {
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  
+    document.body.classList.add('preview_body');
+
+
     this.animatingPointer = true;
     this.focusNavItemByIndex(0);
     this.targetMousePos = this.unfixMousePos(this.mousepos);
     this.mousepos = [3000, window.innerHeight*.5];
+
+
   }
   /**
    * Responds to the custom navClosed event fired when the navigation is closed.
@@ -827,6 +836,10 @@ console.log('start init!!!!!!!!!!!!!');
    * @return null
    */
   onClose() {
+
+    document.body.classList.remove('preview_body');
+
+
     this.animatingPointer = false;
   }
   

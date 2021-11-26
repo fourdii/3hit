@@ -120,3 +120,8 @@ a:focus {
 .fold-content {
   padding: 0 2rem;
 }
+
+
+.preview_body{
+  overflow: hidden;
+}

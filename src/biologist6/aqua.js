@@ -38,8 +38,8 @@ function Model(props) {
               transform
               occlude
             >
-              <div style={{backgroundColor: '#000'}}>
-              <iframe  width="335px" height="215px" src="https://www.youtube.com/embed/OhU22nSsRmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div style={{backgroundColor: '#000', width:'334px', height:'220px'}}>
+              <iframe  width="334px" height="216px" src="https://www.youtube.com/embed/OhU22nSsRmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {/* <HeroPage /> */}
               </div>
             </Html>

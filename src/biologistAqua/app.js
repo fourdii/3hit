@@ -188,14 +188,10 @@ function Content({ onReflow }) {
             <Html
             anchorX="center"
             anchorY="middle"
-              position-z={0.5}
+              // position-z={0.5}
               className="htmlStyle"
             >
-              <Model  
-              //scale={15}
-              // anchorX="center"
-              // anchorY="middle"
-             />
+              <Model/>
             </Html>
         </Box>         
         <Box

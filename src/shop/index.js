@@ -24,12 +24,10 @@ preloadImages('.grid__item-img').then(() => {
     document.body.classList.remove('loading');
     
 
-console.log("step1");
 
     // Initialize grid
     const grid = new Grid(document.querySelector('.grid'));
 
-    console.log("step2");
 
     
     // change cursor text status when hovering a grid item

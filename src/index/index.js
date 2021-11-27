@@ -1,5 +1,5 @@
 import "../css/common.css";
-import "../css/preview.css";
+import "../css/preview_base.css";
 
 import "../css/base.css";
 import "../css/menu.css";

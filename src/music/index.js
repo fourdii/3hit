@@ -213,7 +213,7 @@ const initAudio = () => {
 
   audio.src = "asset/lucia.mp3";
   audio.load();
-  audio.play();
+  // audio.play();
 
 
   console.log(audio);

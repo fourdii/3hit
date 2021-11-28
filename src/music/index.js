@@ -215,7 +215,8 @@ const initAudio = () => {
   audio.load();
   audio.muted = false;
   audio.volume = 0.5;
-  // audio.play();
+  audio.play();
+  audio.pause();
 
 
   console.log(audio);

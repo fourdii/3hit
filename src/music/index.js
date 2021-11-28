@@ -21,6 +21,8 @@ let particles, videoWidth, videoHeight, imageCache;
 // = document.getElementById("playDefaultButton");
 //const audio = document.getElementById("audioPlayer");
 const audio = document.getElementById("audioPlayer");
+const loadaudio = document.getElementById("loadaudio");
+
 let source = null;
 let audioCtx = null;
 let analyser = null;
@@ -58,9 +60,20 @@ const frequencyRange = {
   treble: [5200, 14000],
 };
 
+
+function loadAudioContext() {
+  console.log('loaded audio');
+  createAudioContext();     
+  audio.removeEventListener('canplaythrough', loadAudioContext);
+}
+
 const init = () => {
 
-
+  loadaudio.onclick= () => {
+    audio.src = "asset/lucia.mp3";
+    audio.load();
+    audio.addEventListener('canplaythrough', loadAudioContext);
+  }
 
   document.body.classList.add(classNameForLoading);
 
@@ -199,7 +212,7 @@ const initAudio = () => {
 //    //hideWarningAndShowSign();
 //  };
 
-  createAudioContext();
+  //createAudioContext();
   
 
   
@@ -213,10 +226,12 @@ const initAudio = () => {
  function createAudioContext() {
 
 
+
+
  //audio = new Audio();
- audio.autoplay = true;
- audio.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
- audio.src = "asset/lucia.mp3";
+//  audio.autoplay = true;
+//  audio.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+//  audio.src = "asset/lucia.mp3";
  
   // audio.load();
   // audio.muted = false;

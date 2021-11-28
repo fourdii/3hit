@@ -139,13 +139,17 @@ export  class Grid extends EventEmitter {
             x: '0%',
             opacity: 1
         }, 'start+=1.5')
-        .to(item.preview.DOM.content, {
-            duration: 1.5,
-            ease: 'expo',
-            startAt: {y: '20%'},
-            y: '0%',
-            opacity: 1
-        }, 'start+=1.5');
+        // .to(item.preview.DOM.content, {
+        //     duration: 1.5,
+        //     ease: 'expo',
+        //     startAt: {y: '20%'},
+        //     y: '0%',
+        //     opacity: 1
+        // }, 'start+=1.5');
+
+
+        
+        item.preview.DOM.imgWrap.src = item.title;
     }
     hideContent(item) {
         if ( !this.isContentOpen ) {
@@ -187,12 +191,12 @@ export  class Grid extends EventEmitter {
             x: '20%',
             opacity: 0
         }, 'start')
-        .to(item.preview.DOM.content, {
-            duration: 1.5,
-            ease: 'expo.inOut',
-            y: '50%',
-            opacity: 0
-        }, 'start')
+        // .to(item.preview.DOM.content, {
+        //     duration: 1.5,
+        //     ease: 'expo.inOut',
+        //     y: '50%',
+        //     opacity: 0
+        // }, 'start')
 
         // .to(titleChars, {
         //     duration: 1,

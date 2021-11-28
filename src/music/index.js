@@ -212,11 +212,10 @@ const initAudio = () => {
  function createAudioContext() {
 
   audio.src = "asset/lucia.mp3";
-  audio.load();
-  audio.muted = false;
-  audio.volume = 0.5;
-  audio.play();
-  audio.pause();
+  // audio.load();
+  // audio.muted = false;
+  // audio.volume = 0.5;
+  
 
 
   console.log(audio);

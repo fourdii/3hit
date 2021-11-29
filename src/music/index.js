@@ -117,7 +117,6 @@ const init = () => {
 
   draw();
 
-  console.log('end init');
 };
 
 const initCamera = () => {
@@ -129,13 +128,13 @@ const initCamera = () => {
   camera.lookAt(0, 0, 0);
 
   scene.add(camera);
-
-  console.log('end init camera');
 };
 
 const initVideo = () => {
   // video = document.getElementById("video");
+  video.setAttribute("playsinline", true);
   video.autoplay = true;
+
 
   const option = {
     video: true,
@@ -230,9 +229,6 @@ const initAudio = () => {
  
  function createAudioContext() {
 
-
-
-
  //audio = new Audio();
 //  audio.autoplay = true;
 //  audio.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
@@ -242,7 +238,6 @@ const initAudio = () => {
   // audio.muted = false;
   // audio.volume = 0.5;
   
-
 
   console.log(audio);
 

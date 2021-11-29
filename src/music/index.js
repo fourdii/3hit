@@ -23,6 +23,8 @@ let particles, videoWidth, videoHeight, imageCache;
 const audio = document.getElementById("audioPlayer");
 const loadaudio = document.getElementById("loadaudio");
 const video = document.getElementById("video");
+const blockdiv = document.getElementById("blockdiv");
+
 
 let source = null;
 let audioCtx = null;
@@ -70,11 +72,16 @@ function loadAudioContext() {
 
 const init = () => {
 
-  loadaudio.onclick= () => {
+  blockdiv.onclick= () => {
     audio.src = "asset/lucia.mp3";
+    audio.autoplay = true;
     audio.load();
     audio.addEventListener('canplaythrough', loadAudioContext);
+    audio.style.opacity = 1;
+    blockdiv.style.display = "none";
   }
+
+ 
 
   document.body.classList.add(classNameForLoading);
 

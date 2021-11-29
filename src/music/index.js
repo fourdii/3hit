@@ -14,7 +14,7 @@ const vertexShader = require("webpack-glsl-loader!./shader/vertexShader.vert");
 const fragmentShader = require("webpack-glsl-loader!./shader/fragmentShader.frag");
 
 let raf = null;
-let scene, renderer, camera, clock, width, height, video;
+let scene, renderer, camera, clock, width, height;
 let particles, videoWidth, videoHeight, imageCache;
 
 
@@ -22,6 +22,7 @@ let particles, videoWidth, videoHeight, imageCache;
 //const audio = document.getElementById("audioPlayer");
 const audio = document.getElementById("audioPlayer");
 const loadaudio = document.getElementById("loadaudio");
+const video = document.getElementById("video");
 
 let source = null;
 let audioCtx = null;
@@ -115,6 +116,8 @@ const init = () => {
   }
 
   draw();
+
+  console.log('end init');
 };
 
 const initCamera = () => {
@@ -126,10 +129,12 @@ const initCamera = () => {
   camera.lookAt(0, 0, 0);
 
   scene.add(camera);
+
+  console.log('end init camera');
 };
 
 const initVideo = () => {
-  video = document.getElementById("video");
+  // video = document.getElementById("video");
   video.autoplay = true;
 
   const option = {

@@ -86,7 +86,7 @@ const init = () => {
   document.body.classList.add(classNameForLoading);
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color("#635e5e");
+  scene.background = new THREE.Color("#292727");
 
   renderer = new THREE.WebGLRenderer();
   document.getElementById("content").appendChild(renderer.domElement);
@@ -286,6 +286,8 @@ const hexToRgb = (hex) => {
 };
 
 const createParticles = () => {
+
+
   const imageData = getImageData(video);
   const geometry = new THREE.BufferGeometry();
   const material = new THREE.ShaderMaterial({
@@ -334,8 +336,10 @@ const createParticles = () => {
     new THREE.BufferAttribute(verticesArray, 3)
   );
 
-  const colorsArray = new Float32Array(colors);
-  geometry.setAttribute("color", new THREE.BufferAttribute(colorsArray, 3));
+
+  
+  // const colorsArray = new Float32Array(colors);
+  // geometry.setAttribute("color", new THREE.BufferAttribute(colorsArray, 3));
 
   particles = new THREE.Points(geometry, material);
   scene.add(particles);

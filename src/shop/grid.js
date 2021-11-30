@@ -87,6 +87,9 @@ export  class Grid extends EventEmitter {
         for(const item of this.gridItems) {
            item.stopTransformAnimation();
         }
+
+        var taichi = window.document.getElementById('taichi');
+        taichi.style.display = 'none';
         
         gsap
         .timeline()
@@ -156,6 +159,10 @@ export  class Grid extends EventEmitter {
             return false;
         }
         this.isContentOpen = false;
+
+
+        var taichi = window.document.getElementById('taichi');
+        taichi.style.display = 'block';
 
         gsap
         .timeline({

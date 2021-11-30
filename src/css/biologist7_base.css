@@ -59,6 +59,15 @@ body {
   font-size: 0.6em;
 }
 
+.preview__item-back {
+	position: absolute; 
+	top: 30px; 
+	left: 30px; 
+	z-index:1;
+  border: none;
+  background-color: transparent;
+}
+
 
 .htmlStyle{
   width: 100vw;

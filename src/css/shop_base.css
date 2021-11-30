@@ -342,21 +342,10 @@ a:focus {
 }
 
 .preview__item-back {
-
 	position: absolute; 
-	top: 35px; 
-	left: 80px; 
+	top: 30px; 
+	left: 30px; 
 	z-index:1;
-	
-	grid-area: preview-back;
-	justify-self: start;
-	font-size: 0.857rem;
-	color: #000;
-	text-transform: uppercase;
-	font-weight: 500;
-	padding-left: 90px;
-	margin-bottom: 1rem;
-	background: url(../img/arrow.svg) no-repeat 0% 50%;
 }
 
 .preview__item-title {

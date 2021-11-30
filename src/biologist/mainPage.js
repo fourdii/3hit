@@ -13,8 +13,21 @@ export default function MainPage() {
 
   function Sun() {
     const texture = useLoader(THREE.TextureLoader, "/biologist/sun_tex.jpg");
+    const planetRef = React.useRef();
+
+
+    useFrame(({ clock }) => {          
+      // const t = clock.getElapsedTime() * 0.01 + 0;
+      // const x = 6 * Math.sin(t);
+      // const z = 3 * Math.cos(t);              
+      // planetRef.current.position.x = x;
+      // planetRef.current.position.z = z;
+      planetRef.current.rotation.y += 0.01;            
+  });
+
+
     return (
-      <mesh>
+      <mesh ref={planetRef}>
         <sphereGeometry args={[2.5, 32, 32]} />
         <meshStandardMaterial map={texture} />
       </mesh>
@@ -43,8 +56,6 @@ export default function MainPage() {
   }) {
    
     
-
-
     const planetRef = React.useRef();
     const texture = useLoader(THREE.TextureLoader, textureMap);
     const gltf = useLoader(GLTFLoader, meshMap);
@@ -56,7 +67,7 @@ export default function MainPage() {
   
           object.material.color.set( colorMap );
           object.material.transparent = true;
-          object.material.opacity = 0.9;
+          object.material.opacity = 1;
           object.material.bumpMap = texture;
       }
   
@@ -83,7 +94,7 @@ export default function MainPage() {
         >
           <primitive object={gltf.scene} position={[0, 0, 0]} />
         </mesh>
-        <Ecliptic xRadius={xRadius} zRadius={zRadius} />
+        {/* <Ecliptic xRadius={xRadius} zRadius={zRadius} /> */}
       </>
     );
   }

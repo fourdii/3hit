@@ -19,6 +19,7 @@
     "glslify": "^7.0.0",
     "glslify-loader": "^2.0.0",
     "gsap": "^3.8.0",
+    "hover-effect": "^1.1.0",
     "http-server": "^13.0.2",
     "imagesloaded": "^4.1.4",
     "lerp": "^1.0.3",

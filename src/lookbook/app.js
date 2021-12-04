@@ -174,7 +174,7 @@ function Image({position, scale, url}) {
       // onTouchEnd={unhover}
       // onTouchCancel={unhover}
       >
-      <planeBufferGeometry args={[1, 1.5, 8, 12]} />
+      <planeBufferGeometry args={[4, 6, 8, 12]} />
       <customMaterial       
        attach="material"
        ref={ref} 
@@ -232,7 +232,7 @@ export default function App() {
             <Pages />
           </Scroll>
           <Scroll html>
-            {/* <img src='/biologist/fire_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '-75vw' }}/>
+            <img src='/biologist/fire_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '-75vw' }}/>
             <img src='/biologist/gold_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '25vw' }}/>
             <img src='/biologist/aqua_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '125vw' }}/>
             <img src='/biologist/wood_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '225vw' }}/>
@@ -242,7 +242,7 @@ export default function App() {
             <img src='/biologist/gold_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '625vw' }}/>
             <img src='/biologist/aqua_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '725vw' }}/>
             <img src='/biologist/wood_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '825vw' }}/>
-            <img src='/biologist/dirt_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '925vw' }}/> */}
+            <img src='/biologist/dirt_nobg.png' style={{ width: '100px', height: '100px', position: 'absolute', top: '20vh', left: '925vw' }}/>
 
             {/* <h1 style={{ position: 'absolute', top: '20vh', left: '-75vw' }}>look1</h1>
             <h1 style={{ position: 'absolute', top: '20vh', left: '25vw' }}>look2</h1>

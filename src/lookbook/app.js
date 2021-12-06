@@ -7,12 +7,12 @@ import { useTexture, ScrollControls, Scroll, useScroll, Preload } from '@react-t
 class CustomMaterial extends THREE.ShaderMaterial {
   constructor() {
     super({
-       uniforms:
-  {
-    uTime: {  type: "f", value: 0.0 },
-    uTexture:  { type: "t", value: undefined },
-  },
-  vertexShader: `
+      uniforms: {
+        uTime: { type: "f", value: 0.0 },
+        uTexture: { type: "t", value: undefined },
+        uDispFactor: { type: "f", value: 0.0 }
+      },
+      vertexShader: `
     precision mediump float;
  
     varying vec2 vUv;
@@ -123,21 +123,21 @@ class CustomMaterial extends THREE.ShaderMaterial {
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
     }
   `,
-  fragmentShader: `
+      fragmentShader: `
     precision mediump float;
 
     varying vec2 vUv;
     varying float vWave;
     uniform sampler2D uTexture;
-
+    uniform float uDispFactor;
 
     void main() {
-      float wave = vWave * 0.5;
+      float wave = vWave * 0.5 * uDispFactor;
       vec3 texture = texture(uTexture, vUv + wave).rgb;
       gl_FragColor = vec4(texture, 1.);
     }
-  `
-    })
+  `,
+    });
   }
 
 }
@@ -149,12 +149,13 @@ function Image({position, scale, url}) {
   const group = useRef()
   const data = useScroll()
   const [texture] = useLoader(THREE.TextureLoader, [url]);
-  const [hovered, setHover] = useState(false)
+  const [hovered, setHover] = useState(0)
+
   
   useFrame(({delta, clock}) => {
     //group.current.position.z = THREE.MathUtils.damp(group.current.position.z, Math.max(0, data.delta * 50), 4, delta)
 
-    if(hovered)
+    if(hovered !== 0)
     {
       ref.current.uniforms.uTime.value = clock.getElapsedTime();
     }
@@ -166,20 +167,21 @@ function Image({position, scale, url}) {
       <mesh  
       position={position} 
       scale={scale}
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
+      onPointerOver={() => setHover(1)}
+      onPointerOut={() => setHover(0)}
       // onMouseEnter={hover}
       // onMouseLeave={unhover}
       // onTouchStart={hover}
       // onTouchEnd={unhover}
       // onTouchCancel={unhover}
       >
-      <planeBufferGeometry args={[4, 6, 8, 12]} />
+      <planeBufferGeometry args={[1, 1.5, 8, 12]} />
       <customMaterial       
        attach="material"
        ref={ref} 
       //  args={[WaterShader]}
        uniforms-uTexture-value={texture}
+       uniforms-uDispFactor-value={hovered}
       />
       </mesh>
     </group>

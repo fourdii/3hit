@@ -2,13 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 
 
 module.exports = {
   entry: {
-    Database: "./src/index/index.js",
+    Index: "./src/index/index.js",
+    Database: "./src/database/index.js",
     Space: "./src/space/index.js",
     Music: "./src/music/index.js",
     Shop: "./src/shop/index.js",
@@ -18,7 +20,10 @@ module.exports = {
     BiologistWood: "./src/biologistWood/index.js",   
     BiologistAqua: "./src/biologistAqua/index.js",   
     BiologistDirt: "./src/biologistDirt/index.js",   
-    Lookbook: "./src/lookbook/index.js",
+    Lookbook: "./src/lookbook/js/index.js",
+    Biologist14: "./src/biologist14/index.js",
+    Biologist15: "./src/biologist15/app/index.js",
+    Biologist16: "./src/biologist16/index.js",
   },
 
   output: {
@@ -28,14 +33,24 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(jpe?g|png|gif|svg|woff|woff2|eot|ttf|fnt)$/i,
+      //   exclude: /node_modules/,
+      //   loader: 'file-loader',
+      // },
+ 
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: ["babel-loader"],
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       // {
       //   test: /\.(jpg|png|svg)$/i,
@@ -83,6 +98,22 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      {
+        test: /\.(vert|frag)$/i,
+        use: 'raw-loader',
+      }
+      // {
+      //   test: /\.(woff(2)?|ttf|eot|fnt)(\?v=\d+\.\d+\.\d+)?$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]',
+      //         outputPath: 'fonts/'
+      //       }
+      //     }
+      //   ]
+      // },
       // {
       //   test: /\.html$/i,
       //   use: [
@@ -97,10 +128,17 @@ module.exports = {
       // },
     ],
   },
+
+
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "src/index/preview.html",
+      template: "src/index/index.html",
+      chunks: ["Index"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "database.html",
+      template: "src/database/database.html",
       chunks: ["Database"],
     }),
     new HtmlWebpackPlugin({
@@ -153,6 +191,21 @@ module.exports = {
       template: "src/lookbook/lookbook.html",
       chunks: ["Lookbook"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "biologist14.html",
+      template: "src/biologist14/biologist14.html",
+      chunks: ["Biologist14"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "biologist15.html",
+      template: "src/biologist15/biologist15.html",
+      chunks: ["Biologist15"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "biologist16.html",
+      template: "src/biologist16/biologist16.html",
+      chunks: ["Biologist16"],
+    }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "src/img") }],
@@ -160,5 +213,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "src/videos") }],
     }),
+    new MiniCssExtractPlugin()
   ],
 };

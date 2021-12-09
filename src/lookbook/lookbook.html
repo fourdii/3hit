@@ -1,61 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
-	<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>3hit.xyz</title>  
-
+    <title>3hit.xyz</title>
+    <link rel="stylesheet" href="https://use.typekit.net/grh5akv.css">
+    <link rel="stylesheet" href="https://use.typekit.net/phg5cnq.css">
+    
+    <link rel="stylesheet" href="https://use.typekit.net/xsl0wab.css">
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
-    <script>document.documentElement.className = "js"; var supportsCssVars = function () { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e }; supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
-    
+    <!-- <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/horizontal.css" /> -->
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 
-
-	
 </head>
 
-<body style="overflow: hidden;">
-
-    <main style="overflow: hidden;">
-       
-		<div style="position: absolute; top: 30px; left: 30px; z-index:1; overflow: hidden;">    
-                <label class="main-nav-open nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Menu">              
-                    <img class="taichi" src='../img/taichi.png'>
+<body class="demo-5 loading">
+    <main>
+        <div style="position: absolute; top: 30px; left: 30px; z-index:1; overflow: hidden;">    
+            <label class="main-nav-open nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Menu">              
+                <img class="taichi" src='../img/taichi.png'>
+            </label>
+            <input type="checkbox" id="main-nav-toggle" />
+            <nav class="main-nav">
+                <ul class="main-nav__fallback">
+                    <li>
+                        <a href="index.html" class="frame__demo">Database</a>
+                    </li>
+                    <li>
+                        <a href="space.html" class="frame__demo">Space</a>
+                    </li>
+                    <li>
+                        <a href="music.html" class="frame__demo">Music</a>
+                    </li>
+                    <li>
+                        <a href="lookbook.html" class="frame__demo">Lookbook</a>
+                    </li>
+                    <li>
+                        <a href="biologist.html" class="frame__demo">Bio_ogist</a>            
+                    </li>
+                    <li>
+                        <a href="shop.html" class="frame__demo">Shop</a>
+                    </li>
+                </ul>
+                <label class="main-nav__close nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Close menu">
+                  
                 </label>
-                <input type="checkbox" id="main-nav-toggle" />
-                <nav class="main-nav">
-                    <ul class="main-nav__fallback">
-                        <li>｀
-                            <a href="index.html" class="frame__demo">Database</a>
-                        </li>
-                        <li>
-                            <a href="space.html" class="frame__demo">Space</a>
-                        </li>
-                        <li>
-                            <a href="music.html" class="frame__demo">Music</a>
-                        </li>
-                        <li>
-                            <a href="lookbook.html" class="frame__demo">Lookbook</a>
-                        </li>
-                        <li>
-                            <a href="biologist.html" class="frame__demo">Bio_ogist</a>            
-                        </li>
-                        <li>
-                            <a href="shop.html" class="frame__demo">Shop</a>
-                        </li>
-                    </ul>
-                    <label class="main-nav__close nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Close menu">
-                      
-                    </label>
-                </nav>
-        </div> 
+            </nav>
+    </div> 
+        <!-- <div class="message">Some message for mobile (if needed).</div>
+        <div class="frame">
+            <h1 class="frame__title">3D Folded Layout</h1>
+            <div class="frame__heading-wrap">
+                <h2 class="frame__heading">Addis &mdash; Fashion</h2>
+                <time datetime="2020-03-01">March, 2020</time>
+            </div>
+            <div class="frame__links">
+                <a href="http://tympanus.net/Tutorials/TextureProjection/">Previous Demo</a>
+                <a href="https://tympanus.net/codrops/?p=46441">Article</a>
+                <a href="https://github.com/Anemolo/FoldingDOM">GitHub</a>
+            </div>
+            <div class="frame__demos">
+                <a href="index.html" class="frame__demo">demo 1</a>
+                <a href="index2.html" class="frame__demo">demo 2</a>
+                <a href="index3.html" class="frame__demo">demo 3</a>
+                <a href="index4.html" class="frame__demo">demo 4</a>
+                <a href="index5.html" class="frame__demo frame__demo--current">demo 5</a>
+            </div>
+        </div> -->
+        <div class="content">
+            <div class="fold-content" id="base-content">
+                <img class="content__img" src='../img/lookbook/look1_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look1_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look1_3.jpg' alt="Some image" />
 
-	<div id="root"></div>
-	
-</main>
+                <img class="content__img" src='../img/lookbook/look2_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look2_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look2_3.jpg' alt="Some image" />
 
+                <img class="content__img" src='../img/lookbook/look3_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look3_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look3_3.jpg' alt="Some image" />
+
+                <img class="content__img" src='../img/lookbook/look4_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look4_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look4_3.jpg' alt="Some image" />
+
+
+                <img class="content__img" src='../img/lookbook/look5_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look5_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look5_3.jpg' alt="Some image" />
+
+
+                <img class="content__img" src='../img/lookbook/look6_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look6_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look6_3.jpg' alt="Some image" />
+
+
+                <img class="content__img" src='../img/lookbook/look7_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look7_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look7_3.jpg' alt="Some image" />
+
+
+                <img class="content__img" src='../img/lookbook/look8_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look8_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look8_3.jpg' alt="Some image" />
+
+
+                <img class="content__img" src='../img/lookbook/look9_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look9_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look9_3.jpg' alt="Some image" />
+
+                <img class="content__img" src='../img/lookbook/look10_1.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look10_2.jpg' alt="Some image" />
+                <img class="content__img" src='../img/lookbook/look10_3.jpg' alt="Some image" />
+
+                <img class="content__img" src='../img/lookbook/look11_1.jpg' alt="Some image" />   
+                <img class="content__img" src='../img/lookbook/look11_2.jpg' alt="Some image" />            
+                <img class="content__img" src='../img/lookbook/look11_3.jpg' alt="Some image" />            
+
+            </div>
+            <div class="screen" id="fold-effect">
+                <div class="wrapper-3d">
+                    <div class="fold fold-before fold-before-3"></div>
+                    <div class="fold fold-before fold-before-2"></div>
+                    <div class="fold fold-before fold-before-1"></div>
+                    <div class="fold fold-main"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.js"></script>
+
+    <!-- <script src="./js/imagesloaded.pkgd.min.js"></script>
+    <script src="./js/horizontal.js"></script> -->
 </body>
 
 </html>

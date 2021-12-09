@@ -4,7 +4,7 @@
 }
 
 .nav-toggle:focus {
-	outline: 2px solid #fff;
+	outline: 0px solid #fff;
 }
 
 #main-nav-toggle {

@@ -41,6 +41,21 @@ const htmls = [
   "/biologistFire.html",
   "/biologistDirt.html",
 ];
+const positions = [
+  [7, -15, 28],
+  [20, 2, 4],
+  [18, 15, -25],
+  [1, -4, -28],
+  [-20, 10, 10],
+];
+const rotations = [
+  [1, 0, -1],
+  [1, 0, -1],
+  [1, 1, 0],
+  [1, 0, -1],
+  [3, -1, 3],
+];
+
 
 const colors = ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"];
 
@@ -64,6 +79,8 @@ for (let index = 0; index < totalPlanets; index++) {
     surfaceArea: random(100, 1000).toFixed(2),
     colorMap: colors[index],
     htmlMap: htmls[index],
+    posMap: positions[index],
+    rotMap: rotations[index]
   });
 }
 

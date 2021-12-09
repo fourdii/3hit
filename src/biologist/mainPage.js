@@ -1,6 +1,6 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls, Html } from "@react-three/drei";
+import { Bounds, useBounds, Environment, OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import planetData from "./planetData.js";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -22,7 +22,7 @@ export default function MainPage() {
       // const z = 3 * Math.cos(t);              
       // planetRef.current.position.x = x;
       // planetRef.current.position.z = z;
-      planetRef.current.rotation.y += 0.01;            
+      //planetRef.current.rotation.y += 0.01;            
   });
 
 
@@ -51,6 +51,8 @@ export default function MainPage() {
       surfaceArea,
       colorMap,
       htmlMap,
+      posMap,
+      rotMap
     },
     
   }) {
@@ -73,68 +75,116 @@ export default function MainPage() {
   
   } );
 
- useFrame(({ clock }) => {          
-        const t = clock.getElapsedTime() * speed + offset;
-        const x = xRadius * Math.sin(t);
-        const z = zRadius * Math.cos(t);              
-        planetRef.current.position.x = x;
-        planetRef.current.position.z = z;
-        planetRef.current.rotation.y += rotationSpeed;            
-    });
+//  useFrame(({ clock }) => {          
+//         const t = clock.getElapsedTime() * speed + offset;
+//         const x = xRadius * Math.sin(t);
+//         const z = zRadius * Math.cos(t);              
+//         planetRef.current.position.x = x;
+//         planetRef.current.position.z = z;
+//         planetRef.current.rotation.y += rotationSpeed;            
+//     });
   
+
+    const group = useRef();
+    useFrame((state) => {
+      const t = state.clock.getElapsedTime();
+      group.current.rotation.x = THREE.MathUtils.lerp(
+        group.current.rotation.x,
+        Math.cos(t / 2) / 10 + 0.25,
+        0.1
+      );
+      group.current.rotation.y = THREE.MathUtils.lerp(
+        group.current.rotation.y,
+        Math.sin(t / 4) / 10,
+        0.1
+      );
+      group.current.rotation.z = THREE.MathUtils.lerp(
+        group.current.rotation.z,
+        Math.sin(t / 4) / 20,
+        0.1
+      );
+      group.current.position.y = THREE.MathUtils.lerp(
+        group.current.position.y,
+        (-5 + Math.sin(t)) / 5,
+        0.1
+      );
+    });
 
     
     return (
-      <>
-        <mesh         
+      
+      <group ref={group} position={posMap} rotation={rotMap} scale={[2,2,2]} dispose={null}>
+        <mesh
           ref={planetRef}
-          onClick={() => {
-            location.href = htmlMap;      
-          }}
+          // onClick={() => {
+          //   location.href = htmlMap;
+          // }}
         >
-          <primitive object={gltf.scene} position={[0, 0, 0]} />
+          <primitive object={gltf.scene} />
         </mesh>
+        {/* <Html distanceFactor={20}>
+        <div class="content">
+          hello <br />
+          world
+        </div>
+      </Html> */}
         {/* <Ecliptic xRadius={xRadius} zRadius={zRadius} /> */}
-      </>
+      </group>
+     
     );
   }
   
-  function Lights() {
+  // function Lights() {
+  //   return (
+  //     <>
+  //       <ambientLight />
+  //       <pointLight position={[0, 0, 0]} />
+  //     </>
+  //   );
+  // }
+  
+  // function Ecliptic({ xRadius = 1, zRadius = 1 }) {
+  //   const points = [];
+  //   for (let index = 0; index < 64; index++) {
+  //     const angle = (index / 64) * 2 * Math.PI;
+  //     const x = xRadius * Math.cos(angle);
+  //     const z = zRadius * Math.sin(angle);
+  //     points.push(new THREE.Vector3(x, 0, z));
+  //   }
+  
+  //   points.push(points[0]);
+  
+  //   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+  //   return (
+  //     <line geometry={lineGeometry}>
+  //       <lineBasicMaterial attach="material" color="#393e46" linewidth={10} />
+  //     </line>
+  //   );
+  // }
+
+
+  function SelectToZoom({ children }) {
+    const api = useBounds()
     return (
-      <>
-        <ambientLight />
-        <pointLight position={[0, 0, 0]} />
-      </>
-    );
-  }
-  
-  function Ecliptic({ xRadius = 1, zRadius = 1 }) {
-    const points = [];
-    for (let index = 0; index < 64; index++) {
-      const angle = (index / 64) * 2 * Math.PI;
-      const x = xRadius * Math.cos(angle);
-      const z = zRadius * Math.sin(angle);
-      points.push(new THREE.Vector3(x, 0, z));
-    }
-  
-    points.push(points[0]);
-  
-    const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
-    return (
-      <line geometry={lineGeometry}>
-        <lineBasicMaterial attach="material" color="#393e46" linewidth={10} />
-      </line>
-    );
+      <group onClick={(e) => (e.stopPropagation(), e.delta <= 2 && api.refresh(e.object).fit())} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
+        {children}
+      </group>
+    )
   }
 
+
   return (
-    <>    
-      <Canvas camera={{ position: [0, 20, 25], fov: 45 }}>
+    <>
+      <Canvas camera={{ position: [0, 5, 10], fov: 30 }}>
         <Suspense fallback={null}>
-           <Sun /> 
-          {planetData.map((planet) => (
-            <Planet planet={planet} key={planet.id} />
-          ))}
+          <Bounds fit clip margin={1.2}>
+            <SelectToZoom>
+              <Sun />
+              {planetData.map((planet) => (
+                <Planet planet={planet} key={planet.id} />
+              ))}
+            </SelectToZoom>
+          </Bounds>
           {/* <Lights /> */}
           <Environment preset="warehouse" />
           <OrbitControls />

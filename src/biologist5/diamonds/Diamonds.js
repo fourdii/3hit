@@ -1,6 +1,6 @@
 import { WebGLRenderTarget, Object3D } from "three"
-import React, { useRef, useMemo, useLayoutEffect } from "react"
-import { useLoader, useThree, useFrame } from "@react-three/fiber"
+import React, { useRef, useMemo } from "react"
+import { useLoader, useThree, useFrame } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import lerp from "lerp"
 import BackfaceMaterial from "./BackfaceMaterial"
@@ -10,8 +10,8 @@ import state from "../store"
 
 const dummy = new Object3D()
 export default function Diamonds() {
-  const { nodes } = useLoader(GLTFLoader, "/model/diamond.glb")
-  useLayoutEffect(() => nodes.pCone1_lambert1_0.geometry.center(), [])
+  const gltf = useLoader(GLTFLoader, "/diamond.glb")
+  useMemo(() => gltf.scene.children[0].geometry.center(), [])
 
   const { size, gl, scene, camera, clock } = useThree()
   const { contentMaxWidth, sectionHeight, mobile } = useBlock()
@@ -65,5 +65,9 @@ export default function Diamonds() {
     gl.render(scene, camera)
   }, 1)
 
-  return <instancedMesh ref={model} layers={1} args={[nodes.pCone1_lambert1_0.geometry, null, state.diamonds.length]} position={[0, 0, 50]} />
+  return (
+    <instancedMesh ref={model} layers={1} args={[null, null, state.diamonds.length]} position={[0, 0, 50]}>
+      <bufferGeometry attach="geometry" {...gltf.__$[1].geometry} />
+    </instancedMesh>
+  )
 }

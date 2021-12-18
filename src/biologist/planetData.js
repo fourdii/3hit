@@ -22,42 +22,43 @@ const shuffle = (a) => {
 
 const textures = [
   "/biologist/gold_tex.jpg",
-  "/biologist/wood_tex.jpg",
-  "/biologist/aqua_tex.jpg",
-  "/biologist/fire_tex.jpg",
-  "/biologist/dirt_tex.jpg",
+  // "/biologist/wood_tex.jpg",
+  // "/biologist/aqua_tex.jpg",
+  // "/biologist/fire_tex.jpg",
+  // "/biologist/dirt_tex.jpg",
 ];
 const meshes = [
   "model/gold.glb",
-  "model/wood.glb",
-  "model/aqua.glb",
-  "model/fire.glb",
-  "model/dirt.glb",
+  // "model/wood.glb",
+  // "model/aqua.glb",
+  // "model/fire.glb",
+  // "model/dirt.glb",
 ];
 const htmls = [
   "/biologistGold.html",
-  "/biologistWood.html",
-  "/biologistAqua.html",
-  "/biologistFire.html",
-  "/biologistDirt.html",
+  // "/biologistWood.html",
+  // "/biologistAqua.html",
+  // "/biologistFire.html",
+  // "/biologistDirt.html",
 ];
 const positions = [
   [7, -15, 28],
-  [20, 2, 4],
-  [18, 15, -25],
-  [1, -4, -28],
-  [-20, 10, 10],
+  // [20, 2, 4],
+  // [18, 15, -25],
+  // [1, -4, -28],
+  // [-20, 10, 10],
 ];
 const rotations = [
   [1, 0, -1],
-  [1, 0, -1],
-  [1, 1, 0],
-  [1, 0, -1],
-  [3, -1, 3],
+  // [1, 0, -1],
+  // [1, 1, 0],
+  // [1, 0, -1],
+  // [3, -1, 3],
 ];
 
+const colors = ["#f9a602"];
 
-const colors = ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"];
+// const colors = ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"];
 
 const planetData = [];
 const totalPlanets = 5;

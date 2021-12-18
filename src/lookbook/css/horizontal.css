@@ -95,6 +95,23 @@ body {
 	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
 }
 
+.fold-before-4 {
+	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+}
+
+.fold-before-5 {
+	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+}
+
+.fold-before-6 {
+	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+}
+
+.fold-before-7 {
+	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+}
+
+
 .fold-main .fold-scroller {
 	transform: translateX(-200%);
 }
@@ -112,6 +129,22 @@ body {
 }
 
 .fold-before-4 .fold-scroller {
+	transform: translateX(400%);
+}
+
+.fold-before-5 .fold-scroller {
+	transform: translateX(400%);
+}
+
+.fold-before-6 .fold-scroller {
+	transform: translateX(400%);
+}
+
+.fold-before-7 .fold-scroller {
+	transform: translateX(400%);
+}
+
+.fold-before-8 .fold-scroller {
 	transform: translateX(400%);
 }
 

@@ -1,5 +1,5 @@
 import React, { createContext, useRef, useContext } from "react"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame, useThree } from "react-three-fiber"
 import lerp from "lerp"
 import state from "./store"
 
@@ -27,8 +27,8 @@ function useBlock() {
   const { sections, pages, zoom } = state
   const { size, viewport } = useThree()
   const offset = useContext(offsetContext)
-  const viewportWidth = viewport.width * zoom
-  const viewportHeight = viewport.height * zoom
+  const viewportWidth = viewport.width
+  const viewportHeight = viewport.height
   const canvasWidth = viewportWidth / zoom
   const canvasHeight = viewportHeight / zoom
   const mobile = size.width < 700

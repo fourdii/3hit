@@ -18,7 +18,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
 import  fragmentShader2  from "./fragment.glsl";
 import  vertexShader2 from "./vertex.glsl";
-import sky from "./sky.png";
+// import sky from "./sky.png";
 
 
 export default class ScrollStage {

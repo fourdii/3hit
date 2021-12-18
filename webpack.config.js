@@ -53,15 +53,15 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-      {
-        test: /\.(jpg|png|svg)$/i,
-        loader: 'url-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'img/',
-          publicPath: 'img/'
-        }
-      },
+      // {
+      //   test: /\.(jpg|png|svg)$/i,
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: '[name].[ext]',
+      //     outputPath: 'img/',
+      //     publicPath: 'img/'
+      //   }
+      // },
       {
         test: /\.glsl$/,
         use: ["webpack-glsl-loader"],

@@ -18,7 +18,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
 import  fragmentShader2  from "./fragment.glsl";
 import  vertexShader2 from "./vertex.glsl";
-// import sky from "./sky.png";
+//import sky from "./sky.png";
 
 
 export default class ScrollStage {
@@ -35,7 +35,7 @@ export default class ScrollStage {
     
       uniforms: {
         time: { type: "f", value: 0 },
-        sky: { type: "t", value: new THREE.TextureLoader().load(sky) },
+        sky: { type: "t", value: new THREE.TextureLoader().load("/sky.png") },
         resolution: { type: "v4", value: new THREE.Vector4() },
         uvRate1: {
           value: new THREE.Vector2(1, 1)

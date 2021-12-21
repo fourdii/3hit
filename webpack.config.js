@@ -218,6 +218,12 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "src/videos") }],
     }),
+    new CopyPlugin({
+      patterns: [{ from: path.resolve(__dirname, "src/font") }],
+    }),
+    new CopyPlugin({
+      patterns: [{ from: path.resolve(__dirname, "src/videos") }],
+    }),
     new MiniCssExtractPlugin(),
   ],
 };

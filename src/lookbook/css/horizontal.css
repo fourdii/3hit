@@ -18,8 +18,8 @@ body {
 
 .fold {
 	overflow: hidden;
-	width: calc(40vw + 1px);
-	height: 70vh;
+	width: calc(30vw + 1px);
+	height: 50vh;
 	will-change: transform;
 	background: #000;
 
@@ -84,26 +84,26 @@ body {
 }
 
 .fold-before-1 {
-	transform: translate3d(-100%, 20%, 0) rotateY(-35deg);
+	transform:	translate3d(-100%, 20%, 0) rotateY(-35deg);
 }
 
 .fold-before-2 {
-	transform: translate3d(-100%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
+	transform: translate3d(-160%, 90%, 0) rotateY(338deg) translate3d(-100%, 0, 0) rotateX(73deg);
 
 	/*transform: translate3d(calc(-100% + 3px), 0, 0) rotateY(-35.1deg) translate3d(-100%, 0, 0) rotateY(35deg);
     width: calc(40vw + 7px);*/
 }
 
 .fold-before-3 {
-	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+	transform: translate3d(-100%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
 }
 
 .fold-before-4 {
-	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+	transform: translate3d(-30%,-140%, 0) rotateY(269deg) translate3d(-10%, 0, 0) rotateX(123deg);
 }
 
 .fold-before-5 {
-	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+	transform: translate3d(-100%, 190%, 0) rotateY(199deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
 }
 
 .fold-before-6 {
@@ -111,7 +111,8 @@ body {
 }
 
 .fold-before-7 {
-	transform: translate3d(-100%, -25%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
+	transform: translate3d(-100%, -155%, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(236deg);
+
 }
 
 

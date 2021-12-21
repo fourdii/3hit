@@ -20,14 +20,16 @@ export default class {
   
   update() {
     this.scroll.hard = window.scrollY
-    this.scroll.hard = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.hard)
-    this.scroll.soft = GSAP.utils.interpolate(this.scroll.soft, this.scroll.hard, this.scroll.ease)
+    //this.scroll.hard = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.hard)
+    //this.scroll.soft = GSAP.utils.interpolate(this.scroll.soft, this.scroll.hard, this.scroll.ease)
 
-    if (this.scroll.soft < 0.01) {
-      this.scroll.soft = 0
-    }
+    // if (this.scroll.soft < 0.01) {
+    //   this.scroll.soft = 0
+    // }
     
-    this.elements.scrollContent.style.transform = `translateY(${-this.scroll.soft}px)`
+    //this.elements.scrollContent.style.transform = `translateY(${-this.scroll.soft}px)`
+
+    this.elements.scrollContent.style.transform = `translateY(${-this.scroll.hard}px)`
   }    
 
   onResize() {

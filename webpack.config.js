@@ -14,17 +14,8 @@ module.exports = {
     Space: "./src/space/index.js",
     Music: "./src/music/index.js",
     Shop: "./src/shop/index.js",
-    // Biologist: "./src/biologist/index.js",
-    // BiologistFire: "./src/biologistFire/index.js",
-    // BiologistGold: "./src/biologistGold/index.js",
-    // BiologistWood: "./src/biologistWood/index.js",
-    // BiologistAqua: "./src/biologistAqua/index.js",
-    // BiologistDirt: "./src/biologistDirt/index.js",
     Lookbook: "./src/lookbook/js/index.js",
-    // Biologist14: "./src/biologist14/index.js",
-    Biologist15: "./src/biologist15/app/index.js",
-    // Biologist16: "./src/biologist16/index.js",
-
+    Biologist: "./src/biologist/app/index.js",
   },
 
   output: {
@@ -161,56 +152,16 @@ module.exports = {
       template: "src/shop/shop.html",
       chunks: ["Shop"],
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologist.html",
-    //   template: "src/biologist/biologist.html",
-    //   chunks: ["Biologist"],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologistFire.html",
-    //   template: "src/biologistFire/biologistFire.html",
-    //   chunks: ["BiologistFire"],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologistGold.html",
-    //   template: "src/biologistGold/biologistGold.html",
-    //   chunks: ["BiologistGold"],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologistWood.html",
-    //   template: "src/biologistWood/biologistWood.html",
-    //   chunks: ["BiologistWood"],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologistAqua.html",
-    //   template: "src/biologistAqua/biologistAqua.html",
-    //   chunks: ["BiologistAqua"],
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologistDirt.html",
-    //   template: "src/biologistDirt/biologistDirt.html",
-    //   chunks: ["BiologistDirt"],
-    // }),
     new HtmlWebpackPlugin({
       filename: "lookbook.html",
       template: "src/lookbook/lookbook.html",
       chunks: ["Lookbook"],
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologist14.html",
-    //   template: "src/biologist14/biologist14.html",
-    //   chunks: ["Biologist14"],
-    // }),
     new HtmlWebpackPlugin({
-      filename: "biologist15.html",
-      template: "src/biologist15/biologist15.html",
-      chunks: ["Biologist15"],
+      filename: "biologist.html",
+      template: "src/biologist/biologist.html",
+      chunks: ["Biologist"],
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: "biologist16.html",
-    //   template: "src/biologist16/biologist16.html",
-    //   chunks: ["Biologist16"],
-    // }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "src/img") }],

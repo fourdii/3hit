@@ -13,6 +13,24 @@ import "../js/main.js";
 
 
 (function() {
+
+
+// Get the canvas node and the drawing context
+const canvas = document.getElementById('canv');
+const ctx = canvas.getContext('2d');
+
+// set the width and height of the canvas
+var w = canvas.width = document.body.offsetWidth;
+var h = canvas.height = document.body.offsetHeight;
+
+var cols = Math.floor(w / 20) + 1;
+var ypos = Array(cols).fill(0);
+
+// draw a black rectangle of width and height same as that of the canvas
+ctx.fillStyle = '#000';
+ctx.fillRect(0, 0, w, h);
+
+
   const wrapper = document.getElementById("fold-effect");
 
   const folds = Array.from(document.getElementsByClassName("fold"));
@@ -24,6 +42,34 @@ import "../js/main.js";
     targetScroll: 0,
     scroll: 0
   };
+
+
+  function matrix () {
+    // Draw a semitransparent black rectangle on top of previous drawing
+    ctx.fillStyle = '#0001';
+    ctx.fillRect(0, 0, w, h);
+  
+    // Set color to green and font to 15pt monospace in the drawing context
+    ctx.fillStyle = '#0f0';
+    ctx.font = '15pt monospace';
+  
+    // for each column put a random character at the end
+    ypos.forEach((y, ind) => {
+      // generate a random character
+      const text = String.fromCharCode(Math.random() * 128);
+  
+      // x coordinate of the column, y coordinate is already given
+      const x = ind * 20;
+      // render the character at (x, y)
+      ctx.fillText(text, x, y);
+  
+      // randomly reset the end of the column if it's at least 100px high
+      if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
+      // otherwise just move the y coordinate for the column 20px down,
+      else ypos[ind] = y + 20;
+    });
+  }
+
 
   function lerp(current, target, speed = 0.1, limit = 0.001) {
     let change = (target - current) * speed;
@@ -159,6 +205,23 @@ import "../js/main.js";
     // Fixefox delta is like 1px and chrome 100
     state.targetScroll += -Math.sign(ev.deltaY) * 30;
   });
+
+  window.addEventListener("resize", (ev) => {
+    // set the width and height of the canvas
+     w = (canvas.width = document.body.offsetWidth);
+     h = (canvas.height = document.body.offsetHeight);
+
+     cols = Math.floor(w / 20) + 1;
+     ypos = Array(cols).fill(0);
+
+    // draw a black rectangle of width and height same as that of the canvas
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, w, h);
+  });
+
+
+
+setInterval(matrix, 50);
   
   /***********************************/
   /********** Preload stuff **********/

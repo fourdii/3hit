@@ -1,244 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>3hit.xyz</title>
-		<!-- <link rel="stylesheet" type="text/css" href="./styles/base.css" />
-		<link rel="stylesheet" type="text/css" href="./styles/shaders-on-scroll.sass" /> -->
-		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
-		<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
-	</head>
-	<body class="loading">
-		<main>
-			
-			<div class="taichi"  style="z-index:1; overflow: hidden;">    
-				<label class="main-nav-open nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Menu">              
-					<img height="28px" width="28px"  src='../img/taichi.png'>
-				</label>
-				<!-- <input type="checkbox" id="main-nav-toggle" /> -->
-				<!-- <nav class="main-nav">
-					<ul class="main-nav__fallback">
-						<li>
-							<a href="index.html" class="frame__demo">Database</a>
-						</li>
-						<li>
-							<a href="space.html" class="frame__demo">Space</a>
-						</li>
-						<li>
-							<a href="music.html" class="frame__demo">Music</a>
-						</li>
-						<li>
-							<a href="lookbook.html" class="frame__demo">Lookbook</a>
-						</li>
-						<li>
-							<a href="biologist15.html" class="frame__demo">Bio_ogist</a>            
-						</li>
-						<li>
-							<a href="shop.html" class="frame__demo">Shop</a>
-						</li>
-					</ul>
-					<label class="main-nav__close nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Close menu">
-					  
-					</label>
-				</nav> -->
-		</div> 
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3hit.xyz</title>  
+    
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+<script>document.documentElement.className = "js"; var supportsCssVars = function () { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e }; supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 
-			<div class="content">
-				<div class="scroll__stage">
-					<div class="scroll__content">
-						<section class="section">
-							<div class="section__title">
-								<!-- <h1 class="section__title-number">5 3L3M3NT</h1>
-								<h2 class="section__title-text">BIo_oGIST</h2> -->
-								<!-- <p class="section__title-arrow">
-									<span>➤</span><br>
-									<span>➤</span>
-								</p> -->
-							</div>
-							<!-- <p class="section__paragraph">
-								The fireball that we rode was moving –
-								But now we've got a new machine – 
-								They got music in the solar system<br>
-								<a href="https://dimorph.ch/" class="section__button">Discover</a>
-							</p> -->
-						</section>
+    
+  </head>
+  <body>
+    <main>
 
-						<section class="section">
-							<div class="section__title">
-								<img class="section__title-number gs_reveal gs_reveal_fromRight" src="../img/biologist/gold_nobg.png"/>
-								<!-- <h1 class="section__title-number">金</h1> -->
-								<h2 class="section__title-text gs_reveal gs_reveal_fromRight">metal</h2>
-								<!-- <div backgroundColor='#000' width='334px' height='220px'>
-									<iframe allowtransparency="false"  class="gs_reveal gs_reveal_fromRight" width="334px" height="216px" src="https://www.youtube.com/embed/bfV8zy2o3_U" title="YouTube video player"
-										frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
-								</div> -->
-								<!-- <p class="section__title-arrow">
-									<span>➤</span><br>
-									<span>➤</span>
-								</p> -->
-							</div>
-							<img class="section__title-pattern gs_reveal gs_reveal_fromRight" src="../img/biologist/gold_pattern.png"/>
-							<!-- <p class="section__paragraph gs_reveal gs_reveal_fromRight">	
-								<img class="gs_reveal gs_reveal_fromRight" width="70" height="70" src="../img/biologist/gold_char_nobg.png"><br>		
-								<a href="biologist.html" class="section__button gs_reveal gs_reveal_fromRight">Discover</a>
-							</p> -->
-						</section>
-						<section class="section">
-							<div class="section__title">								
-							</div>
-							<p class="section__paragraph gs_reveal gs_reveal_fromRight">	
-								<img class="gs_reveal gs_reveal_fromRight" width="70" height="70" src="../img/biologist/gold_char_nobg.png"><br>		
-								<a href="biologist.html" class="section__button gs_reveal gs_reveal_fromRight">Discover</a>
-							</p>
-						</section>
-
-
-						<section class="section">
-							<div class="section__title">
-								<img class="section__title-number gs_reveal gs_reveal_fromLeft" src="../img/biologist/wood_nobg.png"/>
-								<!-- <h1 class="section__title-number">木</h1> -->
-								<h2 class="section__title-text gs_reveal gs_reveal_fromLeft">wood</h2>
-								<!-- <div backgroundColor='#000' width='334px' height='220px'>
-									<iframe class="gs_reveal gs_reveal_fromLeft" width="334px" height="216px" src="https://www.youtube.com/embed/bfV8zy2o3_U" title="YouTube video player"
-										frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
-								</div> -->
-							</div>
-							<img class="section__title-pattern gs_reveal gs_reveal_fromLeft" src="../img/biologist/wood_pattern.png"/>
-							<!-- <p class="section__paragraph gs_reveal gs_reveal_fromLeft">	
-								<img width="70" height="70" src="../img/biologist/wood_char_nobg.png"><br>						
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p> -->
-							<!-- <p class="section__paragraph">
-								Let me take you on a little trip – 
-								We're gonna travel faster than light – 
-								And you'll go anywhere you want to decide<br>
-								<a href="https://dimorph.ch/" class="section__button">Discover</a>
-							</p> -->
-						</section>
-						<section class="section">
-							<div class="section__title">							
-							</div>
-							<p class="section__paragraph gs_reveal gs_reveal_fromLeft">	
-								<img width="70" height="70" src="../img/biologist/wood_char_nobg.png"><br>						
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p>							
-						</section>
-
-
-						<section class="section">
-							<div class="section__title">
-								<img class="section__title-number gs_reveal gs_reveal_fromRight" src="../img/biologist/aqua_nobg.png"/>
-								<!-- <h1 class="section__title-number">水</h1> -->
-								<h2 class="section__title-text gs_reveal gs_reveal_fromRight">water</h2>
-								<!-- <div backgroundColor='#000' width='334px' height='220px'>
-									<iframe class="gs_reveal gs_reveal_fromRight" width="334px" height="216px" src="https://www.youtube.com/embed/bfV8zy2o3_U" title="YouTube video player"
-										frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
-								</div> -->
-							</div>
-							<img class="section__title-pattern gs_reveal gs_reveal_fromRight" src="../img/biologist/aqua_pattern.png"/>
-							<!-- <p class="section__paragraph gs_reveal gs_reveal_fromRight">			
-								<img width="70" height="70" src="../img/biologist/aqua_char_nobg.png"><br>								
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p> -->
-							<!-- <p class="section__paragraph">
-								Close your eyes now – 
-								And give in to the night – 
-								Soar above the stars – 
-								Forget what's behind<br>
-								<a href="https://dimorph.ch/" class="section__button">Discover</a>
-							</p> -->
-						</section>
-						<section class="section">
-							<div class="section__title">							
-							</div>
-							<p class="section__paragraph gs_reveal gs_reveal_fromRight">			
-								<img width="70" height="70" src="../img/biologist/aqua_char_nobg.png"><br>								
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p>							
-						</section>
-
-
-						<section class="section">
-							<div class="section__title">
-								<img class="section__title-number gs_reveal  gs_reveal_fromLeft" src="../img/biologist/fire_nobg.png"/>
-								<!-- <h1 class="section__title-number">火</h1> -->
-								<h2 class="section__title-text gs_reveal gs_reveal_fromLeft">fire</h2>
-								<!-- <div backgroundColor='#000' width='334px' height='220px'>
-									<iframe class="gs_reveal gs_reveal_fromLeft" width="334px" height="216px" src="https://www.youtube.com/embed/bfV8zy2o3_U" title="YouTube video player"
-										frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
-								</div> -->
-							</div>
-							<img class="section__title-pattern gs_reveal gs_reveal_fromLeft" src="../img/biologist/fire_pattern.png"/>
-							<!-- <p class="section__paragraph gs_reveal gs_reveal_fromLeft">		
-								<img width="70" height="70" src="../img/biologist/fire_char_nobg.png"><br>									
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p> -->
-							<!-- <p class="section__paragraph">
-								Close your eyes now – 
-								And give in to the night – 
-								Soar above the stars – 
-								Forget what's behind<br>
-								<a href="https://dimorph.ch/" class="section__button">Discover</a>
-							</p> -->
-						</section>
-						<section class="section">
-							<div class="section__title">								
-							</div>
-							<p class="section__paragraph gs_reveal gs_reveal_fromLeft">		
-								<img width="70" height="70" src="../img/biologist/fire_char_nobg.png"><br>									
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p>						
-						</section>
-
-
-						<section class="section">
-							<div class="section__title">
-								<img class="section__title-number gs_reveal gs_reveal_fromRight" src="../img/biologist/dirt_nobg.png"/>
-								<!-- <h1 class="section__title-number">土</h1> -->
-								<h2 class="section__title-text gs_reveal gs_reveal_fromRight">earth</h2>
-								<!-- <div backgroundColor='#000' width='334px' height='220px'>
-									<iframe class="gs_reveal gs_reveal_fromRight" width="334px" height="216px" src="https://www.youtube.com/embed/bfV8zy2o3_U" title="YouTube video player"
-										frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
-								</div> -->
-							</div>
-							<img class="section__title-pattern gs_reveal gs_reveal_fromRight" src="../img/biologist/dirt_pattern.png"/>
-							<!-- <p class="section__paragraph gs_reveal gs_reveal_fromRight">
-								<img width="70" height="70" src="../img/biologist/dirt_char_nobg.png"><br>														
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p> -->
-							<!-- <p class="section__paragraph">
-								Close your eyes now – 
-								And give in to the night – 
-								Soar above the stars – 
-								Forget what's behind<br>
-								<a href="https://dimorph.ch/" class="section__button">Discover</a>
-							</p> -->
-						</section>
-						<section class="section">
-							<div class="section__title">								
-							</div>
-							<p class="section__paragraph gs_reveal gs_reveal_fromRight">
-								<img width="70" height="70" src="../img/biologist/dirt_char_nobg.png"><br>														
-								<a href="biologist.html" class="section__button">Discover</a>
-							</p>						
-						</section>
-
-					</div>
-				</div>
-				<div class="layout__line"></div>
-			</div>
-		</main>
-		<!-- <script src="./app/index.js"></script> -->
-		<!--script src="https://tympanus.net/codrops/adpacks/cda.js"></script-->
-	</body>
+      <div style="position: absolute; top: 30px; left: 30px; z-index:1;">    
+        <!-- <div class="frame__nav"> -->
+          <label class="main-nav-open nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Menu">              
+            <img class="taichi" src='../img/taichi.png'>
+          </label>
+          <input type="checkbox" id="main-nav-toggle" />
+          <nav class="main-nav">
+            <ul class="main-nav__fallback">
+              <li>
+                <a href="index.html" class="frame__demo">Database</a>
+              </li>
+              <li>
+                <a href="space.html" class="frame__demo">Space</a>
+              </li>
+              <li>
+                <a href="music.html" class="frame__demo">Music</a>
+              </li>
+              <li>
+                <a href="lookbook.html" class="frame__demo">Lookbook</a>
+              </li>
+              <li>
+                <a href="biologist.html" class="frame__demo">Bio_ogist</a>            
+              </li>
+              <li>
+                <a href="shop.html" class="frame__demo">Shop</a>
+              </li>
+            </ul>
+            <label class="main-nav__close nav-toggle" for="main-nav-toggle" tabindex="0" aria-label="Close menu">
+              <!-- <svg aria-hidden="true" width="24" height="22px" viewBox="0 0 24 22">
+                <path d="M11 9.586L20.192.393l1.415 1.415L12.414 11l9.193 9.192-1.415 1.415L11 12.414l-9.192 9.193-1.415-1.415L9.586 11 .393 1.808 1.808.393 11 9.586z">
+              </svg> -->
+            </label>
+          </nav>
+        <!-- </div>	                    -->
+      </div> 
+      <!-- <div class="frame">
+        <div class="frame__demos">
+          <a href="index.html" class="frame__demo">Database</a>
+                <a href="space.html" class="frame__demo">Space</a>
+                <a href="music.html" class="frame__demo">Music</a>
+                <a href="lookbook.html" class="frame__demo">Lookbook</a>
+                <a href="biologist.html" class="frame__demo">Bio_ogist</a>            
+                <a href="shop.html" class="frame__demo">Shop</a>
+        </div>
+      </div> -->
+      <div class="contentBio">
+        <div id="root"></div>
+      </div>
+    </main>
+  </body>
 </html>

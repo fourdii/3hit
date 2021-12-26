@@ -28,6 +28,7 @@
     "hover-effect": "^1.1.0",
     "http-server": "^13.0.2",
     "imagesloaded": "^4.1.4",
+    "interactive-shader-format": "^2.8.1",
     "lerp": "^1.0.3",
     "leva": "^0.9.14",
     "load-bmfont": "^1.4.0",

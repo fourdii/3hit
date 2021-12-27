@@ -34,11 +34,17 @@ export default class ScrollStage {
 
       CameraPos: [
         new Vector3(0, 0, 30),
-        new Vector3(-11, 1.5, 10),
-        new Vector3(18, -1, 15),
-        new Vector3(16, 17, -5),
-        new Vector3(-6, -4, 24),
-        new Vector3(-4, 13, -3),
+        new Vector3(-13.3, 1, 15),
+        new Vector3(16, 0.3, 25),
+        new Vector3(13, 16, 0),
+        new Vector3(-8, -4, 28),
+        new Vector3(-6.5, 13, 5),
+
+        // new Vector3(-11, 1.5, 10),
+        // new Vector3(18, -1, 15),
+        // new Vector3(16, 17, -5),
+        // new Vector3(-6, -4, 24),
+        // new Vector3(-4, 13, -3),
       ],
 
       Pos: [
@@ -46,7 +52,7 @@ export default class ScrollStage {
         new Vector3(16, 0, 4),
         new Vector3(13, 15, -15),
         new Vector3(-8, -4, 15),
-        new Vector3(-6, 13, -15),      
+        new Vector3(-6, 13, -15),
       ],
 
       Rot: [
@@ -151,11 +157,10 @@ export default class ScrollStage {
       alpha: true,
     });
 
-
     this.addCanvas();
 
     this.addCamera();
-   
+
     this.clock = new THREE.Clock();
 
     this.smoothScroll = new SmoothScroll({
@@ -174,9 +179,7 @@ export default class ScrollStage {
 
     const map = new THREE.TextureLoader().load("/biologist/wood_tex.jpg");
 
-    
     for (let i = 0; i < this.resourceDatas.name.length; i++) {
-
       let sModelName = "/model/" + this.resourceDatas.name[i] + ".glb";
 
       const modelMaterial = new THREE.MeshStandardMaterial({
@@ -185,7 +188,7 @@ export default class ScrollStage {
         metalness: 0.8,
         roughness: 0.1,
         displacementMap: new THREE.TextureLoader().load("/disp-01.png"),
-        displacementScale: 0
+        displacementScale: 0,
       });
 
       this.loadModel(this.GLTFLoader, sModelName).then((gltf) => {
@@ -234,7 +237,6 @@ export default class ScrollStage {
               this.resourceDatas.Rot[i].y,
               this.resourceDatas.Rot[i].z
             );
-          
 
             this.dict.push(object);
             this.scene.add(object);
@@ -261,45 +263,45 @@ export default class ScrollStage {
             //     z: this.resourceDatas.Pos[i +1].z,
             //   }
             // );
-              // .fromTo(
-              //   object.rotation,
-              //   {
-              //     x: this.resourceDatas.Rot[i].x,
-              //     y: this.resourceDatas.Rot[i].y,
-              //     z: this.resourceDatas.Rot[i].z,
-              //   },
-              //   {
-              //     x: this.resourceDatas.ToRot[i].x,
-              //     y: this.resourceDatas.ToRot[i].y,
-              //     z: this.resourceDatas.ToRot[i].z,
-              //   }
-              // )
-              // .fromTo(
-              //   object,
-              //   {
-              //     visible: true,
-              //   },
-              //   {
-              //     visible: false,
-              //   }
-              // )
-              // .fromTo(
-              //   object.material,
-              //   {
-              //     opacity: 0,
-              //   },
-              //   {
-              //     opacity: 1,
-              //   }
-              // ).
-             // fromTo(
-                //     this.planeMesh.material,
-                //     {
-                //       displacementScale: 0,
-                //     },
-                //     {
-                //       displacementScale: 10,
-                //     };
+            // .fromTo(
+            //   object.rotation,
+            //   {
+            //     x: this.resourceDatas.Rot[i].x,
+            //     y: this.resourceDatas.Rot[i].y,
+            //     z: this.resourceDatas.Rot[i].z,
+            //   },
+            //   {
+            //     x: this.resourceDatas.ToRot[i].x,
+            //     y: this.resourceDatas.ToRot[i].y,
+            //     z: this.resourceDatas.ToRot[i].z,
+            //   }
+            // )
+            // .fromTo(
+            //   object,
+            //   {
+            //     visible: true,
+            //   },
+            //   {
+            //     visible: false,
+            //   }
+            // )
+            // .fromTo(
+            //   object.material,
+            //   {
+            //     opacity: 0,
+            //   },
+            //   {
+            //     opacity: 1,
+            //   }
+            // ).
+            // fromTo(
+            //     this.planeMesh.material,
+            //     {
+            //       displacementScale: 0,
+            //     },
+            //     {
+            //       displacementScale: 10,
+            //     };
 
             // this.gui.add(object.position, "x", -100, 100, 0.1);
             // this.gui.add(object.position, "y", -100, 100, 0.1);
@@ -337,7 +339,7 @@ export default class ScrollStage {
           color: 0x888888,
           emissive: 0x000000,
           metalness: 0.8,
-          roughness: 0.4,          
+          roughness: 0.4,
         });
 
         this.textMesh = new THREE.Mesh(textGeometry, textMaterial);
@@ -347,41 +349,41 @@ export default class ScrollStage {
 
         this.scene.add(this.textMesh);
 
-
-        let animateIn = GSAP.timeline({ 
+        let animateIn = GSAP.timeline({
           defaults: {
-            ease: 'expo'
-          }
-        })
-       
-        animateIn.fromTo(
+            ease: "expo",
+          },
+        });
+
+        animateIn
+          .fromTo(
             this.textMesh.position,
             {
-              x:  this.textMesh.position.x,
-              y:  this.textMesh.position.y,
-              z:  this.textMesh.position.z,
+              x: this.textMesh.position.x,
+              y: this.textMesh.position.y,
+              z: this.textMesh.position.z,
             },
             {
-              x:  this.textMesh.position.x,
-              y:  this.textMesh.position.y,
-              z:  20,
-              duration: 3
+              x: this.textMesh.position.x,
+              y: this.textMesh.position.y,
+              z: 20,
+              duration: 3,
             }
-          ).fromTo(
+          )
+          .fromTo(
             this.textMesh.rotation,
             {
-              x:  this.textMesh.rotation.x,
-              y:  this.textMesh.rotation.y,
-              z:  this.textMesh.rotation.z,
+              x: this.textMesh.rotation.x,
+              y: this.textMesh.rotation.y,
+              z: this.textMesh.rotation.z,
             },
             {
-              x:  0,
-              y:  this.textMesh.rotation.y,
-              z:  this.textMesh.rotation.z,
-              duration: 3
+              x: 0,
+              y: this.textMesh.rotation.y,
+              z: this.textMesh.rotation.z,
+              duration: 3,
             }
           );
-
 
         // this.gui.add(this.textMesh.position, "x", -100, 100, 0.1);
         // this.gui.add(this.textMesh.position, "y", -100, 100, 0.1);
@@ -391,8 +393,6 @@ export default class ScrollStage {
         // this.gui.add(this.textMesh.rotation, "z", -100, 100, 0.1);
       }
     );
-
-   
 
     this.loadModel(fontLoader, "/Cyber_Tittle_Regular.json").then((font) => {
       const height = 0.05;
@@ -426,43 +426,43 @@ export default class ScrollStage {
       this.textMesh2.rotation.set(1.5, 0, 0);
       this.textMesh2.scale.set(0.5, 0.5, 0.5);
 
-
       this.scene.add(this.textMesh2);
 
-
-      let animateIn = GSAP.timeline({ 
+      let animateIn = GSAP.timeline({
         defaults: {
-          ease: 'expo'
-        }
-      })
+          ease: "expo",
+        },
+      });
 
-      animateIn.fromTo(
-        this.textMesh2.position,
-        {
-          x:  this.textMesh2.position.x,
-          y:  this.textMesh2.position.y,
-          z:  this.textMesh2.position.z,
-        },
-        {
-          x:  this.textMesh2.position.x,
-          y:  this.textMesh2.position.y,
-          z:  20,
-          duration: 3
-        }
-      ).fromTo(
-        this.textMesh2.rotation,
-        {
-          x:  this.textMesh2.rotation.x,
-          y:  this.textMesh2.rotation.y,
-          z:  this.textMesh2.rotation.z,
-        },
-        {
-          x:  0,
-          y:  this.textMesh2.rotation.y,
-          z:  this.textMesh2.rotation.z,
-          duration: 3
-        }
-      );
+      animateIn
+        .fromTo(
+          this.textMesh2.position,
+          {
+            x: this.textMesh2.position.x,
+            y: this.textMesh2.position.y,
+            z: this.textMesh2.position.z,
+          },
+          {
+            x: this.textMesh2.position.x,
+            y: this.textMesh2.position.y,
+            z: 20,
+            duration: 3,
+          }
+        )
+        .fromTo(
+          this.textMesh2.rotation,
+          {
+            x: this.textMesh2.rotation.x,
+            y: this.textMesh2.rotation.y,
+            z: this.textMesh2.rotation.z,
+          },
+          {
+            x: 0,
+            y: this.textMesh2.rotation.y,
+            z: this.textMesh2.rotation.z,
+            duration: 3,
+          }
+        );
 
       // this.gui.add(this.textMesh2.position, "x", -100, 100, 0.1);
       // this.gui.add(this.textMesh2.position, "y", -100, 100, 0.1);
@@ -472,8 +472,7 @@ export default class ScrollStage {
       // this.gui.add(this.textMesh2.rotation, "z", -100, 100, 0.1);
     });
 
-
-    this.light = new THREE.AmbientLight(0x404040, 12); 
+    this.light = new THREE.AmbientLight(0x404040, 12);
     this.scene.add(this.light);
 
     this.pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
@@ -494,7 +493,6 @@ export default class ScrollStage {
     // this.gui.add(this.pointLight2.position, "y", -100, 100, 0.1);
     // this.gui.add(this.pointLight2.position, "z", -100, 100, 0.1);
 
- 
     ScrollTrigger.create({
       trigger: this.sections[0],
       start: "top 80px",
@@ -515,93 +513,82 @@ export default class ScrollStage {
       "/dirt.mov",
     ];
 
- //   this.videoBoxes = [];
+    //   this.videoBoxes = [];
 
+    this.video = document.createElement("video");
+    this.video.src = this.videoSources[0];
+    //  this.videoBoxes.push(video);
+    this.video.load();
+    //video.play();
 
-      this.video = document.createElement("video");      
-      this.video.src = this.videoSources[0];
-       //  this.videoBoxes.push(video);
-      this.video.load();
-      //video.play();
-     
+    this.video.onloadeddata = (e) => {
+      console.log("video loaded");
 
-      this.video.onloadeddata =  (e) => {
+      e.target.pause();
 
-        console.log("video loaded");
+      const videoTexture = new THREE.VideoTexture(e.target);
+      videoTexture.minFilter = THREE.LinearFilter;
+      videoTexture.magFilter = THREE.LinearFilter;
+      videoTexture.needsUpdate = true;
+      const videoGeometry = new THREE.PlaneGeometry(16, 9);
+      videoGeometry.scale(0.5, 0.5, 0.5);
+      const videomMaterial = new THREE.MeshBasicMaterial({
+        map: videoTexture,
+        side: THREE.DoubleSide,
+      });
+      videomMaterial.needsUpdate = true;
 
-        e.target.pause();
+      const count = 128;
+      const radius = 32;
 
-        const videoTexture = new THREE.VideoTexture(e.target);
-        videoTexture.minFilter = THREE.LinearFilter;
-        videoTexture.magFilter = THREE.LinearFilter; 
-        videoTexture.needsUpdate = true;
-        const videoGeometry = new THREE.PlaneGeometry(16, 9);
-        videoGeometry.scale(0.5, 0.5, 0.5);
-        const videomMaterial = new THREE.MeshBasicMaterial({ map: videoTexture,  side: THREE.DoubleSide });
-        videomMaterial.needsUpdate = true;
-  
-  
-        const count = 128;
-        const radius = 32;
-  
-        for (let i = 1, l = count; i <= l; i++) {
-          const phi = Math.acos(-1 + (2 * i) / l);
-          const theta = Math.sqrt(l * Math.PI) * phi;
-  
-          const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-          mesh.position.setFromSphericalCoords(radius, phi, theta);
-          mesh.lookAt(new Vector3(0,0,30));
-          this.scene.add(mesh);
-        }
-      };
+      for (let i = 1, l = count; i <= l; i++) {
+        const phi = Math.acos(-1 + (2 * i) / l);
+        const theta = Math.sqrt(l * Math.PI) * phi;
 
-      
-      for(let i = 0; i < this.videoSources.length; i++)
-      {
-
-         console.log('create scrolltrigger');
-
-        ScrollTrigger.create({
-          trigger: this.sections[(2 * (i + 1)) -1],
-          start: "top 80px",
-          endTrigger: this.sections[(2 * (i + 1))],
-          end: "bottom bottom",
-          scrub: true,
-          onEnter: () => {
-            console.log("onEnter");
-            this.video.pause();
-            this.video.src = this.videoSources[i];
-            this.video.load();
-
-            this.video.onloadeddata = () =>{
-              this.video.play();
-            }            
-          },
-          // onLeave: () => {
-          //   console.log("onLeave");
-          //   this.video.pause();
-          //   this.video.load();
-          // },
-          // onEnterBack: () => {
-          //   console.log("onEnterBack");
-          //   this.video.src = this.videoSources[i];
-          //   this.video.load();
-          //   this.video.play();
-          // },
-          // onLeaveBack: () => {
-          //   console.log("onLeaveBack");
-          //   this.video.pause();
-          //   this.video.load();
-          // },
-        });
-
+        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+        mesh.position.setFromSphericalCoords(radius, phi, theta);
+        mesh.lookAt(new Vector3(0, 0, 30));
+        this.scene.add(mesh);
       }
+    };
 
-      
-        
+    for (let i = 0; i < this.videoSources.length; i++) {
+      console.log("create scrolltrigger");
 
+      ScrollTrigger.create({
+        trigger: this.sections[2 * (i + 1) - 1],
+        start: "top 80px",
+        endTrigger: this.sections[2 * (i + 1)],
+        end: "bottom bottom",
+        scrub: true,
+        onEnter: () => {
+          console.log("onEnter");
+          this.video.pause();
+          this.video.src = this.videoSources[i];
+          this.video.load();
 
-    
+          this.video.onloadeddata = () => {
+            this.video.play();
+          };
+        },
+        // onLeave: () => {
+        //   console.log("onLeave");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+        // onEnterBack: () => {
+        //   console.log("onEnterBack");
+        //   this.video.src = this.videoSources[i];
+        //   this.video.load();
+        //   this.video.play();
+        // },
+        // onLeaveBack: () => {
+        //   console.log("onLeaveBack");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+      });
+    }
 
     this.geometry = new THREE.IcosahedronGeometry(10, 64);
     this.material = new THREE.ShaderMaterial({
@@ -623,7 +610,6 @@ export default class ScrollStage {
     this.mesh.position.set(0, 0, 0);
     this.scene.add(this.mesh);
 
-
     const materials = [];
     this.taichiGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.01, 32);
     const taichiTexture = new THREE.TextureLoader().load("taichi.png");
@@ -640,7 +626,6 @@ export default class ScrollStage {
     this.taichiMesh.rotation.set(1.5, 2.5, 0);
     this.taichiMesh.scale.set(8, 8, 8);
 
-
     this.scene.add(this.taichiMesh);
 
     // this.gui.add(this.emojiMesh.position, "x", -100, 100, 0.1);
@@ -650,7 +635,6 @@ export default class ScrollStage {
     // this.gui.add(this.emojiMesh.rotation, "x", -100, 100, 0.1);
     // this.gui.add(this.emojiMesh.rotation, "y", -100, 100, 0.1);
     // this.gui.add(this.emojiMesh.rotation, "z", -100, 100, 0.1);
-
 
     GSAP.fromTo(
       this.taichiMesh.position,
@@ -663,10 +647,9 @@ export default class ScrollStage {
         x: 0,
         y: 0,
         z: 0,
-        duration:3
+        duration: 3,
       }
-    )
-
+    );
 
     let taichiTl = GSAP.timeline({
       scrollTrigger: {
@@ -689,8 +672,6 @@ export default class ScrollStage {
         z: 20,
       }
     );
-    
-
 
     document.addEventListener("DOMContentLoaded", function () {
       GSAP.utils.toArray(".gs_reveal").forEach(function (elem) {
@@ -752,7 +733,6 @@ export default class ScrollStage {
   }
 
   addCamera() {
-   
     this.camera = new THREE.PerspectiveCamera(
       60,
       this.viewport.width / this.viewport.height,
@@ -762,43 +742,38 @@ export default class ScrollStage {
 
     this.scene.add(this.camera);
     this.camera.position.set(0, 0, 30);
-   
- for (let i = 0; i < 5; i++) {
-   let tl = GSAP.timeline({
-     scrollTrigger: {
-       trigger: this.sections[(2 * (i + 1) )- 1],
-       start: "top center",
-       endTrigger: this.sections[(2 * (i + 1))],
-       end: "top center",
-     },
-   });  
-   tl.fromTo(
-     this.camera.position,
-     {
-       x: this.resourceDatas.CameraPos[i].x,
-       y: this.resourceDatas.CameraPos[i].y,
-       z: this.resourceDatas.CameraPos[i].z,
-     },
-     {
-       x: this.resourceDatas.CameraPos[i + 1].x,
-       y: this.resourceDatas.CameraPos[i + 1].y,
-       z: this.resourceDatas.CameraPos[i + 1].z,
-     }
-   );
 
-  // this.gui.add(this.camera.position, "x", -100, 100, 0.1);
-  // this.gui.add(this.camera.position, "y", -100, 100, 0.1);
-  // this.gui.add(this.camera.position, "z", -100, 100, 0.1);
+    for (let i = 0; i < 5; i++) {
+      let tl = GSAP.timeline({
+        scrollTrigger: {
+          trigger: this.sections[2 * (i + 1) - 1],
+          start: "top center",
+          endTrigger: this.sections[2 * (i + 1)],
+          end: "top center",
+        },
+      });
+      tl.fromTo(
+        this.camera.position,
+        {
+          x: this.resourceDatas.CameraPos[i].x,
+          y: this.resourceDatas.CameraPos[i].y,
+          z: this.resourceDatas.CameraPos[i].z,
+        },
+        {
+          x: this.resourceDatas.CameraPos[i + 1].x,
+          y: this.resourceDatas.CameraPos[i + 1].y,
+          z: this.resourceDatas.CameraPos[i + 1].z,
+        }
+      );
+    }
 
-  // this.gui.add(this.camera.rotation, "x", -2, 2, 0.1);
-  // this.gui.add(this.camera.rotation, "y", -2, 2, 0.1);
-  // this.gui.add(this.camera.rotation, "z", -2, 2, 0.1);
+    this.gui.add(this.camera.position, "x", -100, 100, 0.1);
+    this.gui.add(this.camera.position, "y", -100, 100, 0.1);
+    this.gui.add(this.camera.position, "z", -100, 100, 0.1);
 
-   
- }
-      
-
-
+    this.gui.add(this.camera.rotation, "x", -2, 2, 0.1);
+    this.gui.add(this.camera.rotation, "y", -2, 2, 0.1);
+    this.gui.add(this.camera.rotation, "z", -2, 2, 0.1);
   }
 
   waitForLoad() {
@@ -866,17 +841,18 @@ export default class ScrollStage {
   onLoad() {
     document.body.classList.remove("loading");
 
+    // ScrollTrigger.refresh();
 
-   // ScrollTrigger.refresh();
+    GSAP.fromTo(
+      this.camera.position,
+      { x: 0, y: 0, z: 90 },
+      { x: 0, y: 0, z: 30, duration: 1 }
+    );
 
-    GSAP.fromTo(this.camera.position, { x: 0, y:0 , z:90}, { x: 0, y:0 , z:30, duration:1});
-
-
-   // this.animations = new Animations(this.element, this.camera);
+    // this.animations = new Animations(this.element, this.camera);
   }
 
   onMouseMove(event) {
-  
     this.mouse.x = (event.clientX / this.viewport.width).toFixed(2) * 4;
     this.mouse.y = (event.clientY / this.viewport.height).toFixed(2) * 2;
 
@@ -930,33 +906,28 @@ export default class ScrollStage {
 
     this.smoothScroll.update();
 
-  //   if (video.readyState === video.HAVE_ENOUGH_DATA) {
-  //     videoImageContext.drawImage(video, 0, 0);
-  //     if (videoTexture)
-  //         videoTexture.texture.needsUpdate = true;
-  // }
+    //   if (video.readyState === video.HAVE_ENOUGH_DATA) {
+    //     videoImageContext.drawImage(video, 0, 0);
+    //     if (videoTexture)
+    //         videoTexture.texture.needsUpdate = true;
+    // }
 
     this.render();
   }
 
-  modelMove(t)
-  {
-
-    for (let i = 0; i <  this.dict.length; i++) {
-
-
+  modelMove(t) {
+    for (let i = 0; i < this.dict.length; i++) {
       // this.dict[i].rotation.x = THREE.MathUtils.lerp(
       //   this.dict[i].rotation.x,
       //   Math.cos(t / 2) / 10 + 0.25,
       //   0.1
       // );
-  
+
       // model.rotation.y = THREE.MathUtils.lerp(
       //   model.rotation.y ,
       //   Math.sin(t / 4) / 10,
       //   0.1
       // );
-  
 
       this.dict[i].rotation.y += 0.02;
 
@@ -967,7 +938,6 @@ export default class ScrollStage {
         Math.sin(t / 4) / 20,
         0.1
       );
-
     }
   }
 

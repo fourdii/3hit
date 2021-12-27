@@ -507,7 +507,7 @@ export default class ScrollStage {
       },
     });
 
-    const videoSources = [
+    this.videoSources = [
       "/gold.mov",
       "/wood.mov",
       "/aqua.mov",
@@ -515,61 +515,91 @@ export default class ScrollStage {
       "/dirt.mov",
     ];
 
-    this.videoBoxes = [];
+ //   this.videoBoxes = [];
 
-    for (let i = 0; i < videoSources.length; i++) {
-      const video = document.createElement("video");
-      video.src = videoSources[i];
+
+      this.video = document.createElement("video");      
+      this.video.src = this.videoSources[0];
+       //  this.videoBoxes.push(video);
+      this.video.load();
       //video.play();
       //video.pause();
 
-      this.videoBoxes.push(video);
-      const videoTexture = new THREE.VideoTexture(video);
-      const videoGeometry = new THREE.PlaneGeometry(16, 9);
-      videoGeometry.scale(0.5, 0.5, 0.5);
-      const videomMaterial = new THREE.MeshBasicMaterial({ map: videoTexture });
+      this.video.onloadeddata =  (e) => {
 
-      const count = 128;
-      const radius = 32;
+        console.log("video loaded");
 
-      for (let i = 1, l = count; i <= l; i++) {
-        const phi = Math.acos(-1 + (2 * i) / l);
-        const theta = Math.sqrt(l * Math.PI) * phi;
+        const videoTexture = new THREE.VideoTexture(e.target);
+        videoTexture.minFilter = THREE.LinearFilter;
+        videoTexture.magFilter = THREE.LinearFilter; 
+        videoTexture.needsUpdate = true;
+        const videoGeometry = new THREE.PlaneGeometry(16, 9);
+        videoGeometry.scale(0.5, 0.5, 0.5);
+        const videomMaterial = new THREE.MeshBasicMaterial({ map: videoTexture,  side: THREE.DoubleSide });
+        videomMaterial.needsUpdate = true;
+  
+  
+        const count = 128;
+        const radius = 32;
+  
+        for (let i = 1, l = count; i <= l; i++) {
+          const phi = Math.acos(-1 + (2 * i) / l);
+          const theta = Math.sqrt(l * Math.PI) * phi;
+  
+          const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+          mesh.position.setFromSphericalCoords(radius, phi, theta);
+          mesh.lookAt(new Vector3(0,0,30));
+          this.scene.add(mesh);
+        }
+      };
 
-        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-        mesh.position.setFromSphericalCoords(radius, phi, theta);
-        mesh.lookAt(this.camera.position);
-        this.scene.add(mesh);
+      
+      for(let i = 0; i < this.videoSources.length; i++)
+      {
+
+         console.log('create scrolltrigger');
+
+        ScrollTrigger.create({
+          trigger: this.sections[(2 * (i + 1)) -1],
+          start: "top 80px",
+          endTrigger: this.sections[(2 * (i + 1))],
+          end: "bottom bottom",
+          scrub: true,
+          onEnter: () => {
+            console.log("onEnter");
+            this.video.pause();
+            this.video.src = this.videoSources[i];
+            this.video.load();
+
+            this.video.onloadeddata = () =>{
+              this.video.play();
+            }            
+          },
+          // onLeave: () => {
+          //   console.log("onLeave");
+          //   this.video.pause();
+          //   this.video.load();
+          // },
+          // onEnterBack: () => {
+          //   console.log("onEnterBack");
+          //   this.video.src = this.videoSources[i];
+          //   this.video.load();
+          //   this.video.play();
+          // },
+          // onLeaveBack: () => {
+          //   console.log("onLeaveBack");
+          //   this.video.pause();
+          //   this.video.load();
+          // },
+        });
+
       }
 
-      ScrollTrigger.create({
-        trigger: this.sections[2 * (i + 1) -1],
-        start: "top top",
-        endTrigger: this.sections[2 * (i + 1)],
-        end: "bottom bottom",
-        scrub: true,
-        onEnter: () => {
-          console.log("onEnter");
-          this.videoBoxes[i].play();
-          console.log("play");
-        },
-        onLeave: () => {
-          console.log("onLeave");
-          this.videoBoxes[i].pause();
-          console.log("pause");
-        },
-        onEnterBack: () => {
-          console.log("onEnterBack");
-          this.videoBoxes[i].play();
-          console.log("play");
-        },
-        onLeaveBack: () => {
-          console.log("onLeaveBack");
-          this.videoBoxes[i].pause();
-          console.log("pause");
-        },
-      });
-    }
+      
+        
+
+
+    
 
     this.geometry = new THREE.IcosahedronGeometry(10, 64);
     this.material = new THREE.ShaderMaterial({
@@ -588,7 +618,7 @@ export default class ScrollStage {
       },
     });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.position.set(0, -0.5, 0);
+    this.mesh.position.set(0, 0, 0);
     this.scene.add(this.mesh);
 
 
@@ -875,6 +905,12 @@ export default class ScrollStage {
     this.modelMove(elapsedTime);
 
     this.smoothScroll.update();
+
+  //   if (video.readyState === video.HAVE_ENOUGH_DATA) {
+  //     videoImageContext.drawImage(video, 0, 0);
+  //     if (videoTexture)
+  //         videoTexture.texture.needsUpdate = true;
+  // }
 
     this.render();
   }

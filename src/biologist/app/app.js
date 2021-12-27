@@ -530,7 +530,7 @@ export default class ScrollStage {
       videoTexture.minFilter = THREE.LinearFilter;
       videoTexture.magFilter = THREE.LinearFilter;
       videoTexture.needsUpdate = true;
-      const videoGeometry = new THREE.PlaneGeometry(16, 9);
+      const videoGeometry = new THREE.PlaneGeometry(12, 12);
       videoGeometry.scale(0.5, 0.5, 0.5);
       const videomMaterial = new THREE.MeshBasicMaterial({
         map: videoTexture,

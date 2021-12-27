@@ -1,6 +1,11 @@
 /* jshint node: true */
 /* globals THREE */
 
+import * as THREE from "three";
+import vertexShader from "./shader/vertexShader.vert";
+import fragmentShader from "./shader/fragmentShader.frag";
+
+
 import "../css/base.css";
 import "../css/menu.css";
 import "../css/step.css";
@@ -8,10 +13,10 @@ import "../js/main.js";
 
 
 
-window.THREE = require("three");
+// window.THREE = require("three");
 
-const vertexShader = require("webpack-glsl-loader!./shader/vertexShader.vert");
-const fragmentShader = require("webpack-glsl-loader!./shader/fragmentShader.frag");
+// const vertexShader = require("webpack-glsl-loader!./shader/vertexShader.vert");
+// const fragmentShader = require("webpack-glsl-loader!./shader/fragmentShader.frag");
 
 let raf = null;
 let scene, renderer, camera, clock, width, height;

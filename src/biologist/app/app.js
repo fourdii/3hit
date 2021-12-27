@@ -523,11 +523,13 @@ export default class ScrollStage {
        //  this.videoBoxes.push(video);
       this.video.load();
       //video.play();
-      //video.pause();
+     
 
       this.video.onloadeddata =  (e) => {
 
         console.log("video loaded");
+
+        e.target.pause();
 
         const videoTexture = new THREE.VideoTexture(e.target);
         videoTexture.minFilter = THREE.LinearFilter;
@@ -865,9 +867,9 @@ export default class ScrollStage {
     document.body.classList.remove("loading");
 
 
-    ScrollTrigger.refresh();
+   // ScrollTrigger.refresh();
 
-    GSAP.set(this.camera.position, { x: 0, y:0 , z:30});
+    GSAP.fromTo(this.camera.position, { x: 0, y:0 , z:90}, { x: 0, y:0 , z:30, duration:1});
 
 
    // this.animations = new Animations(this.element, this.camera);

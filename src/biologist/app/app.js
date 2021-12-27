@@ -649,6 +649,23 @@ export default class ScrollStage {
     // this.gui.add(this.emojiMesh.rotation, "y", -100, 100, 0.1);
     // this.gui.add(this.emojiMesh.rotation, "z", -100, 100, 0.1);
 
+
+    GSAP.fromTo(
+      this.taichiMesh.position,
+      {
+        x: 0,
+        y: 0,
+        z: -10,
+      },
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration:3
+      }
+    )
+
+
     let taichiTl = GSAP.timeline({
       scrollTrigger: {
         trigger: this.sections[0],
@@ -921,11 +938,11 @@ export default class ScrollStage {
     for (let i = 0; i <  this.dict.length; i++) {
 
 
-      this.dict[i].rotation.x = THREE.MathUtils.lerp(
-        this.dict[i].rotation.x,
-        Math.cos(t / 2) / 10 + 0.25,
-        0.1
-      );
+      // this.dict[i].rotation.x = THREE.MathUtils.lerp(
+      //   this.dict[i].rotation.x,
+      //   Math.cos(t / 2) / 10 + 0.25,
+      //   0.1
+      // );
   
       // model.rotation.y = THREE.MathUtils.lerp(
       //   model.rotation.y ,
@@ -934,8 +951,9 @@ export default class ScrollStage {
       // );
   
 
-      this.dict[i].rotation.y += 0.01;
+      this.dict[i].rotation.y += 0.02;
 
+      this.dict[i].rotation.x += 0.01;
 
       this.dict[i].rotation.z = THREE.MathUtils.lerp(
         this.dict[i].rotation.z,

@@ -1,5 +1,10 @@
-import * as THREE from 'three';
 import ScrollStage from './app.js';
+
+import "../css/base2.css";
+import "../css/menu.css";
+import "../css/step.css";
+import "../../js/main.js";
+
 
 export default class Main {
   constructor(container = document.body) {

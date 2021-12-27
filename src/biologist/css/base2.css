@@ -46,10 +46,9 @@ main {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	/* display: flex; */
+	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
-	overflow-y: hidden;
 }
 
 .taichi{

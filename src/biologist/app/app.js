@@ -80,7 +80,7 @@ export default class ScrollStage {
       ],
     };
 
-    this.gui = new dat.GUI();
+   // this.gui = new dat.GUI();
 
     GSAP.registerPlugin(ScrollTrigger, Timeline);
 
@@ -767,13 +767,13 @@ export default class ScrollStage {
       );
     }
 
-    this.gui.add(this.camera.position, "x", -100, 100, 0.1);
-    this.gui.add(this.camera.position, "y", -100, 100, 0.1);
-    this.gui.add(this.camera.position, "z", -100, 100, 0.1);
+    // this.gui.add(this.camera.position, "x", -100, 100, 0.1);
+    // this.gui.add(this.camera.position, "y", -100, 100, 0.1);
+    // this.gui.add(this.camera.position, "z", -100, 100, 0.1);
 
-    this.gui.add(this.camera.rotation, "x", -2, 2, 0.1);
-    this.gui.add(this.camera.rotation, "y", -2, 2, 0.1);
-    this.gui.add(this.camera.rotation, "z", -2, 2, 0.1);
+    // this.gui.add(this.camera.rotation, "x", -2, 2, 0.1);
+    // this.gui.add(this.camera.rotation, "y", -2, 2, 0.1);
+    // this.gui.add(this.camera.rotation, "z", -2, 2, 0.1);
   }
 
   waitForLoad() {
@@ -929,9 +929,9 @@ export default class ScrollStage {
       //   0.1
       // );
 
-      this.dict[i].rotation.y += 0.02;
+      this.dict[i].rotation.y += 0.01;
 
-      this.dict[i].rotation.x += 0.01;
+      this.dict[i].rotation.x += 0.005;
 
       this.dict[i].rotation.z = THREE.MathUtils.lerp(
         this.dict[i].rotation.z,

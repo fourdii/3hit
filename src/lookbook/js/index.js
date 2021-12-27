@@ -182,9 +182,9 @@ ctx.fillRect(0, 0, w, h);
       isDown = false;
     }
   });
-  window.addEventListener("touchstart", onDown);
-  window.addEventListener("touchend", onUp);
-  window.addEventListener("touchcancel", onUp);
+  // window.addEventListener("touchstart", onDown);
+  // window.addEventListener("touchend", onUp);
+  // window.addEventListener("touchcancel", onUp);
 
   window.addEventListener("mousemove", ev => {
     if (lastClientX && isDown) {
@@ -195,11 +195,14 @@ ctx.fillRect(0, 0, w, h);
 
   window.addEventListener("touchmove", ev => {
     let touch = ev.touches[0];
-    if (lastClientX && isDown) {
-      state.targetScroll += ev.clientX - lastClientX;
+    ev.preventDefault(); 
+    if (lastClientX ) {
+      state.targetScroll += touch.clientX - lastClientX;
     }
-    lastClientX = ev.clientX;
+    lastClientX = touch.clientX;
   });
+
+
 
   window.addEventListener("wheel", ev => {
     // Fixefox delta is like 1px and chrome 100

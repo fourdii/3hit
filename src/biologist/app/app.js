@@ -760,7 +760,6 @@ export default class ScrollStage {
 
     this.scene.add(this.camera);
     this.camera.position.set(0, 0, 30);
-
    
  for (let i = 0; i < 5; i++) {
    let tl = GSAP.timeline({
@@ -864,6 +863,12 @@ export default class ScrollStage {
 
   onLoad() {
     document.body.classList.remove("loading");
+
+
+    ScrollTrigger.refresh();
+
+    GSAP.set(this.camera.position, { x: 0, y:0 , z:30});
+
 
    // this.animations = new Animations(this.element, this.camera);
   }

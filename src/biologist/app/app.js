@@ -517,7 +517,7 @@ export default class ScrollStage {
 
     this.video = document.createElement("video");
     this.video.src = this.videoSources[0];
-    this.video.preload = "auto";
+    // this.video.preload = "auto";
     this.video.playsinline = true;
     //  this.videoBoxes.push(video);
     this.video.load();

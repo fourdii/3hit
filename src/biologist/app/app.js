@@ -847,7 +847,7 @@ export default class ScrollStage {
 
     GSAP.fromTo(
       this.camera.position,
-      { x: 0, y: 0, z: 90 },
+      { x: 0, y: 0, z: 40 },
       { x: 0, y: 0, z: 30, duration: 1 }
     );
 

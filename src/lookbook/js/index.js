@@ -202,7 +202,6 @@ ctx.fillRect(0, 0, w, h);
   });
 
   window.addEventListener("touchend", ev => {
-    console.log("touchend");
     lastClientX = null;
   });
 

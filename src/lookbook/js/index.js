@@ -195,13 +195,16 @@ ctx.fillRect(0, 0, w, h);
 
   window.addEventListener("touchmove", ev => {
     let touch = ev.touches[0];
-    ev.preventDefault(); 
     if (lastClientX ) {
       state.targetScroll += touch.clientX - lastClientX;
     }
     lastClientX = touch.clientX;
   });
 
+  window.addEventListener("touchend", ev => {
+    console.log("touchend");
+    lastClientX = null;
+  });
 
 
   window.addEventListener("wheel", ev => {

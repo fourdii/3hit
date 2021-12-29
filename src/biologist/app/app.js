@@ -513,23 +513,28 @@ export default class ScrollStage {
       "/dirt.mp4",
     ];
 
-    //   this.videoBoxes = [];
 
     this.video = document.createElement("video");
     this.video.setAttribute('src', this.videoSources[0]);
     this.video.setAttribute('type', 'video/mp4');
     this.video.setAttribute('preload', "auto");
     this.video.setAttribute('playsinline', true);
-    this.video.setAttribute('muted', "true");
 
-    //  this.videoBoxes.push(video);
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      console.log('is IOS');
+      this.video.setAttribute("muted", true);
+    }else
+    {
+      this.video.setAttribute("muted", false);
+
+    }
+
     this.video.load();
-    //video.play();
 
     this.video.onloadeddata = (e) => {
       console.log("video loaded");
 
-      e.target.pause();
 
       const videoTexture = new THREE.VideoTexture(e.target);
       videoTexture.minFilter = THREE.LinearFilter;
@@ -561,19 +566,29 @@ export default class ScrollStage {
       console.log("create scrolltrigger");
 
       ScrollTrigger.create({
-        trigger: this.sections[2 * (i + 1) - 1],
+        trigger: this.sections[(2 * (i + 1)) - 1],
         start: "top 80px",
-        endTrigger: this.sections[2 * (i + 1)],
+        endTrigger: this.sections[(2 * (i + 1))],
         end: "bottom bottom",
         scrub: true,
         onEnter: () => {
           console.log("onEnter");
           this.video.pause();
-          this.video.setAttribute('src', this.videoSources[i]);
-          this.video.setAttribute('type', 'video/mp4');
-          this.video.setAttribute('preload', "auto");
-          this.video.setAttribute('playsinline', true);
-          this.video.setAttribute('muted', "true");
+          this.video.setAttribute("src", this.videoSources[i]);
+          this.video.setAttribute("type", "video/mp4");
+          this.video.setAttribute("preload", "auto");
+          this.video.setAttribute("playsinline", true);
+
+          let isIOS =
+            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          if (isIOS) {
+            console.log("is IOS");
+            this.video.setAttribute("muted", true);
+          } else {
+            this.video.setAttribute("muted", false);
+          }
+
+
           this.video.load();
           this.video.onloadeddata = () => {
             this.video.play();

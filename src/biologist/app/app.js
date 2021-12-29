@@ -506,11 +506,11 @@ export default class ScrollStage {
     });
 
     this.videoSources = [
-      "/gold.mov",
-      "/wood.mov",
-      "/aqua.mov",
-      "/fire.mov",
-      "/dirt.mov",
+      "/gold.mp4",
+      "/wood.mp4",
+      "/aqua.mp4",
+      "/fire.mp4",
+      "/dirt.mp4",
     ];
 
     //   this.videoBoxes = [];
@@ -518,6 +518,7 @@ export default class ScrollStage {
     this.video = document.createElement("video");
     this.video.src = this.videoSources[0];
     // this.video.preload = "auto";
+    this.video.setAttribute('type', 'video/mp4')
     this.video.playsinline = true;
     //  this.videoBoxes.push(video);
     this.video.load();

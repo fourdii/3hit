@@ -516,10 +516,12 @@ export default class ScrollStage {
     //   this.videoBoxes = [];
 
     this.video = document.createElement("video");
-    this.video.src = this.videoSources[0];
-    // this.video.preload = "auto";
-    this.video.setAttribute('type', 'video/mp4')
-    this.video.playsinline = true;
+    this.video.setAttribute('src', this.videoSources[0]);
+    this.video.setAttribute('type', 'video/mp4');
+    this.video.setAttribute('preload', "auto");
+    this.video.setAttribute('playsinline', true);
+    this.video.setAttribute('muted', "true");
+
     //  this.videoBoxes.push(video);
     this.video.load();
     //video.play();
@@ -567,9 +569,12 @@ export default class ScrollStage {
         onEnter: () => {
           console.log("onEnter");
           this.video.pause();
-          this.video.src = this.videoSources[i];
+          this.video.setAttribute('src', this.videoSources[i]);
+          this.video.setAttribute('type', 'video/mp4');
+          this.video.setAttribute('preload', "auto");
+          this.video.setAttribute('playsinline', true);
+          this.video.setAttribute('muted', "true");
           this.video.load();
-
           this.video.onloadeddata = () => {
             this.video.play();
           };

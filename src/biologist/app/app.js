@@ -514,104 +514,104 @@ export default class ScrollStage {
     ];
 
 
-    this.video = document.createElement("video");
-    this.video.setAttribute('src', this.videoSources[0]);
-    this.video.setAttribute('type', 'video/mp4');
-    this.video.setAttribute('preload', "auto");
-    this.video.setAttribute('playsinline', true);
+    // this.video = document.createElement("video");
+    // this.video.setAttribute('src', this.videoSources[0]);
+    // this.video.setAttribute('type', 'video/mp4');
+    // this.video.setAttribute('preload', "auto");
+    // this.video.setAttribute('playsinline', true);
 
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (isIOS) {
-      console.log('is IOS');
-      this.video.setAttribute("muted", true);
-    }else
-    {
-      this.video.setAttribute("muted", false);
+    // let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    // if (isIOS) {
+    //   console.log('is IOS');
+    //   this.video.setAttribute("muted", true);
+    // }else
+    // {
+    //   this.video.setAttribute("muted", false);
 
-    }
+    // }
 
-    this.video.load();
+    // this.video.load();
 
-    this.video.onloadeddata = (e) => {
-      console.log("video loaded");
-
-
-      const videoTexture = new THREE.VideoTexture(e.target);
-      videoTexture.minFilter = THREE.LinearFilter;
-      videoTexture.magFilter = THREE.LinearFilter;
-      videoTexture.needsUpdate = true;
-      const videoGeometry = new THREE.PlaneGeometry(12, 12);
-      videoGeometry.scale(0.5, 0.5, 0.5);
-      const videomMaterial = new THREE.MeshBasicMaterial({
-        map: videoTexture,
-        side: THREE.DoubleSide,
-      });
-      videomMaterial.needsUpdate = true;
-
-      const count = 128;
-      const radius = 32;
-
-      for (let i = 1, l = count; i <= l; i++) {
-        const phi = Math.acos(-1 + (2 * i) / l);
-        const theta = Math.sqrt(l * Math.PI) * phi;
-
-        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-        mesh.position.setFromSphericalCoords(radius, phi, theta);
-        mesh.lookAt(new Vector3(0, 0, 30));
-        this.scene.add(mesh);
-      }
-    };
-
-    for (let i = 0; i < this.videoSources.length; i++) {
-      console.log("create scrolltrigger");
-
-      ScrollTrigger.create({
-        trigger: this.sections[(2 * (i + 1)) - 1],
-        start: "top 80px",
-        endTrigger: this.sections[(2 * (i + 1))],
-        end: "bottom bottom",
-        scrub: true,
-        onEnter: () => {
-          console.log("onEnter");
-          this.video.pause();
-          this.video.setAttribute("src", this.videoSources[i]);
-          this.video.setAttribute("type", "video/mp4");
-          this.video.setAttribute("preload", "auto");
-          this.video.setAttribute("playsinline", true);
-
-          let isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          if (isIOS) {
-            console.log("is IOS");
-            this.video.setAttribute("muted", true);
-          } else {
-            this.video.setAttribute("muted", false);
-          }
+    // this.video.onloadeddata = (e) => {
+    //   console.log("video loaded");
 
 
-          this.video.load();
-          this.video.onloadeddata = () => {
-            this.video.play();
-          };
-        },
-        // onLeave: () => {
-        //   console.log("onLeave");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
-        // onEnterBack: () => {
-        //   console.log("onEnterBack");
-        //   this.video.src = this.videoSources[i];
-        //   this.video.load();
-        //   this.video.play();
-        // },
-        // onLeaveBack: () => {
-        //   console.log("onLeaveBack");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
-      });
-    }
+    //   const videoTexture = new THREE.VideoTexture(e.target);
+    //   videoTexture.minFilter = THREE.LinearFilter;
+    //   videoTexture.magFilter = THREE.LinearFilter;
+    //   videoTexture.needsUpdate = true;
+    //   const videoGeometry = new THREE.PlaneGeometry(12, 12);
+    //   videoGeometry.scale(0.5, 0.5, 0.5);
+    //   const videomMaterial = new THREE.MeshBasicMaterial({
+    //     map: videoTexture,
+    //     side: THREE.DoubleSide,
+    //   });
+    //   videomMaterial.needsUpdate = true;
+
+    //   const count = 128;
+    //   const radius = 32;
+
+    //   for (let i = 1, l = count; i <= l; i++) {
+    //     const phi = Math.acos(-1 + (2 * i) / l);
+    //     const theta = Math.sqrt(l * Math.PI) * phi;
+
+    //     const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+    //     mesh.position.setFromSphericalCoords(radius, phi, theta);
+    //     mesh.lookAt(new Vector3(0, 0, 30));
+    //     this.scene.add(mesh);
+    //   }
+    // };
+
+    // for (let i = 0; i < this.videoSources.length; i++) {
+    //   console.log("create scrolltrigger");
+
+    //   ScrollTrigger.create({
+    //     trigger: this.sections[(2 * (i + 1)) - 1],
+    //     start: "top 80px",
+    //     endTrigger: this.sections[(2 * (i + 1))],
+    //     end: "bottom bottom",
+    //     scrub: true,
+    //     onEnter: () => {
+    //       console.log("onEnter");
+    //       this.video.pause();
+    //       this.video.setAttribute("src", this.videoSources[i]);
+    //       this.video.setAttribute("type", "video/mp4");
+    //       this.video.setAttribute("preload", "auto");
+    //       this.video.setAttribute("playsinline", true);
+
+    //       let isIOS =
+    //         /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    //       if (isIOS) {
+    //         console.log("is IOS");
+    //         this.video.setAttribute("muted", true);
+    //       } else {
+    //         this.video.setAttribute("muted", false);
+    //       }
+
+
+    //       this.video.load();
+    //       this.video.onloadeddata = () => {
+    //         this.video.play();
+    //       };
+    //     },
+    //     // onLeave: () => {
+    //     //   console.log("onLeave");
+    //     //   this.video.pause();
+    //     //   this.video.load();
+    //     // },
+    //     // onEnterBack: () => {
+    //     //   console.log("onEnterBack");
+    //     //   this.video.src = this.videoSources[i];
+    //     //   this.video.load();
+    //     //   this.video.play();
+    //     // },
+    //     // onLeaveBack: () => {
+    //     //   console.log("onLeaveBack");
+    //     //   this.video.pause();
+    //     //   this.video.load();
+    //     // },
+    //   });
+    // }
 
     this.geometry = new THREE.IcosahedronGeometry(10, 64);
     this.material = new THREE.ShaderMaterial({
@@ -873,6 +873,105 @@ export default class ScrollStage {
     );
 
     // this.animations = new Animations(this.element, this.camera);
+
+    this.video = document.createElement("video");
+    this.video.setAttribute('src', this.videoSources[0]);
+    this.video.setAttribute('type', 'video/mp4');
+    this.video.setAttribute('preload', "auto");
+    this.video.setAttribute('playsinline', true);
+
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      console.log('is IOS');
+      this.video.setAttribute("muted", true);
+    }else
+    {
+      this.video.setAttribute("muted", false);
+
+    }
+
+    this.video.load();
+
+    this.video.onloadeddata = (e) => {
+      console.log("video loaded");
+
+
+      const videoTexture = new THREE.VideoTexture(e.target);
+      videoTexture.minFilter = THREE.LinearFilter;
+      videoTexture.magFilter = THREE.LinearFilter;
+      videoTexture.needsUpdate = true;
+      const videoGeometry = new THREE.PlaneGeometry(12, 12);
+      videoGeometry.scale(0.5, 0.5, 0.5);
+      const videomMaterial = new THREE.MeshBasicMaterial({
+        map: videoTexture,
+        side: THREE.DoubleSide,
+      });
+      videomMaterial.needsUpdate = true;
+
+      const count = 128;
+      const radius = 32;
+
+      for (let i = 1, l = count; i <= l; i++) {
+        const phi = Math.acos(-1 + (2 * i) / l);
+        const theta = Math.sqrt(l * Math.PI) * phi;
+
+        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+        mesh.position.setFromSphericalCoords(radius, phi, theta);
+        mesh.lookAt(new Vector3(0, 0, 30));
+        this.scene.add(mesh);
+      }
+    };
+
+    for (let i = 0; i < this.videoSources.length; i++) {
+      console.log("create scrolltrigger");
+
+      ScrollTrigger.create({
+        trigger: this.sections[(2 * (i + 1)) - 1],
+        start: "top 80px",
+        endTrigger: this.sections[(2 * (i + 1))],
+        end: "bottom bottom",
+        scrub: true,
+        onEnter: () => {
+          console.log("onEnter");
+          this.video.pause();
+          this.video.setAttribute("src", this.videoSources[i]);
+          this.video.setAttribute("type", "video/mp4");
+          this.video.setAttribute("preload", "auto");
+          this.video.setAttribute("playsinline", true);
+
+          let isIOS =
+            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          if (isIOS) {
+            console.log("is IOS");
+            this.video.setAttribute("muted", true);
+          } else {
+            this.video.setAttribute("muted", false);
+          }
+
+
+          this.video.load();
+          this.video.onloadeddata = () => {
+            this.video.play();
+          };
+        },
+        // onLeave: () => {
+        //   console.log("onLeave");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+        // onEnterBack: () => {
+        //   console.log("onEnterBack");
+        //   this.video.src = this.videoSources[i];
+        //   this.video.load();
+        //   this.video.play();
+        // },
+        // onLeaveBack: () => {
+        //   console.log("onLeaveBack");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+      });
+    }
   }
 
   onMouseMove(event) {

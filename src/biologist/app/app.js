@@ -13,7 +13,7 @@ import "./aqua.glb";
 import "./wood.glb";
 import "./dirt.glb";
 import * as dat from "dat.gui";
-import { Vector3 } from "three";
+import { Vector3 , Vector2} from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -31,6 +31,18 @@ export default class ScrollStage {
       mapUrl: ["/gold.png", "/wood.jpg", "/aqua.jpg", "/fire.jpg", "/dirt.jpg"],
 
       Colors: ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"],
+
+      PatternUrl: ["/biologist/gold_pattern.png", "/biologist/wood_pattern.png", "/biologist/aqua_pattern.png", "/biologist/fire_pattern.png", "/biologist/dirt_pattern.png"],
+
+      PatternSize: [new Vector2(1.6,4), new Vector2(1.6, 5), new Vector2(1.6, 3.4), new Vector2(1.6, 4.6), new Vector2(1.6, 2.4)],
+
+      PatternPos: [
+        new Vector3(-16, 3, 5),
+        new Vector3(20, 3, 14),
+        new Vector3(11, 18, -10),
+        new Vector3(-12, -7, 15),
+        new Vector3(-9, 15, -3),
+      ],
 
       CameraPos: [
         new Vector3(0, 0, 30),
@@ -80,7 +92,7 @@ export default class ScrollStage {
       ],
     };
 
-   // this.gui = new dat.GUI();
+    this.gui = new dat.GUI();
 
     GSAP.registerPlugin(ScrollTrigger, Timeline);
 
@@ -317,7 +329,7 @@ export default class ScrollStage {
 
     const fontLoader = new THREE.FontLoader();
 
-    this.loadModel(fontLoader, "/Year_2000_Replicant_Regular.json").then(
+    this.loadModel(fontLoader, "/VAIO_CON_DIOS_Regular.json").then(
       (font) => {
         const height = 0.05;
         const size = 0.5;
@@ -344,8 +356,10 @@ export default class ScrollStage {
 
         this.textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
-        this.textMesh.position.set(-2.6, -3, -20);
+        this.textMesh.position.set(-2.5, -3, -20);
         this.textMesh.rotation.set(-1.5, 0, 0);
+        this.textMesh.scale.set(1.8, 1.8, 1.8);
+
 
         this.scene.add(this.textMesh);
 
@@ -388,13 +402,18 @@ export default class ScrollStage {
         // this.gui.add(this.textMesh.position, "x", -100, 100, 0.1);
         // this.gui.add(this.textMesh.position, "y", -100, 100, 0.1);
         // this.gui.add(this.textMesh.position, "z", -100, 100, 0.1);
+
+        // this.gui.add(this.textMesh.scale, "x", 0, 10, 0.1);
+        // this.gui.add(this.textMesh.scale, "y", 0, 10, 0.1);
+        // this.gui.add(this.textMesh.scale, "z", 0, 10, 0.1);
         // this.gui.add(this.textMesh.rotation, "x", -100, 100, 0.1);
         // this.gui.add(this.textMesh.rotation, "y", -100, 100, 0.1);
         // this.gui.add(this.textMesh.rotation, "z", -100, 100, 0.1);
       }
     );
 
-    this.loadModel(fontLoader, "/Cyber_Tittle_Regular.json").then((font) => {
+
+    this.loadModel(fontLoader, "/Disco_2000_Regular.json").then((font) => {
       const height = 0.05;
       const size = 0.5;
 
@@ -422,9 +441,9 @@ export default class ScrollStage {
 
       this.textMesh2 = new THREE.Mesh(textGeometry2, textMaterial2);
 
-      this.textMesh2.position.set(-0.9, 2.5, -20);
+      this.textMesh2.position.set(-0.9, 2.4, -20);
       this.textMesh2.rotation.set(1.5, 0, 0);
-      this.textMesh2.scale.set(0.5, 0.5, 0.5);
+      this.textMesh2.scale.set(0.8, 0.8, 0.8);
 
       this.scene.add(this.textMesh2);
 
@@ -467,6 +486,10 @@ export default class ScrollStage {
       // this.gui.add(this.textMesh2.position, "x", -100, 100, 0.1);
       // this.gui.add(this.textMesh2.position, "y", -100, 100, 0.1);
       // this.gui.add(this.textMesh2.position, "z", -100, 100, 0.1);
+
+      // this.gui.add(this.textMesh2.scale, "x", 0, 10, 0.1);
+      //   this.gui.add(this.textMesh2.scale, "y", 0, 10, 0.1);
+      //   this.gui.add(this.textMesh2.scale, "z", 0, 10, 0.1);
       // this.gui.add(this.textMesh2.rotation, "x", -100, 100, 0.1);
       // this.gui.add(this.textMesh2.rotation, "y", -100, 100, 0.1);
       // this.gui.add(this.textMesh2.rotation, "z", -100, 100, 0.1);
@@ -514,104 +537,105 @@ export default class ScrollStage {
     ];
 
 
-    // this.video = document.createElement("video");
-    // this.video.setAttribute('src', this.videoSources[0]);
-    // this.video.setAttribute('type', 'video/mp4');
-    // this.video.setAttribute('preload', "auto");
-    // this.video.setAttribute('playsinline', true);
+    this.video = document.createElement("video");
+    this.video.setAttribute('src', this.videoSources[0]);
+    this.video.setAttribute('type', 'video/mp4');
+    this.video.setAttribute('preload', "auto");
+    this.video.setAttribute('playsinline', true);
 
-    // let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    // if (isIOS) {
-    //   console.log('is IOS');
-    //   this.video.setAttribute("muted", true);
-    // }else
-    // {
-    //   this.video.setAttribute("muted", false);
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      console.log('is IOS');
+      this.video.setAttribute("muted", true);
+    }else
+    {
+      this.video.setAttribute("muted", false);
 
-    // }
+    }
 
-    // this.video.load();
+    this.video.load();
 
-    // this.video.onloadeddata = (e) => {
-    //   console.log("video loaded");
-
-
-    //   const videoTexture = new THREE.VideoTexture(e.target);
-    //   videoTexture.minFilter = THREE.LinearFilter;
-    //   videoTexture.magFilter = THREE.LinearFilter;
-    //   videoTexture.needsUpdate = true;
-    //   const videoGeometry = new THREE.PlaneGeometry(12, 12);
-    //   videoGeometry.scale(0.5, 0.5, 0.5);
-    //   const videomMaterial = new THREE.MeshBasicMaterial({
-    //     map: videoTexture,
-    //     side: THREE.DoubleSide,
-    //   });
-    //   videomMaterial.needsUpdate = true;
-
-    //   const count = 128;
-    //   const radius = 32;
-
-    //   for (let i = 1, l = count; i <= l; i++) {
-    //     const phi = Math.acos(-1 + (2 * i) / l);
-    //     const theta = Math.sqrt(l * Math.PI) * phi;
-
-    //     const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-    //     mesh.position.setFromSphericalCoords(radius, phi, theta);
-    //     mesh.lookAt(new Vector3(0, 0, 30));
-    //     this.scene.add(mesh);
-    //   }
-    // };
-
-    // for (let i = 0; i < this.videoSources.length; i++) {
-    //   console.log("create scrolltrigger");
-
-    //   ScrollTrigger.create({
-    //     trigger: this.sections[(2 * (i + 1)) - 1],
-    //     start: "top 80px",
-    //     endTrigger: this.sections[(2 * (i + 1))],
-    //     end: "bottom bottom",
-    //     scrub: true,
-    //     onEnter: () => {
-    //       console.log("onEnter");
-    //       this.video.pause();
-    //       this.video.setAttribute("src", this.videoSources[i]);
-    //       this.video.setAttribute("type", "video/mp4");
-    //       this.video.setAttribute("preload", "auto");
-    //       this.video.setAttribute("playsinline", true);
-
-    //       let isIOS =
-    //         /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    //       if (isIOS) {
-    //         console.log("is IOS");
-    //         this.video.setAttribute("muted", true);
-    //       } else {
-    //         this.video.setAttribute("muted", false);
-    //       }
+    this.video.onloadeddata = (e) => {
+      console.log("video loaded");
 
 
-    //       this.video.load();
-    //       this.video.onloadeddata = () => {
-    //         this.video.play();
-    //       };
-    //     },
-    //     // onLeave: () => {
-    //     //   console.log("onLeave");
-    //     //   this.video.pause();
-    //     //   this.video.load();
-    //     // },
-    //     // onEnterBack: () => {
-    //     //   console.log("onEnterBack");
-    //     //   this.video.src = this.videoSources[i];
-    //     //   this.video.load();
-    //     //   this.video.play();
-    //     // },
-    //     // onLeaveBack: () => {
-    //     //   console.log("onLeaveBack");
-    //     //   this.video.pause();
-    //     //   this.video.load();
-    //     // },
-    //   });
-    // }
+      const videoTexture = new THREE.VideoTexture(e.target);
+      videoTexture.minFilter = THREE.LinearFilter;
+      videoTexture.magFilter = THREE.LinearFilter;
+      videoTexture.needsUpdate = true;
+      const videoGeometry = new THREE.PlaneGeometry(12, 12);
+      videoGeometry.scale(0.5, 0.5, 0.5);
+      const videomMaterial = new THREE.MeshBasicMaterial({
+        map: videoTexture,
+        side: THREE.DoubleSide,
+      });
+      videomMaterial.needsUpdate = true;
+
+      const count = 128;
+      const radius = 32;
+
+      for (let i = 1, l = count; i <= l; i++) {
+        const phi = Math.acos(-1 + (2 * i) / l);
+        const theta = Math.sqrt(l * Math.PI) * phi;
+
+        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+        mesh.position.setFromSphericalCoords(radius, phi, theta);
+        mesh.lookAt(new Vector3(0, 0, 30));
+        this.scene.add(mesh);
+      }
+    };
+
+    for (let i = 0; i < this.videoSources.length; i++) {
+      console.log("create scrolltrigger");
+
+      ScrollTrigger.create({
+        trigger: this.sections[(2 * (i + 1)) - 1],
+        start: "top 80px",
+        endTrigger: this.sections[(2 * (i + 1))],
+        end: "bottom bottom",
+        scrub: true,
+        onEnter: () => {
+          console.log("onEnter");
+          this.video.pause();
+          this.video.setAttribute("src", this.videoSources[i]);
+          this.video.setAttribute("type", "video/mp4");
+          this.video.setAttribute("preload", "auto");
+          this.video.setAttribute("playsinline", true);
+
+          let isIOS =
+            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          if (isIOS) {
+            console.log("is IOS");
+            this.video.setAttribute("muted", true);
+          } else {
+            this.video.setAttribute("muted", false);
+          }
+
+
+          this.video.load();
+          this.video.onloadeddata = () => {
+            this.video.play();
+          };
+        },
+        // onLeave: () => {
+        //   console.log("onLeave");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+        // onEnterBack: () => {
+        //   console.log("onEnterBack");
+        //   this.video.src = this.videoSources[i];
+        //   this.video.load();
+        //   this.video.play();
+        // },
+        // onLeaveBack: () => {
+        //   console.log("onLeaveBack");
+        //   this.video.pause();
+        //   this.video.load();
+        // },
+      });
+    }
+
 
     this.geometry = new THREE.IcosahedronGeometry(10, 64);
     this.material = new THREE.ShaderMaterial({
@@ -695,6 +719,56 @@ export default class ScrollStage {
         z: 20,
       }
     );
+
+    this.patterns = [];
+
+    for (let i = 0; i < 5; i++) {
+      const tex = new THREE.TextureLoader().load(this.resourceDatas.PatternUrl[i]);
+    
+      const geometry = new THREE.PlaneGeometry(
+        this.resourceDatas.PatternSize[i].x,
+        this.resourceDatas.PatternSize[i].y
+      );
+      const material = new THREE.MeshStandardMaterial({
+        side: THREE.DoubleSide,
+        map: tex,
+        transparent: true,
+        roughness: 0.3,
+        metalness: 0.8,
+      });
+      const plane = new THREE.Mesh(geometry, material);
+      plane.position.set(
+       0,
+       0,
+       50
+      );
+      this.scene.add(plane);
+
+      this.patterns.push(plane);
+  
+      const patternTl = GSAP.timeline();
+      patternTl.to(    
+        this.patterns[i].position,             
+        {
+          x: this.resourceDatas.PatternPos[i].x,
+          y: this.resourceDatas.PatternPos[i].y,
+          z: this.resourceDatas.PatternPos[i].z,
+        }
+      );
+
+      ScrollTrigger.create({
+        animation: patternTl,
+        trigger: this.sections[2 * (i + 1) - 1],
+        start: "top center",
+        endTrigger: this.sections[2 * (i + 1)],
+        end: "top center",
+      });
+    
+      this.gui.add(plane.position, "x", -100, 100, 0.1);
+      this.gui.add(plane.position, "y", -100, 100, 0.1);
+      this.gui.add(plane.position, "z", -100, 100, 0.1);
+    }
+    
 
     document.addEventListener("DOMContentLoaded", function () {
       GSAP.utils.toArray(".gs_reveal").forEach(function (elem) {
@@ -863,6 +937,8 @@ export default class ScrollStage {
 
   onLoad() {
     document.body.classList.remove("loading");
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // ScrollTrigger.refresh();
 
@@ -1061,6 +1137,13 @@ export default class ScrollStage {
         0.1
       );
     }
+
+    for (let i = 0; i < this.patterns.length; i++) {
+      this.patterns[i].rotation.y += 0.08;
+    }
+
+
+    //this.textMesh2.rotation.x += 0.05;
   }
 
   render() {

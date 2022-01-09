@@ -5,6 +5,11 @@ html {
 	font-family: sans-serif;
 }
 
+@font-face {
+    font-family: 'Bjork';
+    src: url('./Retron2000.ttf') format('opentype');
+}
+
 body {
 	display: flex;
 	align-items: center;
@@ -39,7 +44,7 @@ label {
 nav.main-nav {
 	transition: .5s linear opacity;
 	align-items: center;
-	background: darkgray;
+	background: black;
 	font-weight:bold;
 	font-family: Arial, Helvetica, sans-serif;
 	justify-content: center;
@@ -59,10 +64,11 @@ ul.main-nav__fallback {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	font-family: 'Bjork';
 }
 
 ul.main-nav__fallback a {
-	color: #28323c;
+	color: rebeccapurple;
 	font-size: 2em;
 	text-decoration: none;
 }

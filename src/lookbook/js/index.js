@@ -1,6 +1,5 @@
 import "../css/base.css";
 import "../css/horizontal.css";
-// import "./main.js";
 
 import "../css/base2.css";
 import "../css/menu.css";

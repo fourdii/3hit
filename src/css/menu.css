@@ -44,12 +44,16 @@ ul.main-nav__fallback {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	line-height: 2;
+
 }
 
 ul.main-nav__fallback a {
 	font-size: 5vw;
 	color: #cf5500;
 	text-decoration: none;
+	line-height: 2;
+
 }
 
 @media only screen and (min-width: 40.063em) {

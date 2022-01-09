@@ -4,7 +4,7 @@ import Animations from "./Animations";
 import SmoothScroll from "./SmoothScroll";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import "../styles/base.css";
+// import "../styles/base.css";
 import "../styles/shaders-on-scroll.sass";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import "./gold.glb";
@@ -189,7 +189,7 @@ export default class ScrollStage {
     this.materialDict = [];
     this.time = 0;
 
-    const map = new THREE.TextureLoader().load("/biologist/wood_tex.jpg");
+    const map = new THREE.TextureLoader().load("/bio1ogist/wood_tex.jpg");
 
     for (let i = 0; i < this.resourceDatas.name.length; i++) {
       let sModelName = "/model/" + this.resourceDatas.name[i] + ".glb";

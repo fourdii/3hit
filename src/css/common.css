@@ -8,6 +8,12 @@
 	font-size: 15px;
 }
 
+
+@font-face {
+    font-family: 'Bjork';
+    src: url('../font/Retron2000.ttf') format('opentype');
+}
+
 body {
 	margin: 0;
 	--color-text: #111;

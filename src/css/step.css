@@ -39,7 +39,7 @@ label {
 nav.main-nav {
 	transition: .5s linear opacity;
 	align-items: center;
-	background: darkgray;
+	background: black;
 	font-weight:bold;
 	font-family: Arial, Helvetica, sans-serif;
 	justify-content: center;
@@ -59,12 +59,17 @@ ul.main-nav__fallback {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	font-family: 'Bjork';
+	line-height: 2;
+
 }
 
 ul.main-nav__fallback a {
-	color: #28323c;
+	color: rebeccapurple;
 	font-size: 2em;
 	text-decoration: none;
+	line-height: 2;
+
 }
 
 @media only screen and (min-width: 40.063em) {

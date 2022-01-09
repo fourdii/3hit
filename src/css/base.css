@@ -2,6 +2,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 	display: block;
 }
 
+@font-face {
+    font-family: 'Bjork';
+    src: url('../font/Retron2000.ttf') format('opentype');
+}
+
 audio, canvas, video {
 	display: inline-block;
 }

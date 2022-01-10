@@ -4,11 +4,32 @@ import ReactDOM from "react-dom";
 export default function App()
 {
   return (
-    <>
-    <div>
-    <iframe src="https://hubs.mozilla.com/3rLFsLH?embed_token=cba374c70fde8e1ddbcc780de8098ba6" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;" frameborder="0"></iframe>
-      </div>
-    </>
+  
+     <div style="  
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      overflow: auto;
+      " >
+        <iframe
+        src="https://hubs.mozilla.com/wB2AKzv?embed_token=1a8ce2213486db56432220f80ebdab8a"
+        style=" 
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: auto;
+        background: black;
+        "        
+        allow="microphone; camera; vr; speaker; xr-spatial-tracking"
+      ></iframe>
+      </div> 	
+    
   );
 }
 

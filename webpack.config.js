@@ -140,7 +140,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "space.html",
       template: "src/space/space.html",
-      chunks: ["Video"],
+      chunks: ["Space"],
     }),
     new HtmlWebpackPlugin({
       filename: "music.html",

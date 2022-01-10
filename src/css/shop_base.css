@@ -26,6 +26,7 @@ body {
 	--color-link-hover: #000;
     color: var(--color-text);
     background-color: var(--color-bg);
+	/* background-image: url("../img/shop/bg.jpg"); */
     --cursor-stroke: #000;
     --cursor-fill: none;
     --cursor-stroke-width: 1px;

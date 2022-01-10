@@ -15,7 +15,6 @@ import "../js/main.js";
 // custom cursor
 // const cursor = new Cursor(document.querySelector('.cursor'));
 
-console.log("step0");
 
 
 // Preload  images

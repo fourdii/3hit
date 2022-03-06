@@ -189,7 +189,7 @@ export default class ScrollStage {
     this.materialDict = [];
     this.time = 0;
 
-    const map = new THREE.TextureLoader().load("/bio1ogist/wood_tex.jpg");
+    const map = new THREE.TextureLoader().load("/biologist/wood_tex.jpg");
 
     for (let i = 0; i < this.resourceDatas.name.length; i++) {
       let sModelName = "/model/" + this.resourceDatas.name[i] + ".glb";
@@ -1139,7 +1139,7 @@ export default class ScrollStage {
     }
 
     for (let i = 0; i < this.patterns.length; i++) {
-      this.patterns[i].rotation.y += 0.08;
+      this.patterns[i].rotation.y += 0.01;
     }
 
 

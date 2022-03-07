@@ -12,9 +12,10 @@ export default class Main {
     this.setup();
   }
 
-  async setup() {
+   setup() {
     this.scrollStage = new ScrollStage();
-    await this.scrollStage.waitForLoad();  
+    this.scrollStage.loadAssets();  
+    this.scrollStage.init(); 
   }
 }
 

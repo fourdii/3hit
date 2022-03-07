@@ -13,13 +13,10 @@ import "./aqua.glb";
 import "./wood.glb";
 import "./dirt.glb";
 import * as dat from "dat.gui";
-import { Vector3 , Vector2} from "three";
+import { Vector3, Vector2 } from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-
-
-
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default class ScrollStage {
   constructor() {
@@ -32,9 +29,21 @@ export default class ScrollStage {
 
       Colors: ["#f9a602", "#855e42", "#2B65EC", "#b22222", "#9b7653"],
 
-      PatternUrl: ["/biologist/gold_pattern.png", "/biologist/wood_pattern.png", "/biologist/aqua_pattern.png", "/biologist/fire_pattern.png", "/biologist/dirt_pattern.png"],
+      PatternUrl: [
+        "/biologist/gold_pattern.png",
+        "/biologist/wood_pattern.png",
+        "/biologist/aqua_pattern.png",
+        "/biologist/fire_pattern.png",
+        "/biologist/dirt_pattern.png",
+      ],
 
-      PatternSize: [new Vector2(1.6,4), new Vector2(1.6, 5), new Vector2(1.6, 3.4), new Vector2(1.6, 4.6), new Vector2(1.6, 2.4)],
+      PatternSize: [
+        new Vector2(1.6, 4),
+        new Vector2(1.6, 5),
+        new Vector2(1.6, 3.4),
+        new Vector2(1.6, 4.6),
+        new Vector2(1.6, 2.4),
+      ],
 
       PatternPos: [
         new Vector3(-16, 3, 5),
@@ -92,7 +101,7 @@ export default class ScrollStage {
       ],
     };
 
-    this.gui = new dat.GUI();
+    //  this.gui = new dat.GUI();
 
     GSAP.registerPlugin(ScrollTrigger, Timeline);
 
@@ -165,7 +174,7 @@ export default class ScrollStage {
     this.scene = new THREE.Scene();
 
     this.renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: false,
       alpha: true,
     });
 
@@ -182,14 +191,370 @@ export default class ScrollStage {
     });
   }
 
-  _loadingPromise = function () {
+
+ 
+
+  loadAssets = function () {
+
+    this.loadMainModel();
+    this.loadDollModels();
+    this.loadLights();
+    this.loadTaichiModel();
+    this.loadFontModels();
+    this.loadVideoModels();
+    this.loadPatternModels();
+
+    //  document.addEventListener("DOMContentLoaded", function () {
+    // GSAP.utils.toArray(".gs_reveal").forEach(function (elem) {
+    //   GSAP.set(elem, { autoAlpha: 0 });
+    //   //this.hide(elem); // assure that the element is hidden when scrolled into view
+
+    //   function animateFrom(elem, direction) {
+    //     direction = direction || 1;
+    //     var x = 0,
+    //       y = direction * 100;
+    //     if (elem.classList.contains("gs_reveal_fromLeft")) {
+    //       x = -100;
+    //       y = 0;
+    //     } else if (elem.classList.contains("gs_reveal_fromRight")) {
+    //       x = 100;
+    //       y = 0;
+    //     }
+    //     elem.style.transform = "translate(" + x + "px, " + y + "px)";
+    //     elem.style.opacity = "0";
+    //     GSAP.fromTo(
+    //       elem,
+    //       { x: x, y: y, autoAlpha: 0 },
+    //       {
+    //         //duration: 3,
+    //         x: 0,
+    //         y: 0,
+    //         autoAlpha: 1,
+    //         //ease: "expo",
+    //         overwrite: "auto",
+    //         //scrub: true,
+    //       }
+    //     );
+    //   }
+
+    //   ScrollTrigger.create({
+    //     trigger: elem,
+    //     onEnter: function () {
+    //       animateFrom(elem);
+    //     },
+    //     onEnterBack: function () {
+    //       animateFrom(elem, -1);
+    //     },
+    //     onLeave: function () {
+    //       GSAP.set(elem, { autoAlpha: 0 });
+    //     }, // assure that the element is hidden when scrolled into view
+    //   });
+    //  });
+    // });
+
+  
+  };
+
+  init(){
+    this.addEventListeners();
+    this.onResize();
+    this.update();
+  }
+
+  loadFontModels() {
+    const fontLoader = new THREE.FontLoader();
+
+    this.loadModel(fontLoader, "/VAIO_CON_DIOS_Regular.json").then((font) => {
+      const height = 0.05;
+      const size = 0.5;
+
+      const textGeometry = new THREE.TextGeometry("biologist", {
+        font: font,
+        size: size,
+        height: height,
+        depth: 2,
+        curveSegments: 6,
+        bevelEnabled: true,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelOffset: 0,
+        bevelSegments: 20,
+      });
+
+      const textMaterial = new THREE.MeshStandardMaterial({
+        color: 0x888888,
+        emissive: 0x000000,
+        metalness: 0.8,
+        roughness: 0.4,
+      });
+
+      this.textMesh = new THREE.Mesh(textGeometry, textMaterial);
+
+      this.textMesh.position.set(-2.5, -3, -20);
+      this.textMesh.rotation.set(-1.5, 0, 0);
+      this.textMesh.scale.set(1.8, 1.8, 1.8);
+
+      this.scene.add(this.textMesh);
+
+      let animateIn = GSAP.timeline({
+        defaults: {
+          ease: "expo",
+        },
+      });
+
+      animateIn
+        .fromTo(
+          this.textMesh.position,
+          {
+            x: this.textMesh.position.x,
+            y: this.textMesh.position.y,
+            z: this.textMesh.position.z,
+          },
+          {
+            x: this.textMesh.position.x,
+            y: this.textMesh.position.y,
+            z: 20,
+            duration: 3,
+          }
+        )
+        .fromTo(
+          this.textMesh.rotation,
+          {
+            x: this.textMesh.rotation.x,
+            y: this.textMesh.rotation.y,
+            z: this.textMesh.rotation.z,
+          },
+          {
+            x: 0,
+            y: this.textMesh.rotation.y,
+            z: this.textMesh.rotation.z,
+            duration: 3,
+          }
+        );
+
+      // this.gui.add(this.textMesh.position, "x", -100, 100, 0.1);
+      // this.gui.add(this.textMesh.position, "y", -100, 100, 0.1);
+      // this.gui.add(this.textMesh.position, "z", -100, 100, 0.1);
+
+      // this.gui.add(this.textMesh.scale, "x", 0, 10, 0.1);
+      // this.gui.add(this.textMesh.scale, "y", 0, 10, 0.1);
+      // this.gui.add(this.textMesh.scale, "z", 0, 10, 0.1);
+      // this.gui.add(this.textMesh.rotation, "x", -100, 100, 0.1);
+      // this.gui.add(this.textMesh.rotation, "y", -100, 100, 0.1);
+      // this.gui.add(this.textMesh.rotation, "z", -100, 100, 0.1);
+    });
+
+    this.loadModel(fontLoader, "/Disco_2000_Regular.json").then((font) => {
+      const height = 0.05;
+      const size = 0.5;
+
+      const textGeometry2 = new THREE.TextGeometry("5 3l3m3nt", {
+        font: font,
+        size: size,
+        height: height,
+        depth: 2,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelOffset: 0,
+        bevelSegments: 20,
+      });
+
+      textGeometry2.computeBoundingBox();
+
+      const textMaterial2 = new THREE.MeshStandardMaterial({
+        color: 0x888888,
+        emissive: 0x000000,
+        metalness: 0.8,
+        roughness: 0.4,
+      });
+
+      this.textMesh2 = new THREE.Mesh(textGeometry2, textMaterial2);
+
+      this.textMesh2.position.set(-0.9, 2.4, -20);
+      this.textMesh2.rotation.set(1.5, 0, 0);
+      this.textMesh2.scale.set(0.8, 0.8, 0.8);
+
+      this.scene.add(this.textMesh2);
+
+      let animateIn = GSAP.timeline({
+        defaults: {
+          ease: "expo",
+        },
+      });
+
+      animateIn
+        .fromTo(
+          this.textMesh2.position,
+          {
+            x: this.textMesh2.position.x,
+            y: this.textMesh2.position.y,
+            z: this.textMesh2.position.z,
+          },
+          {
+            x: this.textMesh2.position.x,
+            y: this.textMesh2.position.y,
+            z: 20,
+            duration: 3,
+          }
+        )
+        .fromTo(
+          this.textMesh2.rotation,
+          {
+            x: this.textMesh2.rotation.x,
+            y: this.textMesh2.rotation.y,
+            z: this.textMesh2.rotation.z,
+          },
+          {
+            x: 0,
+            y: this.textMesh2.rotation.y,
+            z: this.textMesh2.rotation.z,
+            duration: 3,
+          }
+        );
+
+      // this.gui.add(this.textMesh2.position, "x", -100, 100, 0.1);
+      // this.gui.add(this.textMesh2.position, "y", -100, 100, 0.1);
+      // this.gui.add(this.textMesh2.position, "z", -100, 100, 0.1);
+
+      // this.gui.add(this.textMesh2.scale, "x", 0, 10, 0.1);
+      //   this.gui.add(this.textMesh2.scale, "y", 0, 10, 0.1);
+      //   this.gui.add(this.textMesh2.scale, "z", 0, 10, 0.1);
+      // this.gui.add(this.textMesh2.rotation, "x", -100, 100, 0.1);
+      // this.gui.add(this.textMesh2.rotation, "y", -100, 100, 0.1);
+      // this.gui.add(this.textMesh2.rotation, "z", -100, 100, 0.1);
+    });
+  }
+
+  loadTaichiModel() {
+    const materials = [];
+    this.taichiGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.01, 32);
+    const taichiTexture = new THREE.TextureLoader().load("taichi.png");
+    const top = new THREE.MeshBasicMaterial({ map: taichiTexture });
+    const side = new THREE.MeshBasicMaterial();
+    const bottom = new THREE.MeshBasicMaterial({ map: taichiTexture });
+
+    materials.push(side);
+    materials.push(top);
+    materials.push(bottom);
+
+    this.taichiMesh = new THREE.Mesh(this.taichiGeometry, materials);
+    this.taichiMesh.position.set(0, 0, -10);
+    this.taichiMesh.rotation.set(1.5, 2.5, 0);
+    this.taichiMesh.scale.set(8, 8, 8);
+
+    this.scene.add(this.taichiMesh);
+
+    // this.gui.add(this.emojiMesh.position, "x", -100, 100, 0.1);
+    // this.gui.add(this.emojiMesh.position, "y", -100, 100, 0.1);
+    // this.gui.add(this.emojiMesh.position, "z", -100, 100, 0.1);
+
+    // this.gui.add(this.emojiMesh.rotation, "x", -100, 100, 0.1);
+    // this.gui.add(this.emojiMesh.rotation, "y", -100, 100, 0.1);
+    // this.gui.add(this.emojiMesh.rotation, "z", -100, 100, 0.1);
+
+    GSAP.fromTo(
+      this.taichiMesh.position,
+      {
+        x: 0,
+        y: 0,
+        z: -10,
+      },
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 3,
+      }
+    );
+
+    let taichiTl = GSAP.timeline({
+      scrollTrigger: {
+        trigger: this.sections[0],
+        start: "top top",
+        endTrigger: this.sections[10],
+        end: "bottom bottom",
+      },
+    });
+    taichiTl.fromTo(
+      this.taichiMesh.rotation,
+      {
+        x: 1.5,
+        y: 2.5,
+        z: 0,
+      },
+      {
+        x: 1.5,
+        y: 20,
+        z: 20,
+      }
+    );
+  }
+
+  loadLights() {
+    this.light = new THREE.AmbientLight(0x404040, 12);
+    this.scene.add(this.light);
+
+    this.pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
+    this.pointLight1.position.set(0, 0, 30);
+    this.pointLight1.rotation.set(0, 0, 0);
+    this.scene.add(this.pointLight1);
+
+    this.pointLight2 = new THREE.PointLight(0xffffff, 1, 100);
+    this.pointLight1.position.set(0, 0, 50);
+    this.pointLight1.rotation.set(0, 0, 0);
+    this.scene.add(this.pointLight2);
+
+    // this.gui.add(this.pointLight1.position, "x", -100, 100, 0.1);
+    // this.gui.add(this.pointLight1.position, "y", -100, 100, 0.1);
+    // this.gui.add(this.pointLight1.position, "z", -100, 100, 0.1);
+
+    // this.gui.add(this.pointLight2.position, "x", -100, 100, 0.1);
+    // this.gui.add(this.pointLight2.position, "y", -100, 100, 0.1);
+    // this.gui.add(this.pointLight2.position, "z", -100, 100, 0.1);
+
+    ScrollTrigger.create({
+      trigger: this.sections[0],
+      start: "top 80px",
+      endTrigger: this.sections[10],
+      end: "center bottom",
+      scrub: true,
+      onUpdate: (self) => {
+        this.pointLight2.position.x =
+          100 * Math.sin(10 * self.progress.toFixed(3));
+      },
+    });
+  }
+
+  loadMainModel() {
+    this.geometry = new THREE.IcosahedronGeometry(10, 64);
+    this.material = new THREE.ShaderMaterial({
+      wireframe: true,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uFrequency: { value: this.settings.uFrequency.start },
+        uAmplitude: { value: this.settings.uAmplitude.start },
+        uDensity: { value: this.settings.uDensity.start },
+        uStrength: { value: this.settings.uStrength.start },
+        uDeepPurple: { value: this.settings.uDeepPurple.start },
+        uOpacity: { value: this.settings.uOpacity.start },
+      },
+    });
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.mesh.position.set(0, 0, 0);
+    this.scene.add(this.mesh);
+  }
+
+  loadDollModels() {
     this.GLTFLoader = new GLTFLoader();
 
     this.dict = [];
     this.materialDict = [];
     this.time = 0;
-
-    const map = new THREE.TextureLoader().load("/biologist/wood_tex.jpg");
 
     for (let i = 0; i < this.resourceDatas.name.length; i++) {
       let sModelName = "/model/" + this.resourceDatas.name[i] + ".glb";
@@ -326,208 +691,55 @@ export default class ScrollStage {
         });
       });
     }
+  }
 
-    const fontLoader = new THREE.FontLoader();
+  loadPatternModels() {
+    this.patterns = [];
 
-    this.loadModel(fontLoader, "/VAIO_CON_DIOS_Regular.json").then(
-      (font) => {
-        const height = 0.05;
-        const size = 0.5;
+    for (let i = 0; i < 5; i++) {
+      const tex = new THREE.TextureLoader().load(
+        this.resourceDatas.PatternUrl[i]
+      );
 
-        const textGeometry = new THREE.TextGeometry("biologist", {
-          font: font,
-          size: size,
-          height: height,
-          depth: 2,
-          curveSegments: 6,
-          bevelEnabled: true,
-          bevelThickness: 0.05,
-          bevelSize: 0.05,
-          bevelOffset: 0,
-          bevelSegments: 20,
-        });
-
-        const textMaterial = new THREE.MeshStandardMaterial({
-          color: 0x888888,
-          emissive: 0x000000,
-          metalness: 0.8,
-          roughness: 0.4,
-        });
-
-        this.textMesh = new THREE.Mesh(textGeometry, textMaterial);
-
-        this.textMesh.position.set(-2.5, -3, -20);
-        this.textMesh.rotation.set(-1.5, 0, 0);
-        this.textMesh.scale.set(1.8, 1.8, 1.8);
-
-
-        this.scene.add(this.textMesh);
-
-        let animateIn = GSAP.timeline({
-          defaults: {
-            ease: "expo",
-          },
-        });
-
-        animateIn
-          .fromTo(
-            this.textMesh.position,
-            {
-              x: this.textMesh.position.x,
-              y: this.textMesh.position.y,
-              z: this.textMesh.position.z,
-            },
-            {
-              x: this.textMesh.position.x,
-              y: this.textMesh.position.y,
-              z: 20,
-              duration: 3,
-            }
-          )
-          .fromTo(
-            this.textMesh.rotation,
-            {
-              x: this.textMesh.rotation.x,
-              y: this.textMesh.rotation.y,
-              z: this.textMesh.rotation.z,
-            },
-            {
-              x: 0,
-              y: this.textMesh.rotation.y,
-              z: this.textMesh.rotation.z,
-              duration: 3,
-            }
-          );
-
-        // this.gui.add(this.textMesh.position, "x", -100, 100, 0.1);
-        // this.gui.add(this.textMesh.position, "y", -100, 100, 0.1);
-        // this.gui.add(this.textMesh.position, "z", -100, 100, 0.1);
-
-        // this.gui.add(this.textMesh.scale, "x", 0, 10, 0.1);
-        // this.gui.add(this.textMesh.scale, "y", 0, 10, 0.1);
-        // this.gui.add(this.textMesh.scale, "z", 0, 10, 0.1);
-        // this.gui.add(this.textMesh.rotation, "x", -100, 100, 0.1);
-        // this.gui.add(this.textMesh.rotation, "y", -100, 100, 0.1);
-        // this.gui.add(this.textMesh.rotation, "z", -100, 100, 0.1);
-      }
-    );
-
-
-    this.loadModel(fontLoader, "/Disco_2000_Regular.json").then((font) => {
-      const height = 0.05;
-      const size = 0.5;
-
-      const textGeometry2 = new THREE.TextGeometry("5 3l3m3nt", {
-        font: font,
-        size: size,
-        height: height,
-        depth: 2,
-        curveSegments: 12,
-        bevelEnabled: true,
-        bevelThickness: 0.05,
-        bevelSize: 0.05,
-        bevelOffset: 0,
-        bevelSegments: 20,
-      });
-
-      textGeometry2.computeBoundingBox();
-
-      const textMaterial2 = new THREE.MeshStandardMaterial({
-        color: 0x888888,
-        emissive: 0x000000,
+      const geometry = new THREE.PlaneGeometry(
+        this.resourceDatas.PatternSize[i].x,
+        this.resourceDatas.PatternSize[i].y
+      );
+      const material = new THREE.MeshStandardMaterial({
+        side: THREE.DoubleSide,
+        map: tex,
+        transparent: true,
+        roughness: 0.3,
         metalness: 0.8,
-        roughness: 0.4,
+      });
+      const plane = new THREE.Mesh(geometry, material);
+      plane.position.set(0, 0, 50);
+      this.scene.add(plane);
+
+      this.patterns.push(plane);
+
+      const patternTl = GSAP.timeline();
+      patternTl.to(this.patterns[i].position, {
+        x: this.resourceDatas.PatternPos[i].x,
+        y: this.resourceDatas.PatternPos[i].y,
+        z: this.resourceDatas.PatternPos[i].z,
       });
 
-      this.textMesh2 = new THREE.Mesh(textGeometry2, textMaterial2);
-
-      this.textMesh2.position.set(-0.9, 2.4, -20);
-      this.textMesh2.rotation.set(1.5, 0, 0);
-      this.textMesh2.scale.set(0.8, 0.8, 0.8);
-
-      this.scene.add(this.textMesh2);
-
-      let animateIn = GSAP.timeline({
-        defaults: {
-          ease: "expo",
-        },
+      ScrollTrigger.create({
+        animation: patternTl,
+        trigger: this.sections[2 * (i + 1) - 1],
+        start: "top center",
+        endTrigger: this.sections[2 * (i + 1)],
+        end: "top center",
       });
 
-      animateIn
-        .fromTo(
-          this.textMesh2.position,
-          {
-            x: this.textMesh2.position.x,
-            y: this.textMesh2.position.y,
-            z: this.textMesh2.position.z,
-          },
-          {
-            x: this.textMesh2.position.x,
-            y: this.textMesh2.position.y,
-            z: 20,
-            duration: 3,
-          }
-        )
-        .fromTo(
-          this.textMesh2.rotation,
-          {
-            x: this.textMesh2.rotation.x,
-            y: this.textMesh2.rotation.y,
-            z: this.textMesh2.rotation.z,
-          },
-          {
-            x: 0,
-            y: this.textMesh2.rotation.y,
-            z: this.textMesh2.rotation.z,
-            duration: 3,
-          }
-        );
+      // this.gui.add(plane.position, "x", -100, 100, 0.1);
+      // this.gui.add(plane.position, "y", -100, 100, 0.1);
+      // this.gui.add(plane.position, "z", -100, 100, 0.1);
+    }
+  }
 
-      // this.gui.add(this.textMesh2.position, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.position, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.position, "z", -100, 100, 0.1);
-
-      // this.gui.add(this.textMesh2.scale, "x", 0, 10, 0.1);
-      //   this.gui.add(this.textMesh2.scale, "y", 0, 10, 0.1);
-      //   this.gui.add(this.textMesh2.scale, "z", 0, 10, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "z", -100, 100, 0.1);
-    });
-
-    this.light = new THREE.AmbientLight(0x404040, 12);
-    this.scene.add(this.light);
-
-    this.pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
-    this.pointLight1.position.set(0, 0, 30);
-    this.pointLight1.rotation.set(0, 0, 0);
-    this.scene.add(this.pointLight1);
-
-    this.pointLight2 = new THREE.PointLight(0xffffff, 1, 100);
-    this.pointLight1.position.set(0, 0, 50);
-    this.pointLight1.rotation.set(0, 0, 0);
-    this.scene.add(this.pointLight2);
-
-    // this.gui.add(this.pointLight1.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.pointLight1.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.pointLight1.position, "z", -100, 100, 0.1);
-
-    // this.gui.add(this.pointLight2.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.pointLight2.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.pointLight2.position, "z", -100, 100, 0.1);
-
-    ScrollTrigger.create({
-      trigger: this.sections[0],
-      start: "top 80px",
-      endTrigger: this.sections[10],
-      end: "center bottom",
-      scrub: true,
-      onUpdate: (self) => {
-        this.pointLight2.position.x =
-          100 * Math.sin(10 * self.progress.toFixed(3));
-      },
-    });
-
+  loadVideoModels() {
     this.videoSources = [
       "/gold.mp4",
       "/wood.mp4",
@@ -536,28 +748,25 @@ export default class ScrollStage {
       "/dirt.mp4",
     ];
 
-
     this.video = document.createElement("video");
-    this.video.setAttribute('src', this.videoSources[0]);
-    this.video.setAttribute('type', 'video/mp4');
-    this.video.setAttribute('preload', "auto");
-    this.video.setAttribute('playsinline', true);
+    this.video.setAttribute("src", this.videoSources[0]);
+    this.video.setAttribute("type", "video/mp4");
+    this.video.setAttribute("preload", "auto");
+    this.video.setAttribute("playsinline", true);
 
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    let isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
-      console.log('is IOS');
+      console.log("is IOS");
       this.video.setAttribute("muted", true);
-    }else
-    {
+    } else {
       this.video.setAttribute("muted", false);
-
     }
 
     this.video.load();
 
     this.video.onloadeddata = (e) => {
       console.log("video loaded");
-
 
       const videoTexture = new THREE.VideoTexture(e.target);
       videoTexture.minFilter = THREE.LinearFilter;
@@ -589,9 +798,9 @@ export default class ScrollStage {
       console.log("create scrolltrigger");
 
       ScrollTrigger.create({
-        trigger: this.sections[(2 * (i + 1)) - 1],
+        trigger: this.sections[2 * (i + 1) - 1],
         start: "top 80px",
-        endTrigger: this.sections[(2 * (i + 1))],
+        endTrigger: this.sections[2 * (i + 1)],
         end: "bottom bottom",
         scrub: true,
         onEnter: () => {
@@ -611,217 +820,30 @@ export default class ScrollStage {
             this.video.setAttribute("muted", false);
           }
 
-
           this.video.load();
           this.video.onloadeddata = () => {
             this.video.play();
           };
         },
-        // onLeave: () => {
-        //   console.log("onLeave");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
-        // onEnterBack: () => {
-        //   console.log("onEnterBack");
-        //   this.video.src = this.videoSources[i];
-        //   this.video.load();
-        //   this.video.play();
-        // },
-        // onLeaveBack: () => {
-        //   console.log("onLeaveBack");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
+        onLeave: () => {
+          console.log("onLeave");
+          this.video.pause();
+          this.video.load();
+        },
+        onEnterBack: () => {
+          console.log("onEnterBack");
+          this.video.src = this.videoSources[i];
+          this.video.load();
+          this.video.play();
+        },
+        onLeaveBack: () => {
+          console.log("onLeaveBack");
+          this.video.pause();
+          this.video.load();
+        },
       });
     }
-
-
-    this.geometry = new THREE.IcosahedronGeometry(10, 64);
-    this.material = new THREE.ShaderMaterial({
-      wireframe: true,
-      blending: THREE.AdditiveBlending,
-      transparent: true,
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        uFrequency: { value: this.settings.uFrequency.start },
-        uAmplitude: { value: this.settings.uAmplitude.start },
-        uDensity: { value: this.settings.uDensity.start },
-        uStrength: { value: this.settings.uStrength.start },
-        uDeepPurple: { value: this.settings.uDeepPurple.start },
-        uOpacity: { value: this.settings.uOpacity.start },
-      },
-    });
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.position.set(0, 0, 0);
-    this.scene.add(this.mesh);
-
-    const materials = [];
-    this.taichiGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.01, 32);
-    const taichiTexture = new THREE.TextureLoader().load("taichi.png");
-    const top = new THREE.MeshBasicMaterial({ map: taichiTexture });
-    const side = new THREE.MeshBasicMaterial();
-    const bottom = new THREE.MeshBasicMaterial({ map: taichiTexture });
-
-    materials.push(side);
-    materials.push(top);
-    materials.push(bottom);
-
-    this.taichiMesh = new THREE.Mesh(this.taichiGeometry, materials);
-    this.taichiMesh.position.set(0, 0, -10);
-    this.taichiMesh.rotation.set(1.5, 2.5, 0);
-    this.taichiMesh.scale.set(8, 8, 8);
-
-    this.scene.add(this.taichiMesh);
-
-    // this.gui.add(this.emojiMesh.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.position, "z", -100, 100, 0.1);
-
-    // this.gui.add(this.emojiMesh.rotation, "x", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.rotation, "y", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.rotation, "z", -100, 100, 0.1);
-
-    GSAP.fromTo(
-      this.taichiMesh.position,
-      {
-        x: 0,
-        y: 0,
-        z: -10,
-      },
-      {
-        x: 0,
-        y: 0,
-        z: 0,
-        duration: 3,
-      }
-    );
-
-    let taichiTl = GSAP.timeline({
-      scrollTrigger: {
-        trigger: this.sections[0],
-        start: "top top",
-        endTrigger: this.sections[10],
-        end: "bottom bottom",
-      },
-    });
-    taichiTl.fromTo(
-      this.taichiMesh.rotation,
-      {
-        x: 1.5,
-        y: 2.5,
-        z: 0,
-      },
-      {
-        x: 1.5,
-        y: 20,
-        z: 20,
-      }
-    );
-
-    this.patterns = [];
-
-    for (let i = 0; i < 5; i++) {
-      const tex = new THREE.TextureLoader().load(this.resourceDatas.PatternUrl[i]);
-    
-      const geometry = new THREE.PlaneGeometry(
-        this.resourceDatas.PatternSize[i].x,
-        this.resourceDatas.PatternSize[i].y
-      );
-      const material = new THREE.MeshStandardMaterial({
-        side: THREE.DoubleSide,
-        map: tex,
-        transparent: true,
-        roughness: 0.3,
-        metalness: 0.8,
-      });
-      const plane = new THREE.Mesh(geometry, material);
-      plane.position.set(
-       0,
-       0,
-       50
-      );
-      this.scene.add(plane);
-
-      this.patterns.push(plane);
-  
-      const patternTl = GSAP.timeline();
-      patternTl.to(    
-        this.patterns[i].position,             
-        {
-          x: this.resourceDatas.PatternPos[i].x,
-          y: this.resourceDatas.PatternPos[i].y,
-          z: this.resourceDatas.PatternPos[i].z,
-        }
-      );
-
-      ScrollTrigger.create({
-        animation: patternTl,
-        trigger: this.sections[2 * (i + 1) - 1],
-        start: "top center",
-        endTrigger: this.sections[2 * (i + 1)],
-        end: "top center",
-      });
-    
-      this.gui.add(plane.position, "x", -100, 100, 0.1);
-      this.gui.add(plane.position, "y", -100, 100, 0.1);
-      this.gui.add(plane.position, "z", -100, 100, 0.1);
-    }
-    
-
-    document.addEventListener("DOMContentLoaded", function () {
-      GSAP.utils.toArray(".gs_reveal").forEach(function (elem) {
-        GSAP.set(elem, { autoAlpha: 0 });
-        //this.hide(elem); // assure that the element is hidden when scrolled into view
-
-        function animateFrom(elem, direction) {
-          direction = direction || 1;
-          var x = 0,
-            y = direction * 100;
-          if (elem.classList.contains("gs_reveal_fromLeft")) {
-            x = -100;
-            y = 0;
-          } else if (elem.classList.contains("gs_reveal_fromRight")) {
-            x = 100;
-            y = 0;
-          }
-          elem.style.transform = "translate(" + x + "px, " + y + "px)";
-          elem.style.opacity = "0";
-          GSAP.fromTo(
-            elem,
-            { x: x, y: y, autoAlpha: 0 },
-            {
-              //duration: 3,
-              x: 0,
-              y: 0,
-              autoAlpha: 1,
-              //ease: "expo",
-              overwrite: "auto",
-              //scrub: true,
-            }
-          );
-        }
-
-        ScrollTrigger.create({
-          trigger: elem,
-          onEnter: function () {
-            animateFrom(elem);
-          },
-          onEnterBack: function () {
-            animateFrom(elem, -1);
-          },
-          onLeave: function () {
-            GSAP.set(elem, { autoAlpha: 0 });
-          }, // assure that the element is hidden when scrolled into view
-        });
-      });
-    });
-
-    this.addEventListeners();
-    this.onResize();
-    this.update();
-  };
+  }
 
   addCanvas() {
     this.canvas = this.renderer.domElement;
@@ -838,7 +860,8 @@ export default class ScrollStage {
     );
 
     this.scene.add(this.camera);
-    this.camera.position.set(0, 0, 30);
+
+    // this.camera.position.set(0, 0, 30);
 
     for (let i = 0; i < 5; i++) {
       let tl = GSAP.timeline({
@@ -864,6 +887,8 @@ export default class ScrollStage {
       );
     }
 
+    GSAP.set(this.camera.position, { x: 0, y: 0, z: 30 });
+
     // this.gui.add(this.camera.position, "x", -100, 100, 0.1);
     // this.gui.add(this.camera.position, "y", -100, 100, 0.1);
     // this.gui.add(this.camera.position, "z", -100, 100, 0.1);
@@ -871,10 +896,6 @@ export default class ScrollStage {
     // this.gui.add(this.camera.rotation, "x", -2, 2, 0.1);
     // this.gui.add(this.camera.rotation, "y", -2, 2, 0.1);
     // this.gui.add(this.camera.rotation, "z", -2, 2, 0.1);
-  }
-
-  waitForLoad() {
-    return this._loadingPromise();
   }
 
   loadModel(loader, url) {
@@ -899,27 +920,27 @@ export default class ScrollStage {
   updateScrollAnimations() {
     this.scroll.running = false;
     this.scroll.normalized = this.scroll.hard / this.scroll.limit;
-    GSAP.to(this.mesh.rotation, {
-      x: this.scroll.normalized * Math.PI,
-    });
-    GSAP.to(this.elements.line, {
-      scaleX: this.scroll.normalized,
-      transformOrigin: "left",
-      //scrub: true,
-      // duration: 1.5,
-      // ease: "ease",
-    });
+    // GSAP.to(this.mesh.rotation, {
+    //   x: this.scroll.normalized * Math.PI,
+    // });
+    // GSAP.to(this.elements.line, {
+    //   scaleX: this.scroll.normalized,
+    //   transformOrigin: "left",
+    //   //scrub: true,
+    //   // duration: 1.5,
+    //   // ease: "ease",
+    // });
 
-    for (const key in this.settings) {
-      if (this.settings[key].start !== this.settings[key].end) {
-        GSAP.to(this.mesh.material.uniforms[key], {
-          value:
-            this.settings[key].start +
-            this.scroll.normalized *
-              (this.settings[key].end - this.settings[key].start),
-        });
-      }
-    }
+    // for (const key in this.settings) {
+    //   if (this.settings[key].start !== this.settings[key].end) {
+    //     GSAP.to(this.mesh.material.uniforms[key], {
+    //       value:
+    //         this.settings[key].start +
+    //         this.scroll.normalized *
+    //           (this.settings[key].end - this.settings[key].start),
+    //     });
+    //   }
+    // }
   }
 
   addEventListeners() {
@@ -927,8 +948,6 @@ export default class ScrollStage {
     this.update = this.update.bind(this);
 
     window.addEventListener("load", this.onLoad.bind(this));
-
-    //window.addEventListener('mousemove', this.onMouseMove.bind(this))  // enable for soundcheck (→ console)
 
     window.addEventListener("scroll", this.onScroll.bind(this));
 
@@ -938,130 +957,114 @@ export default class ScrollStage {
   onLoad() {
     document.body.classList.remove("loading");
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // ScrollTrigger.refresh();
 
-    GSAP.fromTo(
-      this.camera.position,
-      { x: 0, y: 0, z: 40 },
-      { x: 0, y: 0, z: 30, duration: 1 }
-    );
+    // GSAP.fromTo(
+    //   this.camera.position,
+    //   { x: 0, y: 0, z: 40 },
+    //   { x: 0, y: 0, z: 30, duration: 1 }
+    // );
 
     // this.animations = new Animations(this.element, this.camera);
 
-    this.video = document.createElement("video");
-    this.video.setAttribute('src', this.videoSources[0]);
-    this.video.setAttribute('type', 'video/mp4');
-    this.video.setAttribute('preload', "auto");
-    this.video.setAttribute('playsinline', true);
+    // this.video = document.createElement("video");
+    // this.video.setAttribute('src', this.videoSources[0]);
+    // this.video.setAttribute('type', 'video/mp4');
+    // this.video.setAttribute('preload', "auto");
+    // this.video.setAttribute('playsinline', true);
 
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (isIOS) {
-      console.log('is IOS');
-      this.video.setAttribute("muted", true);
-    }else
-    {
-      this.video.setAttribute("muted", false);
+    // let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    // if (isIOS) {
+    //   console.log('is IOS');
+    //   this.video.setAttribute("muted", true);
+    // }else
+    // {
+    //   this.video.setAttribute("muted", false);
 
-    }
+    // }
 
-    this.video.load();
+    // this.video.load();
 
-    this.video.onloadeddata = (e) => {
-      console.log("video loaded");
+    // this.video.onloadeddata = (e) => {
+    //   console.log("video loaded");
 
+    //   const videoTexture = new THREE.VideoTexture(e.target);
+    //   videoTexture.minFilter = THREE.LinearFilter;
+    //   videoTexture.magFilter = THREE.LinearFilter;
+    //   videoTexture.needsUpdate = true;
+    //   const videoGeometry = new THREE.PlaneGeometry(12, 12);
+    //   videoGeometry.scale(0.5, 0.5, 0.5);
+    //   const videomMaterial = new THREE.MeshBasicMaterial({
+    //     map: videoTexture,
+    //     side: THREE.DoubleSide,
+    //   });
+    //   videomMaterial.needsUpdate = true;
 
-      const videoTexture = new THREE.VideoTexture(e.target);
-      videoTexture.minFilter = THREE.LinearFilter;
-      videoTexture.magFilter = THREE.LinearFilter;
-      videoTexture.needsUpdate = true;
-      const videoGeometry = new THREE.PlaneGeometry(12, 12);
-      videoGeometry.scale(0.5, 0.5, 0.5);
-      const videomMaterial = new THREE.MeshBasicMaterial({
-        map: videoTexture,
-        side: THREE.DoubleSide,
-      });
-      videomMaterial.needsUpdate = true;
+    //   const count = 128;
+    //   const radius = 32;
 
-      const count = 128;
-      const radius = 32;
+    //   for (let i = 1, l = count; i <= l; i++) {
+    //     const phi = Math.acos(-1 + (2 * i) / l);
+    //     const theta = Math.sqrt(l * Math.PI) * phi;
 
-      for (let i = 1, l = count; i <= l; i++) {
-        const phi = Math.acos(-1 + (2 * i) / l);
-        const theta = Math.sqrt(l * Math.PI) * phi;
+    //     const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
+    //     mesh.position.setFromSphericalCoords(radius, phi, theta);
+    //     mesh.lookAt(new Vector3(0, 0, 30));
+    //     this.scene.add(mesh);
+    //   }
+    // };
 
-        const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-        mesh.position.setFromSphericalCoords(radius, phi, theta);
-        mesh.lookAt(new Vector3(0, 0, 30));
-        this.scene.add(mesh);
-      }
-    };
+    // for (let i = 0; i < this.videoSources.length; i++) {
+    //   console.log("create scrolltrigger");
 
-    for (let i = 0; i < this.videoSources.length; i++) {
-      console.log("create scrolltrigger");
+    //   ScrollTrigger.create({
+    //     trigger: this.sections[(2 * (i + 1)) - 1],
+    //     start: "top 80px",
+    //     endTrigger: this.sections[(2 * (i + 1))],
+    //     end: "bottom bottom",
+    //     scrub: true,
+    //     onEnter: () => {
+    //       console.log("onEnter");
+    //       this.video.pause();
+    //       this.video.setAttribute("src", this.videoSources[i]);
+    //       this.video.setAttribute("type", "video/mp4");
+    //       this.video.setAttribute("preload", "auto");
+    //       this.video.setAttribute("playsinline", true);
 
-      ScrollTrigger.create({
-        trigger: this.sections[(2 * (i + 1)) - 1],
-        start: "top 80px",
-        endTrigger: this.sections[(2 * (i + 1))],
-        end: "bottom bottom",
-        scrub: true,
-        onEnter: () => {
-          console.log("onEnter");
-          this.video.pause();
-          this.video.setAttribute("src", this.videoSources[i]);
-          this.video.setAttribute("type", "video/mp4");
-          this.video.setAttribute("preload", "auto");
-          this.video.setAttribute("playsinline", true);
+    //       let isIOS =
+    //         /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    //       if (isIOS) {
+    //         console.log("is IOS");
+    //         this.video.setAttribute("muted", true);
+    //       } else {
+    //         this.video.setAttribute("muted", false);
+    //       }
 
-          let isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          if (isIOS) {
-            console.log("is IOS");
-            this.video.setAttribute("muted", true);
-          } else {
-            this.video.setAttribute("muted", false);
-          }
-
-
-          this.video.load();
-          this.video.onloadeddata = () => {
-            this.video.play();
-          };
-        },
-        // onLeave: () => {
-        //   console.log("onLeave");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
-        // onEnterBack: () => {
-        //   console.log("onEnterBack");
-        //   this.video.src = this.videoSources[i];
-        //   this.video.load();
-        //   this.video.play();
-        // },
-        // onLeaveBack: () => {
-        //   console.log("onLeaveBack");
-        //   this.video.pause();
-        //   this.video.load();
-        // },
-      });
-    }
-  }
-
-  onMouseMove(event) {
-    this.mouse.x = (event.clientX / this.viewport.width).toFixed(2) * 4;
-    this.mouse.y = (event.clientY / this.viewport.height).toFixed(2) * 2;
-
-    GSAP.to(this.mesh.material.uniforms.uFrequency, { value: this.mouse.x });
-    GSAP.to(this.mesh.material.uniforms.uAmplitude, { value: this.mouse.x });
-    GSAP.to(this.mesh.material.uniforms.uDensity, { value: this.mouse.y });
-    GSAP.to(this.mesh.material.uniforms.uStrength, { value: this.mouse.y });
-    // GSAP.to(this.mesh.material.uniforms.uDeepPurple, { value: this.mouse.x })
-    // GSAP.to(this.mesh.material.uniforms.uOpacity, { value: this.mouse.y })
-
-    console.info(`X: ${this.mouse.x}  |  Y: ${this.mouse.y}`);
+    //       this.video.load();
+    //       this.video.onloadeddata = () => {
+    //         this.video.play();
+    //       };
+    //     },
+    // onLeave: () => {
+    //   console.log("onLeave");
+    //   this.video.pause();
+    //   this.video.load();
+    // },
+    // onEnterBack: () => {
+    //   console.log("onEnterBack");
+    //   this.video.src = this.videoSources[i];
+    //   this.video.load();
+    //   this.video.play();
+    // },
+    // onLeaveBack: () => {
+    //   console.log("onLeaveBack");
+    //   this.video.pause();
+    //   this.video.load();
+    // },
+    //   });
+    // }
   }
 
   onScroll() {
@@ -1080,11 +1083,11 @@ export default class ScrollStage {
 
     this.smoothScroll.onResize();
 
-    if (this.viewport.width < this.viewport.height) {
-      this.mesh.scale.set(0.75, 0.75, 0.75);
-    } else {
-      this.mesh.scale.set(1, 1, 1);
-    }
+    // if (this.viewport.width < this.viewport.height) {
+    //   this.mesh.scale.set(0.75, 0.75, 0.75);
+    // } else {
+    //   this.mesh.scale.set(1, 1, 1);
+    // }
 
     this.camera.aspect = this.viewport.width / this.viewport.height;
     this.camera.updateProjectionMatrix();
@@ -1098,9 +1101,9 @@ export default class ScrollStage {
 
     const elapsedTime = this.clock.getElapsedTime();
 
-    this.mesh.rotation.y = elapsedTime * 0.05;
+    // this.mesh.rotation.y = elapsedTime * 0.05;
 
-    this.modelMove(elapsedTime);
+    //this.modelMove(elapsedTime);
 
     this.smoothScroll.update();
 
@@ -1113,38 +1116,37 @@ export default class ScrollStage {
     this.render();
   }
 
-  modelMove(t) {
-    for (let i = 0; i < this.dict.length; i++) {
-      // this.dict[i].rotation.x = THREE.MathUtils.lerp(
-      //   this.dict[i].rotation.x,
-      //   Math.cos(t / 2) / 10 + 0.25,
-      //   0.1
-      // );
+  // modelMove(t) {
+  //   for (let i = 0; i < this.dict.length; i++) {
+  //     this.dict[i].rotation.x = THREE.MathUtils.lerp(
+  //       this.dict[i].rotation.x,
+  //       Math.cos(t / 2) / 10 + 0.25,
+  //       0.1
+  //     );
 
-      // model.rotation.y = THREE.MathUtils.lerp(
-      //   model.rotation.y ,
-      //   Math.sin(t / 4) / 10,
-      //   0.1
-      // );
+  //     model.rotation.y = THREE.MathUtils.lerp(
+  //       model.rotation.y ,
+  //       Math.sin(t / 4) / 10,
+  //       0.1
+  //     );
 
-      this.dict[i].rotation.y += 0.01;
+  //     this.dict[i].rotation.y += 0.01;
 
-      this.dict[i].rotation.x += 0.005;
+  //     this.dict[i].rotation.x += 0.005;
 
-      this.dict[i].rotation.z = THREE.MathUtils.lerp(
-        this.dict[i].rotation.z,
-        Math.sin(t / 4) / 20,
-        0.1
-      );
-    }
+  //     this.dict[i].rotation.z = THREE.MathUtils.lerp(
+  //       this.dict[i].rotation.z,
+  //       Math.sin(t / 4) / 20,
+  //       0.1
+  //     );
+  //   }
 
-    for (let i = 0; i < this.patterns.length; i++) {
-      this.patterns[i].rotation.y += 0.01;
-    }
+  // for (let i = 0; i < this.patterns.length; i++) {
+  //   this.patterns[i].rotation.y += 0.01;
+  // }
 
-
-    //this.textMesh2.rotation.x += 0.05;
-  }
+  //this.textMesh2.rotation.x += 0.05;
+  // }
 
   render() {
     this.renderer.clear();

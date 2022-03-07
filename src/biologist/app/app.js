@@ -4,7 +4,6 @@ import Animations from "./Animations";
 import SmoothScroll from "./SmoothScroll";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-// import "../styles/base.css";
 import "../styles/shaders-on-scroll.sass";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import "./gold.glb";
@@ -12,11 +11,10 @@ import "./fire.glb";
 import "./aqua.glb";
 import "./wood.glb";
 import "./dirt.glb";
-import * as dat from "dat.gui";
+// import * as dat from "dat.gui";
 import { Vector3, Vector2 } from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default class ScrollStage {
   constructor() {
@@ -204,54 +202,7 @@ export default class ScrollStage {
     this.loadVideoModels();
     this.loadPatternModels();
 
-    //  document.addEventListener("DOMContentLoaded", function () {
-    // GSAP.utils.toArray(".gs_reveal").forEach(function (elem) {
-    //   GSAP.set(elem, { autoAlpha: 0 });
-    //   //this.hide(elem); // assure that the element is hidden when scrolled into view
-
-    //   function animateFrom(elem, direction) {
-    //     direction = direction || 1;
-    //     var x = 0,
-    //       y = direction * 100;
-    //     if (elem.classList.contains("gs_reveal_fromLeft")) {
-    //       x = -100;
-    //       y = 0;
-    //     } else if (elem.classList.contains("gs_reveal_fromRight")) {
-    //       x = 100;
-    //       y = 0;
-    //     }
-    //     elem.style.transform = "translate(" + x + "px, " + y + "px)";
-    //     elem.style.opacity = "0";
-    //     GSAP.fromTo(
-    //       elem,
-    //       { x: x, y: y, autoAlpha: 0 },
-    //       {
-    //         //duration: 3,
-    //         x: 0,
-    //         y: 0,
-    //         autoAlpha: 1,
-    //         //ease: "expo",
-    //         overwrite: "auto",
-    //         //scrub: true,
-    //       }
-    //     );
-    //   }
-
-    //   ScrollTrigger.create({
-    //     trigger: elem,
-    //     onEnter: function () {
-    //       animateFrom(elem);
-    //     },
-    //     onEnterBack: function () {
-    //       animateFrom(elem, -1);
-    //     },
-    //     onLeave: function () {
-    //       GSAP.set(elem, { autoAlpha: 0 });
-    //     }, // assure that the element is hidden when scrolled into view
-    //   });
-    //  });
-    // });
-
+   
   
   };
 
@@ -331,17 +282,7 @@ export default class ScrollStage {
             duration: 3,
           }
         );
-
-      // this.gui.add(this.textMesh.position, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh.position, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh.position, "z", -100, 100, 0.1);
-
-      // this.gui.add(this.textMesh.scale, "x", 0, 10, 0.1);
-      // this.gui.add(this.textMesh.scale, "y", 0, 10, 0.1);
-      // this.gui.add(this.textMesh.scale, "z", 0, 10, 0.1);
-      // this.gui.add(this.textMesh.rotation, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh.rotation, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh.rotation, "z", -100, 100, 0.1);
+   
     });
 
     this.loadModel(fontLoader, "/Disco_2000_Regular.json").then((font) => {
@@ -414,16 +355,6 @@ export default class ScrollStage {
           }
         );
 
-      // this.gui.add(this.textMesh2.position, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.position, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.position, "z", -100, 100, 0.1);
-
-      // this.gui.add(this.textMesh2.scale, "x", 0, 10, 0.1);
-      //   this.gui.add(this.textMesh2.scale, "y", 0, 10, 0.1);
-      //   this.gui.add(this.textMesh2.scale, "z", 0, 10, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "x", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "y", -100, 100, 0.1);
-      // this.gui.add(this.textMesh2.rotation, "z", -100, 100, 0.1);
     });
   }
 
@@ -446,13 +377,6 @@ export default class ScrollStage {
 
     this.scene.add(this.taichiMesh);
 
-    // this.gui.add(this.emojiMesh.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.position, "z", -100, 100, 0.1);
-
-    // this.gui.add(this.emojiMesh.rotation, "x", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.rotation, "y", -100, 100, 0.1);
-    // this.gui.add(this.emojiMesh.rotation, "z", -100, 100, 0.1);
 
     GSAP.fromTo(
       this.taichiMesh.position,
@@ -506,13 +430,6 @@ export default class ScrollStage {
     this.pointLight1.rotation.set(0, 0, 0);
     this.scene.add(this.pointLight2);
 
-    // this.gui.add(this.pointLight1.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.pointLight1.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.pointLight1.position, "z", -100, 100, 0.1);
-
-    // this.gui.add(this.pointLight2.position, "x", -100, 100, 0.1);
-    // this.gui.add(this.pointLight2.position, "y", -100, 100, 0.1);
-    // this.gui.add(this.pointLight2.position, "z", -100, 100, 0.1);
 
     ScrollTrigger.create({
       trigger: this.sections[0],
@@ -571,34 +488,6 @@ export default class ScrollStage {
       this.loadModel(this.GLTFLoader, sModelName).then((gltf) => {
         var model = gltf.scene;
 
-        // const modelMaterial = new THREE.ShaderMaterial({
-        //   extensions: {
-        //     derivatives: "#extension GL_OES_standard_derivatives : enable",
-        //   },
-
-        //   side: THREE.DoubleSide,
-
-        //   uniforms: {
-        //     time: { type: "f", value: 0 },
-        //     sky: {
-        //       type: "t",
-        //       value: new THREE.TextureLoader().load(
-        //         this.resourceDatas.mapUrl[i]
-        //       ),
-        //     },
-        //     resolution: { type: "v4", value: new THREE.Vector4() },
-        //     uvRate1: {
-        //       value: new THREE.Vector2(1, 1),
-        //     },
-
-        //     opacity: 0,
-        //   },
-
-        //   vertexShader: vertexShader2,
-
-        //   fragmentShader: fragmentShader2,
-        // });
-
         this.materialDict.push(modelMaterial);
 
         model.traverse((object) => {
@@ -618,75 +507,6 @@ export default class ScrollStage {
             this.dict.push(object);
             this.scene.add(object);
 
-            // let tl = GSAP.timeline({
-            //   scrollTrigger: {
-            //     trigger: this.sections[2 * (i + 1) - 1],
-            //     start: "top top",
-            //     endTrigger: this.sections[2 * (i + 1)],
-            //     end: "bottom bottom",
-            //     scrub: true,
-            //   },
-            // });
-            // tl.fromTo(
-            //   object.position,
-            //   {
-            //     x: this.resourceDatas.Pos[i].x,
-            //     y: this.resourceDatas.Pos[i].y,
-            //     z: this.resourceDatas.Pos[i].z,
-            //   },
-            //   {
-            //     x: this.resourceDatas.Pos[i +1].x,
-            //     y: this.resourceDatas.Pos[i +1].y,
-            //     z: this.resourceDatas.Pos[i +1].z,
-            //   }
-            // );
-            // .fromTo(
-            //   object.rotation,
-            //   {
-            //     x: this.resourceDatas.Rot[i].x,
-            //     y: this.resourceDatas.Rot[i].y,
-            //     z: this.resourceDatas.Rot[i].z,
-            //   },
-            //   {
-            //     x: this.resourceDatas.ToRot[i].x,
-            //     y: this.resourceDatas.ToRot[i].y,
-            //     z: this.resourceDatas.ToRot[i].z,
-            //   }
-            // )
-            // .fromTo(
-            //   object,
-            //   {
-            //     visible: true,
-            //   },
-            //   {
-            //     visible: false,
-            //   }
-            // )
-            // .fromTo(
-            //   object.material,
-            //   {
-            //     opacity: 0,
-            //   },
-            //   {
-            //     opacity: 1,
-            //   }
-            // ).
-            // fromTo(
-            //     this.planeMesh.material,
-            //     {
-            //       displacementScale: 0,
-            //     },
-            //     {
-            //       displacementScale: 10,
-            //     };
-
-            // this.gui.add(object.position, "x", -100, 100, 0.1);
-            // this.gui.add(object.position, "y", -100, 100, 0.1);
-            // this.gui.add(object.position, "z", -100, 100, 0.1);
-
-            // this.gui.add(object.rotation, "x", -100, 100, 0.1);
-            // this.gui.add(object.rotation, "y", -100, 100, 0.1);
-            // this.gui.add(object.rotation, "z", -100, 100, 0.1);
           }
         });
       });
@@ -733,9 +553,7 @@ export default class ScrollStage {
         end: "top center",
       });
 
-      // this.gui.add(plane.position, "x", -100, 100, 0.1);
-      // this.gui.add(plane.position, "y", -100, 100, 0.1);
-      // this.gui.add(plane.position, "z", -100, 100, 0.1);
+ 
     }
   }
 
@@ -918,29 +736,31 @@ export default class ScrollStage {
   }
 
   updateScrollAnimations() {
+
     this.scroll.running = false;
     this.scroll.normalized = this.scroll.hard / this.scroll.limit;
-    // GSAP.to(this.mesh.rotation, {
-    //   x: this.scroll.normalized * Math.PI,
-    // });
-    // GSAP.to(this.elements.line, {
-    //   scaleX: this.scroll.normalized,
-    //   transformOrigin: "left",
-    //   //scrub: true,
-    //   // duration: 1.5,
-    //   // ease: "ease",
-    // });
 
-    // for (const key in this.settings) {
-    //   if (this.settings[key].start !== this.settings[key].end) {
-    //     GSAP.to(this.mesh.material.uniforms[key], {
-    //       value:
-    //         this.settings[key].start +
-    //         this.scroll.normalized *
-    //           (this.settings[key].end - this.settings[key].start),
-    //     });
-    //   }
-    // }
+    GSAP.to(this.mesh.rotation, {
+      x: this.scroll.normalized * Math.PI,
+    });
+    GSAP.to(this.elements.line, {
+      scaleX: this.scroll.normalized,
+      transformOrigin: "left",
+      //scrub: true,
+      // duration: 1.5,
+      // ease: "ease",
+    });
+
+    for (const key in this.settings) {
+      if (this.settings[key].start !== this.settings[key].end) {
+        GSAP.to(this.mesh.material.uniforms[key], {
+          value:
+            this.settings[key].start +
+            this.scroll.normalized *
+              (this.settings[key].end - this.settings[key].start),
+        });
+      }
+    }
   }
 
   addEventListeners() {
@@ -952,6 +772,7 @@ export default class ScrollStage {
     window.addEventListener("scroll", this.onScroll.bind(this));
 
     window.addEventListener("resize", this.onResize.bind(this));
+
   }
 
   onLoad() {
@@ -961,110 +782,7 @@ export default class ScrollStage {
 
     // ScrollTrigger.refresh();
 
-    // GSAP.fromTo(
-    //   this.camera.position,
-    //   { x: 0, y: 0, z: 40 },
-    //   { x: 0, y: 0, z: 30, duration: 1 }
-    // );
-
-    // this.animations = new Animations(this.element, this.camera);
-
-    // this.video = document.createElement("video");
-    // this.video.setAttribute('src', this.videoSources[0]);
-    // this.video.setAttribute('type', 'video/mp4');
-    // this.video.setAttribute('preload', "auto");
-    // this.video.setAttribute('playsinline', true);
-
-    // let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    // if (isIOS) {
-    //   console.log('is IOS');
-    //   this.video.setAttribute("muted", true);
-    // }else
-    // {
-    //   this.video.setAttribute("muted", false);
-
-    // }
-
-    // this.video.load();
-
-    // this.video.onloadeddata = (e) => {
-    //   console.log("video loaded");
-
-    //   const videoTexture = new THREE.VideoTexture(e.target);
-    //   videoTexture.minFilter = THREE.LinearFilter;
-    //   videoTexture.magFilter = THREE.LinearFilter;
-    //   videoTexture.needsUpdate = true;
-    //   const videoGeometry = new THREE.PlaneGeometry(12, 12);
-    //   videoGeometry.scale(0.5, 0.5, 0.5);
-    //   const videomMaterial = new THREE.MeshBasicMaterial({
-    //     map: videoTexture,
-    //     side: THREE.DoubleSide,
-    //   });
-    //   videomMaterial.needsUpdate = true;
-
-    //   const count = 128;
-    //   const radius = 32;
-
-    //   for (let i = 1, l = count; i <= l; i++) {
-    //     const phi = Math.acos(-1 + (2 * i) / l);
-    //     const theta = Math.sqrt(l * Math.PI) * phi;
-
-    //     const mesh = new THREE.Mesh(videoGeometry, videomMaterial);
-    //     mesh.position.setFromSphericalCoords(radius, phi, theta);
-    //     mesh.lookAt(new Vector3(0, 0, 30));
-    //     this.scene.add(mesh);
-    //   }
-    // };
-
-    // for (let i = 0; i < this.videoSources.length; i++) {
-    //   console.log("create scrolltrigger");
-
-    //   ScrollTrigger.create({
-    //     trigger: this.sections[(2 * (i + 1)) - 1],
-    //     start: "top 80px",
-    //     endTrigger: this.sections[(2 * (i + 1))],
-    //     end: "bottom bottom",
-    //     scrub: true,
-    //     onEnter: () => {
-    //       console.log("onEnter");
-    //       this.video.pause();
-    //       this.video.setAttribute("src", this.videoSources[i]);
-    //       this.video.setAttribute("type", "video/mp4");
-    //       this.video.setAttribute("preload", "auto");
-    //       this.video.setAttribute("playsinline", true);
-
-    //       let isIOS =
-    //         /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    //       if (isIOS) {
-    //         console.log("is IOS");
-    //         this.video.setAttribute("muted", true);
-    //       } else {
-    //         this.video.setAttribute("muted", false);
-    //       }
-
-    //       this.video.load();
-    //       this.video.onloadeddata = () => {
-    //         this.video.play();
-    //       };
-    //     },
-    // onLeave: () => {
-    //   console.log("onLeave");
-    //   this.video.pause();
-    //   this.video.load();
-    // },
-    // onEnterBack: () => {
-    //   console.log("onEnterBack");
-    //   this.video.src = this.videoSources[i];
-    //   this.video.load();
-    //   this.video.play();
-    // },
-    // onLeaveBack: () => {
-    //   console.log("onLeaveBack");
-    //   this.video.pause();
-    //   this.video.load();
-    // },
-    //   });
-    // }
+   
   }
 
   onScroll() {
@@ -1083,11 +801,11 @@ export default class ScrollStage {
 
     this.smoothScroll.onResize();
 
-    // if (this.viewport.width < this.viewport.height) {
-    //   this.mesh.scale.set(0.75, 0.75, 0.75);
-    // } else {
-    //   this.mesh.scale.set(1, 1, 1);
-    // }
+    if (this.viewport.width < this.viewport.height) {
+      this.mesh.scale.set(0.75, 0.75, 0.75);
+    } else {
+      this.mesh.scale.set(1, 1, 1);
+    }
 
     this.camera.aspect = this.viewport.width / this.viewport.height;
     this.camera.updateProjectionMatrix();
@@ -1101,52 +819,43 @@ export default class ScrollStage {
 
     const elapsedTime = this.clock.getElapsedTime();
 
-    // this.mesh.rotation.y = elapsedTime * 0.05;
 
-    //this.modelMove(elapsedTime);
+    this.modelMove(elapsedTime);
 
     this.smoothScroll.update();
 
-    //   if (video.readyState === video.HAVE_ENOUGH_DATA) {
-    //     videoImageContext.drawImage(video, 0, 0);
-    //     if (videoTexture)
-    //         videoTexture.texture.needsUpdate = true;
-    // }
 
     this.render();
   }
 
-  // modelMove(t) {
-  //   for (let i = 0; i < this.dict.length; i++) {
-  //     this.dict[i].rotation.x = THREE.MathUtils.lerp(
-  //       this.dict[i].rotation.x,
-  //       Math.cos(t / 2) / 10 + 0.25,
-  //       0.1
-  //     );
+  modelMove(t) {
 
-  //     model.rotation.y = THREE.MathUtils.lerp(
-  //       model.rotation.y ,
-  //       Math.sin(t / 4) / 10,
-  //       0.1
-  //     );
+    this.mesh.rotation.y = t * 0.05;
 
-  //     this.dict[i].rotation.y += 0.01;
+    for (let i = 0; i < this.dict.length; i++) {
+      this.dict[i].rotation.x = THREE.MathUtils.lerp(
+        this.dict[i].rotation.x,
+        Math.cos(t / 2) / 10 + 0.25,
+        0.1
+      );
 
-  //     this.dict[i].rotation.x += 0.005;
+      this.dict[i].rotation.y += 0.01;
 
-  //     this.dict[i].rotation.z = THREE.MathUtils.lerp(
-  //       this.dict[i].rotation.z,
-  //       Math.sin(t / 4) / 20,
-  //       0.1
-  //     );
-  //   }
+      this.dict[i].rotation.x += 0.005;
 
-  // for (let i = 0; i < this.patterns.length; i++) {
-  //   this.patterns[i].rotation.y += 0.01;
-  // }
+      this.dict[i].rotation.z = THREE.MathUtils.lerp(
+        this.dict[i].rotation.z,
+        Math.sin(t / 4) / 20,
+        0.1
+      );
+    }
 
-  //this.textMesh2.rotation.x += 0.05;
-  // }
+  for (let i = 0; i < this.patterns.length; i++) {
+    this.patterns[i].rotation.y += 0.01;
+  }
+
+  this.textMesh2.rotation.x += 0.05;
+  }
 
   render() {
     this.renderer.clear();

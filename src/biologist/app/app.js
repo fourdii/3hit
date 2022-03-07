@@ -854,7 +854,6 @@ export default class ScrollStage {
     this.patterns[i].rotation.y += 0.01;
   }
 
-  this.textMesh2.rotation.x += 0.05;
   }
 
   render() {

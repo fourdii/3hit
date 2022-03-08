@@ -106,7 +106,7 @@ export default class ScrollStage {
     ScrollTrigger.defaults({
       immediateRender: false,
       ease: "power1.inOut",
-      scrub: 1,
+      scrub: 0.5,
     });
 
     this.sections = [];
